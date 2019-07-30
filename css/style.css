@@ -183,7 +183,9 @@ footer div.creador {
 .seccion-derecha.estudios {
   background: white;
 }
-
+.seccion-derecha.estudios>div{
+  padding-top:10vh;
+}
 .seccion-derecha.trabajo {
   /* background: #fbf3e4; */
   background: white;
@@ -549,19 +551,37 @@ footer div.creador {
 }
 
 .cronograma-elemento:first-child {
-  padding-top: 15vh;
+  /* padding-top: 15vh; */
 }
 
 .cronograma-fecha {
   position: absolute;
-  left: -120px;
+  left: -220px;
   border-radius: 10%;
-  min-width: 100px;
+  min-width: 200px;
+  max-width: 200px;
   padding-top: 7px;
   color: white;
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
+  justify-content: flex-end;
 }
+.cronograma-fecha div{
+  margin-top: -23px;
+  text-align: center;
+  font-weight: bold;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s;
+  white-space: nowrap;
+}
+.cronograma-elemento:hover .cronograma-fecha div{
+  width: 120px;
+}
+
+.cronograma-fecha div span{
+  display:block;
+}
+
 
 .cronograma-fecha::after {
   content: "";
