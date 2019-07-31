@@ -1,79 +1,7 @@
 window.onload = () => {
   fijarElementos();
   aparicionElementos();
-  Array.from(elementos_trabajo).forEach(elemento => {
-    elemento.onclick = function() {
-      if (
-        elemento.querySelector(".cronograma-fecha").style.marginTop != "10vh"
-      ) {
-        document.body.style.overflow = "hidden";
-
-        let top = elemento.getBoundingClientRect().top + window.scrollY;
-
-        cancel_button.classList.add("show");
-        window.scroll({ top: top, left: 0, behavior: "smooth" });
-
-        cancel_button.onclick = () => {
-          document.body.style.overflow = "hidden";
-          let top = elemento.getBoundingClientRect().top + window.scrollY;
-          window.scroll({ top: top, left: 0, behavior: "smooth" });
-
-          cronograma_seccion_trabajo.style.width = "50%";
-          elemento.querySelector(".cronograma-fecha").style.marginTop = "45vh";
-          elemento.querySelector(".title").style.marginTop = "45vh";
-          cronograma_seccion_trabajo_element.style.width = "50%";
-          cronograma_seccion_trabajo_element.style.left = "50%";
-          elemento
-            .querySelector(".cronograma-contenido-background")
-            .classList.remove("open");
-          elemento.querySelector(".vermas").classList.remove("close");
-
-          cancel_button.classList.remove("show");
-        };
-
-        cronograma_seccion_trabajo.style.width = "30%";
-        elemento.querySelector(".cronograma-fecha").style.marginTop = "10vh";
-        elemento.querySelector(".title").style.marginTop = "10vh";
-        cronograma_seccion_trabajo_element.style.width = "70%";
-        cronograma_seccion_trabajo_element.style.left = "30%";
-        elemento.querySelector(".vermas").classList.add("close");
-
-        elemento.querySelector(".title").addEventListener(
-          "transitionend",
-          () => {
-            let top = "";
-            if (cronograma_seccion_trabajo.style.width != "50%") {
-              Array.from(elementos_trabajo).forEach(el => {
-                if (el != elemento) {
-                  el.style.display = "none";
-                }
-              });
-              elemento.querySelector(".cronograma-contenido").style.display =
-                "flex";
-              elemento
-                .querySelector(".cronograma-contenido-background")
-                .classList.add("open");
-            } else {
-              elemento.querySelector(".cronograma-contenido").style.display =
-                "none";
-              Array.from(elementos_trabajo).forEach(el => {
-                if (el != elemento) {
-                  el.style.display = "";
-                }
-              });
-            }
-
-            top = elemento.getBoundingClientRect().top + window.scrollY;
-
-            window.scroll({ top: top, left: 0 });
-
-            document.body.style.overflow = "auto";
-          },
-          false
-        );
-      }
-    };
-  });
+  animacionTrabajo();
 };
 
 $(document).ready(function() {
@@ -99,19 +27,89 @@ $(document).ready(function() {
   }
   navegacion();
   animationFrame();
-  // document.addEventListener('scroll', function () {
-  //     if (window.innerWidth > 1024) {
-  //         // fijarElementos();
-  //         // aparicionElementos();
-  //     }
-  // }, { passive: true });
-  // $(window).on('resize', function () {
-  //     if (window.innerWidth > 1024) {
-  //         fijarElementos();
-  //         aparicionElementos();
-  //     }
-  // });
 });
+
+function animacionTrabajo() {
+  Array.from(elementos_trabajo).forEach(elemento => {
+    let cronograma_fecha = elemento.querySelector(".cronograma-fecha");
+    let cronograma_title = elemento.querySelector(".title");
+    let cronograma_vermas = elemento.querySelector(".vermas");
+    let cronograma_contenido = elemento.querySelector(".cronograma-contenido");
+    let cronograma_contenido_background = elemento.querySelector(
+      ".cronograma-contenido-background"
+    );
+    let cronograma_fecha_div = elemento.querySelector(".cronograma-fecha div");
+    let margin_fecha_open = "10vh";
+    let width_titulo_seccion_trabajo_abierta = "30%";
+
+    elemento.onclick = function() {
+      if (cronograma_fecha.style.marginTop != margin_fecha_open) {
+        document.body.style.overflow = "hidden";
+
+        let top = elemento.getBoundingClientRect().top + window.scrollY;
+
+        cancel_button.classList.add("show");
+        window.scroll({ top: top, left: 0, behavior: "smooth" });
+
+        cancel_button.onclick = () => {
+          document.body.style.overflow = "hidden";
+          let top = elemento.getBoundingClientRect().top + window.scrollY;
+          window.scroll({ top: top, left: 0, behavior: "smooth" });
+
+          cronograma_seccion_trabajo.style.width = "";
+          cronograma_fecha.style.marginTop = "";
+          cronograma_title.style.marginTop = "";
+          cronograma_seccion_trabajo_element.style.width = "";
+          cronograma_seccion_trabajo_element.style.left = "";
+          cronograma_contenido_background.classList.remove("open");
+          cronograma_vermas.classList.remove("close");
+          cancel_button.classList.remove("show");
+        };
+
+        cronograma_seccion_trabajo.style.width = width_titulo_seccion_trabajo_abierta;
+        cronograma_fecha.style.marginTop = margin_fecha_open;
+        cronograma_title.style.marginTop = margin_fecha_open;
+        cronograma_fecha_div.style.width = "120px";
+        cronograma_seccion_trabajo_element.style.width = "70%";
+        cronograma_seccion_trabajo_element.style.left = width_titulo_seccion_trabajo_abierta;
+        cronograma_vermas.classList.add("close");
+
+        cronograma_title.addEventListener(
+          "transitionend",
+          (event) => {
+            if (cronograma_title !== event.target) return;
+
+            let top = "";
+            if (cronograma_seccion_trabajo.style.width) {
+              Array.from(elementos_trabajo).forEach(el => {
+                if (el != elemento) {
+                  el.style.display = "none";
+                }
+              });
+              cronograma_contenido.style.display = "flex";
+              cronograma_contenido_background.classList.add("open");
+            } else {
+              cronograma_contenido.style.display = "none";
+              Array.from(elementos_trabajo).forEach(el => {
+                if (el != elemento) {
+                  el.style.display = "";
+                }
+              });
+              cronograma_fecha_div.style.width = "";
+            }
+
+            top = elemento.getBoundingClientRect().top + window.scrollY;
+
+            window.scroll({ top: top, left: 0 });
+
+            document.body.style.overflow = "auto";
+          },
+          false
+        );
+      }
+    };
+  });
+}
 
 function animationFrame() {
   if (window.innerWidth > 1024) {
@@ -156,52 +154,9 @@ function fijarElementos() {
     cancel_button,
     cronograma_seccion_trabajo_element.getBoundingClientRect()
   );
-
-  /*
-        if (coords.bottom <= (window.innerHeight + 2 * window.innerHeight / 3)) {
-            $(element).children(".seccion-trabajo").addClass('abierta')
-        } else {
-            $(element).children(".seccion-trabajo").removeClass('abierta')
-        }
-    */
-  // var coordsPrimerElementoTrabajo = cronograma_seccion_trabajo_element.getBoundingClientRect();
-
-  // //    if (coordsPrimerElementoTrabajo.top < window.innerHeight / 2 - 100) {
-  // if (coordsPrimerElementoTrabajo.top < window.innerHeight / 2 - 200) {
-  //     //$($(".estudios>.cronograma-elemento").get(0)).css({ "padding-top": 0 })
-  //     cronograma_seccion_trabajo.addClass('abierta')
-  //     cronograma_estudio.css({ top: "-100vh" });
-  //     cronograma_trabajo.css({ top: "-0vh" });
-
-  //     /* elementos_estudios.each((index, element) => {
-  //         $(element).css({ top: "-100vh" });
-  //     })
-  //     elementos_trabajo.each((index, element) => {
-  //         $(element).css({ top: "" });
-  //     }) */
-  //     seccion_trabajo_abierta = 1;
-  // } else if (seccion_trabajo_abierta != 0) {
-
-  //     //$($(".estudios>.cronograma-elemento").get(0)).css({ "padding-top": "20vh" })
-  //     cronograma_seccion_trabajo.removeClass('abierta')
-  //     cronograma_estudio.css({ top: "" });
-  //     cronograma_trabajo.css({ top: "" });
-  //     /*  elementos_estudios.each((index, element) => {
-  //          $(element).css({ top: "" });
-  //      })
-  //      elementos_trabajo.each((index, element) => {
-  //          $(element).css({ top: "100vh" });
-  //      }) */
-
-  //     document.addEventListener("transitionend", aparicionElementos, false);
-  // }
 }
 
 function aparicionElementos() {
-  // elementos_estudios.each((index, element) => {
-  //     $(element).css({ top: "-100vh" });
-  // })
-
   if (
     cronograma[0].getBoundingClientRect().top + window.outerHeight / 3 <
     window.innerHeight
@@ -210,76 +165,31 @@ function aparicionElementos() {
   } else {
     $(cronograma_estudio[0]).css({ top: cornograma_estudio_height + "px" });
   }
-
-  // Array.from(cronograma_secciones).forEach((elemento, index) => {
-  //     var coords = elemento.getBoundingClientRect();
-
-  //     if (coords.bottom < window.innerHeight) {
-  //         $(elemento).addClass('visible');
-  //     } else {
-  //         //  $(elemento).removeClass('visible');
-  //     }
-  //     // console.log(coords.bottom)
-  // })
 }
 
 function navegacion() {
-  const elementosNavegacion = [{nombre:"Sobre mi",clase:".info"},{nombre:"Estudios",clase:".estudios"},{nombre:"Trabajo",clase:".trabajo"},{nombre:"Habilidades",clase:".habilidades"},{nombre:"Contacto",clase:".contacto"}]
-  document.querySelectorAll(".secciones-navegacion").forEach(navegacion=>{
+  const elementosNavegacion = [
+    { nombre: "Sobre mi", clase: ".info" },
+    { nombre: "Estudios", clase: ".estudios" },
+    { nombre: "Trabajo", clase: ".trabajo" },
+    { nombre: "Habilidades", clase: ".habilidades" },
+    { nombre: "Contacto", clase: ".contacto" }
+  ];
+  document.querySelectorAll(".secciones-navegacion").forEach(navegacion => {
     let ul = document.createElement("ul");
-    elementosNavegacion.forEach(elemento=>{
+    elementosNavegacion.forEach(elemento => {
       let li = document.createElement("li");
       let span = document.createElement("span");
       let text = document.createTextNode(elemento.nombre);
       span.appendChild(text);
       li.appendChild(span);
-      li.onclick=()=>{
-        navegarA(elemento.clase)
-      }
-      ul.appendChild(li)
-    })
+      li.onclick = () => {
+        navegarA(elemento.clase);
+      };
+      ul.appendChild(li);
+    });
     navegacion.appendChild(ul);
-  })
-
-
-
-  // var elementos = document.querySelectorAll(".secciones-navegacion span");
-  // elementos.forEach((elemento, index) => {
-  //   switch (index % 4) {
-  //     case 0:
-  //           elemento.onclick = () => {
-  //               navegarA(".info");
-  //             };
-  //       break;
-  //     case 1:
-  //           elemento.onclick = () => {
-  //               navegarA(".estudios");
-  //             };
-  //       break;
-  //     case 2:
-  //           elemento.onclick = () => {
-  //               navegarA(".trabajo");
-  //             };
-  //       break;
-  //     case 3:
-  //           elemento.onclick = () => {
-  //               navegarA(".contacto");
-  //             };
-  //       break;
-  //   }
-  // });
-    // elementos[0].onclick = () => {
-    //   navegarA(".info");
-    // };
-    // elementos[1].onclick = () => {
-    //   navegarA(".estudios");
-    // };
-    // elementos[2].onclick = () => {
-    //   navegarA(".trabajo");
-    // };
-    // elementos[3].onclick = () => {
-    //   navegarA(".contacto");
-    // };
+  });
 }
 
 function navegarA(elemento) {

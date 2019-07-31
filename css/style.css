@@ -244,7 +244,6 @@ footer div.creador {
 .trabajo .title {
   position: absolute;
   top: 0;
-  font-size: 60px;
   margin: 50px;
   margin-top: 45vh;
   transition: margin-top 1s;
@@ -253,7 +252,10 @@ footer div.creador {
 .trabajo h3 {
   mix-blend-mode: difference;
   color: white;
+  margin:0;
   margin-top: -34px;
+  font-size: 60px;
+
 }
 
 .trabajo .cronograma-seccion {
@@ -323,7 +325,6 @@ footer div.creador {
 
 .trabajo .vermas {
   color: black;
-  position: absolute;
   top: 51vh;
   left: 53px;
   background: white;
