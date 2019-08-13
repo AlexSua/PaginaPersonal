@@ -125,11 +125,11 @@ footer div.creador {
 
 .secciones-navegacion li {
   text-align: center;
-  margin-top:10px;
+  margin-top: 10px;
   font-size: 17px;
 }
 
-.secciones-navegacion li:nth-child(n+2):not(:nth-child(4))::before {
+.secciones-navegacion li:nth-child(n + 2):not(:nth-child(4))::before {
   content: "/";
   font-weight: 100;
   padding-left: 15px;
@@ -183,8 +183,8 @@ footer div.creador {
 .seccion-derecha.estudios {
   background: white;
 }
-.seccion-derecha.estudios>div{
-  padding-top:10vh;
+.seccion-derecha.estudios > div {
+  padding-top: 10vh;
 }
 .seccion-derecha.trabajo {
   /* background: #fbf3e4; */
@@ -209,7 +209,7 @@ footer div.creador {
 .seccion-izquierda h3 {
   font-size: 50px;
   margin: auto;
-  margin-top:42.7vh;
+  margin-top: 42.7vh;
 }
 
 .sticky {
@@ -245,6 +245,7 @@ footer div.creador {
   position: absolute;
   top: 0;
   margin: 50px;
+  text-align: center;
   margin-top: 45vh;
   transition: margin-top 1s;
 }
@@ -252,10 +253,9 @@ footer div.creador {
 .trabajo h3 {
   mix-blend-mode: difference;
   color: white;
-  margin:0;
-  margin-top: -34px;
+  margin: 0;
+  margin-top: -25px;
   font-size: 60px;
-
 }
 
 .trabajo .cronograma-seccion {
@@ -263,6 +263,7 @@ footer div.creador {
   width: 100%;
   height: 100%;
   padding-top: 0;
+  
 }
 
 .trabajo.seccion-derecha {
@@ -307,7 +308,9 @@ footer div.creador {
 .trabajo .cronograma-elemento:hover .cronograma-contenido-background {
   transform: scale(1.3);
 }
-
+.trabajo .cronograma-contenido-background.hover{
+  transform: scale(1.3);
+}
 .trabajo .cronograma-contenido-background.open {
   transform: scale(1.3);
   height: 30vh;
@@ -533,6 +536,9 @@ footer div.creador {
   height: auto;
   padding-top: 5vh;
   transition: padding-top 0.5s;
+}
+
+.trabajo .cronograma-elemento {
   overflow: hidden;
 }
 
@@ -557,7 +563,7 @@ footer div.creador {
 
 .cronograma-fecha {
   position: absolute;
-  left: -220px;
+  left: -218.9px;
   border-radius: 10%;
   min-width: 200px;
   max-width: 200px;
@@ -566,7 +572,7 @@ footer div.creador {
   display: flex;
   justify-content: flex-end;
 }
-.cronograma-fecha div{
+.cronograma-fecha div {
   margin-top: -23px;
   text-align: center;
   font-weight: bold;
@@ -575,14 +581,13 @@ footer div.creador {
   transition: width 0.5s;
   white-space: nowrap;
 }
-.cronograma-elemento:hover .cronograma-fecha div{
+.cronograma-elemento:hover .cronograma-fecha div {
   width: 120px;
 }
 
-.cronograma-fecha div span{
-  display:block;
+.cronograma-fecha div span {
+  display: block;
 }
-
 
 .cronograma-fecha::after {
   content: "";
@@ -598,7 +603,12 @@ footer div.creador {
 }
 
 .trabajo .cronograma-fecha:after {
-  background: #009688f5 !important;
+  background: #009688 !important;
+}
+
+.estudios .cronograma-fecha {
+  left: -271px;
+  top: -5px;
 }
 
 /* .cronograma-contenido::before {
@@ -629,7 +639,7 @@ footer div.creador {
 
 .cronograma-contenido {
   flex: 1;
-  left: 10px;
+  /* left: 10px; */
   position: relative;
   /* left: 50%; */
   margin: 0 30px 10px 50px;
@@ -735,18 +745,7 @@ footer div.creador {
     right: 47%;
     transform: translatex(50%);
   }
-  .cronograma-fecha {
-    left: 20px;
-    color: #264753;
-    z-index: 5;
-  }
-  .cronograma-elemento:last-child {
-    margin-bottom: 50px;
-  }
-  .cronograma-fecha::after {
-    content: "";
-    display: none;
-  }
+
   .seccion-trabajo > .titulo-seccion {
     z-index: 3;
   }
@@ -755,5 +754,73 @@ footer div.creador {
   }
   .cronograma > .seccion-derecha::before {
     display: none;
+  }
+  .estudios > div {
+    top: 0;
+  }
+  .cronograma-fecha {
+    left: 20px;
+    color: #264753;
+    z-index: 5;
+    max-width: unset;
+    font-size: 13px;
+  }
+  .estudios .cronograma-fecha {
+
+    position: relative;
+    left:unset;
+    top:unset;
+    justify-content: flex-start;
+  }
+
+  .cronograma-fecha::after {
+    content: "";
+    display: none;
+  }
+
+  .cronograma-elemento .cronograma-fecha div {
+    /* margin-top: 10px; */
+    width: unset;
+  }
+  .cronograma-elemento .cronograma-fecha span {
+    display: unset;
+  }
+  .cronograma-elemento:hover .cronograma-fecha div {
+    width: unset;
+  }
+  .trabajo .cronograma-fecha {
+    position: absolute;
+    color: white;
+    mix-blend-mode: difference;
+    left: 54px;
+  }
+  .trabajo .vermas {
+    margin-top: 20px;
+    margin-left: 5px;
+  }
+  .trabajo .vermas.hover {
+    width: 100px;
+  }
+  .trabajo .cronograma-fecha{
+    margin-top: 5vh;
+  }
+  .trabajo .title{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin-top:unset;
+    left: 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .cronograma-contenido>.texto{
+    margin-left: 3%;
+    margin-right: 3%;
+    padding:0;
+  }
+  .cronograma-contenido>.texto>p{
+    margin-top:15px;
   }
 }

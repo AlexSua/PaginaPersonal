@@ -1,7 +1,11 @@
 window.onload = () => {
-  fijarElementos();
-  aparicionElementos();
-  animacionTrabajo();
+  if (window.innerWidth > 1024) {
+    fijarElementos();
+    aparicionElementos();
+    animacionTrabajo();
+  } else {
+    smartphoneAnimation();
+  }
 };
 
 $(document).ready(function() {
@@ -76,7 +80,7 @@ function animacionTrabajo() {
 
         cronograma_title.addEventListener(
           "transitionend",
-          (event) => {
+          event => {
             if (cronograma_title !== event.target) return;
 
             let top = "";
@@ -115,6 +119,8 @@ function animationFrame() {
   if (window.innerWidth > 1024) {
     fijarElementos();
     aparicionElementos();
+  } else {
+    smartphoneAnimation();
   }
 
   window.requestAnimationFrame(animationFrame);
@@ -199,4 +205,24 @@ function navegarA(elemento) {
     },
     "slow"
   );
+}
+
+function smartphoneAnimation() {
+  var elements = document.querySelectorAll(".trabajo .cronograma-elemento")
+  Array.from(elements).forEach(element => {
+    let top = element.getBoundingClientRect().top;
+    let vermas = element.querySelector(".vermas");
+    let background = element.querySelector(".cronograma-contenido-background");
+    if (
+      element.getBoundingClientRect().top <= window.innerHeight / 2 &&
+      top >= -(window.innerHeight / 2 + 100)
+    ) {
+
+      vermas.classList.add("hover");
+      background.classList.add("hover");
+    }else{
+      vermas.classList.remove("hover");
+      background.classList.remove("hover");
+    }
+  });
 }
