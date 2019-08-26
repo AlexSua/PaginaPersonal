@@ -1,14 +1,21 @@
+function initializeJS() {
+  fijarElementos();
+  aparicionElementos();
+  animacionTrabajo();
+}
 window.onload = () => {
-  if (window.innerWidth > 1024) {
-    fijarElementos();
-    aparicionElementos();
-    animacionTrabajo();
-  } else {
-    smartphoneAnimation();
+  initializeJS();
+  animationFrame();
+};
+
+window.onresize = () => {
+  if (window.innerWidth != windowWidth) {
+    windowWidth = window.innerWidth;
+    initializeJS();
   }
 };
 
-$(document).ready(function() {
+function initializeVariables() {
   cronograma_trabajo = $(".trabajo>div");
   cronograma_estudio = $(".estudios>div");
   cornograma_estudio_height = $(cronograma_estudio).height();
@@ -19,18 +26,23 @@ $(document).ready(function() {
   cronograma = $(".cronograma");
   cronograma_seccion_izquierda = $(cronograma).children(".seccion-izquierda");
   secciones = $(".seccion");
+  windowWidth = window.innerWidth;
 
   cronograma_seccion_trabajo = $(cronograma).children(".seccion-trabajo")[0];
   cronograma_seccion_trabajo_element = $(".trabajo").get(0);
 
   seccion_trabajo_abierta = 0;
+}
 
-  if (window.innerWidth > 1024) {
-    fijarElementos();
-    document.addEventListener("transitionend", aparicionElementos, false);
-  }
+$(document).ready(function() {
+  initializeVariables();
+
+  // if (window.innerWidth > 1024) {
+  //   fijarElementos();
+  //   document.addEventListener("transitionend", aparicionElementos, false);
+  // }
+
   navegacion();
-  animationFrame();
 });
 
 function animacionTrabajo() {
@@ -46,82 +58,162 @@ function animacionTrabajo() {
     let margin_fecha_open = "10vh";
     let width_titulo_seccion_trabajo_abierta = "30%";
 
-    elemento.onclick = function() {
-      if (cronograma_fecha.style.marginTop != margin_fecha_open) {
-        document.body.style.overflow = "hidden";
-
-        let top = elemento.getBoundingClientRect().top + window.scrollY;
-
-        cancel_button.classList.add("show");
-        window.scroll({ top: top, left: 0, behavior: "smooth" });
-
-        cancel_button.onclick = () => {
+    if (window.innerWidth > 1024) {
+      elemento.onclick = () => {};
+      elemento.onclick = function() {
+        if (cronograma_fecha.style.marginTop != margin_fecha_open) {
           document.body.style.overflow = "hidden";
+
           let top = elemento.getBoundingClientRect().top + window.scrollY;
+
+          cancel_button.classList.add("show");
           window.scroll({ top: top, left: 0, behavior: "smooth" });
 
-          cronograma_seccion_trabajo.style.width = "";
-          cronograma_fecha.style.marginTop = "";
-          cronograma_title.style.marginTop = "";
-          cronograma_seccion_trabajo_element.style.width = "";
-          cronograma_seccion_trabajo_element.style.left = "";
-          cronograma_contenido_background.classList.remove("open");
-          cronograma_vermas.classList.remove("close");
-          cancel_button.classList.remove("show");
-        };
+          cancel_button.onclick = () => {
+            document.body.style.overflow = "hidden";
+            let top = elemento.getBoundingClientRect().top + window.scrollY;
+            window.scroll({ top: top, left: 0, behavior: "smooth" });
 
-        cronograma_seccion_trabajo.style.width = width_titulo_seccion_trabajo_abierta;
-        cronograma_fecha.style.marginTop = margin_fecha_open;
-        cronograma_title.style.marginTop = margin_fecha_open;
-        cronograma_fecha_div.style.width = "120px";
-        cronograma_seccion_trabajo_element.style.width = "70%";
-        cronograma_seccion_trabajo_element.style.left = width_titulo_seccion_trabajo_abierta;
-        cronograma_vermas.classList.add("close");
+            cronograma_seccion_trabajo.style.width = "";
+            cronograma_fecha.style.marginTop = "";
+            cronograma_title.style.marginTop = "";
+            cronograma_seccion_trabajo_element.style.width = "";
+            cronograma_seccion_trabajo_element.style.left = "";
+            cronograma_contenido_background.classList.remove("open");
+            cronograma_vermas.classList.remove("close");
+            cancel_button.classList.remove("show");
+          };
 
-        cronograma_title.addEventListener(
-          "transitionend",
-          event => {
-            if (cronograma_title !== event.target) return;
+          cronograma_seccion_trabajo.style.width = width_titulo_seccion_trabajo_abierta;
+          cronograma_fecha.style.marginTop = margin_fecha_open;
+          cronograma_title.style.marginTop = margin_fecha_open;
+          cronograma_fecha_div.style.width = "120px";
+          cronograma_seccion_trabajo_element.style.width = "70%";
+          cronograma_seccion_trabajo_element.style.left = width_titulo_seccion_trabajo_abierta;
+          cronograma_vermas.classList.add("close");
 
-            let top = "";
-            if (cronograma_seccion_trabajo.style.width) {
-              Array.from(elementos_trabajo).forEach(el => {
-                if (el != elemento) {
-                  el.style.display = "none";
+          cronograma_title.addEventListener(
+            "transitionend",
+            function transition(event) {
+              if (cronograma_title !== event.target) return;
+                let top = "";
+                if (cronograma_seccion_trabajo.style.width) {
+                  Array.from(elementos_trabajo).forEach(el => {
+                    if (el != elemento) {
+                      el.style.display = "none";
+                    }
+                  });
+                  cronograma_contenido.style.display = "flex";
+                  cronograma_contenido_background.classList.add("open");
+                } else {
+                  cronograma_title.removeEventListener(
+                    "transitionend",
+                    transition,
+                    false
+                  );
+                  cronograma_contenido.style.display = "none";
+                  Array.from(elementos_trabajo).forEach(el => {
+                    if (el != elemento) {
+                      el.style.display = "";
+                    }
+                  });
+                  cronograma_fecha_div.style.width = "";
                 }
-              });
-              cronograma_contenido.style.display = "flex";
-              cronograma_contenido_background.classList.add("open");
-            } else {
-              cronograma_contenido.style.display = "none";
-              Array.from(elementos_trabajo).forEach(el => {
-                if (el != elemento) {
-                  el.style.display = "";
-                }
-              });
-              cronograma_fecha_div.style.width = "";
-            }
+                document.body.style.overflow = "auto";
 
-            top = elemento.getBoundingClientRect().top + window.scrollY;
+                top = elemento.getBoundingClientRect().top + window.scrollY;
 
-            window.scroll({ top: top, left: 0 });
+                window.scroll({ top: top, left: 0 });
+              
+            },
+            false
+          );
+        }
+      };
+    } else {
+      elemento.onclick = () => {};
+      elemento.onclick = function() {
+        if (!cronograma_title.classList.contains("open")) {
 
-            document.body.style.overflow = "auto";
-          },
-          false
-        );
-      }
-    };
+          let top = elemento.getBoundingClientRect().top + window.scrollY;
+          window.scroll({ top: top, left: 0, behavior: "smooth" });
+          document.body.style.overflow = "hidden";
+
+          cronograma_contenido.style.display = "flex";
+
+          cronograma_contenido_background.classList.add("open");
+          cronograma_title.classList.add("open");
+          // cronograma_vermas.style.display="none";
+          cronograma_vermas.style.width = 0;
+          cancel_button.classList.add("show");
+
+          cancel_button.onclick = () => {
+            document.body.style.overflow = "hidden";
+            let top = elemento.getBoundingClientRect().top + window.scrollY;
+            window.scroll({ top: top, left: 0, behavior: "smooth" });
+            cronograma_vermas.style.width = "";
+
+            cronograma_title.classList.remove("open");
+            cronograma_contenido_background.classList.remove("open");
+            cronograma_vermas.classList.remove("close");
+            cancel_button.classList.remove("show");
+          };
+
+          cronograma_title.addEventListener(
+            "transitionend",
+            function transition(event) {
+              if (cronograma_title !== event.target) return;
+
+              let top = "";
+
+              if (cronograma_title.classList.contains("open")) {
+                Array.from(elementos_trabajo).forEach(el => {
+                  if (el != elemento) {
+                    console.log(el);
+                    el.style.display = "none";
+                  }
+                });
+                // cronograma_contenido.style.display = "flex";
+                // cronograma_contenido_background.classList.add("open");
+              } else {
+                cronograma_title.removeEventListener(
+                  "transitionend",
+                  transition,
+                  false
+                );
+
+                Array.from(elementos_trabajo).forEach(el => {
+                  if (el != elemento) {
+                    el.style.display = "";
+                  }
+                });
+                cronograma_contenido.style.display = "none";
+              }
+              document.body.style.overflow = "auto";
+
+
+              top = elemento.getBoundingClientRect().top + window.scrollY;
+
+              window.scroll({ top: top, left: 0 });
+
+            },
+            false
+          );
+        }
+      };
+    }
+    if (cronograma_contenido_background.classList.contains("open"))
+      cancel_button.onclick ? cancel_button.onclick() : null;
   });
 }
 
 function animationFrame() {
   if (window.innerWidth > 1024) {
-    fijarElementos();
     aparicionElementos();
   } else {
     smartphoneAnimation();
   }
+  fijarElementos();
 
   window.requestAnimationFrame(animationFrame);
 }
@@ -154,7 +246,13 @@ function fijarElementos() {
         // videoIntro.style.display = "";
       }
     }
-    fijarElemento(element.children[0], coords);
+    if (window.innerWidth > 1024) {
+      fijarElemento(element.children[0], coords);
+    } else {
+      let container = $(element.children[0]);
+      if ($(container).hasClass("sticky")) container.removeClass("sticky");
+      container.css({ top: "unset" });
+    }
   });
   fijarElemento(
     cancel_button,
@@ -163,21 +261,25 @@ function fijarElementos() {
 }
 
 function aparicionElementos() {
-  if (
-    cronograma[0].getBoundingClientRect().top + window.outerHeight / 3 <
-    window.innerHeight
-  ) {
-    $(cronograma_estudio[0]).css({ top: "0" });
+  if (window.innerWidth > 1024) {
+    if (
+      cronograma[0].getBoundingClientRect().top + window.outerHeight / 3 <
+      window.innerHeight
+    ) {
+      $(cronograma_estudio[0]).css({ top: "0" });
+    } else {
+      $(cronograma_estudio[0]).css({ top: cornograma_estudio_height + "px" });
+    }
   } else {
-    $(cronograma_estudio[0]).css({ top: cornograma_estudio_height + "px" });
+    $(cronograma_estudio[0]).css({ top: "0" });
   }
 }
 
 function navegacion() {
   const elementosNavegacion = [
     { nombre: "Sobre mi", clase: ".info" },
-    { nombre: "Estudios", clase: ".estudios" },
-    { nombre: "Trabajo", clase: ".trabajo" },
+    { nombre: "Estudios", clase: ".seccion-estudios" },
+    { nombre: "Trabajo", clase: ".seccion-trabajo" },
     { nombre: "Habilidades", clase: ".habilidades" },
     { nombre: "Contacto", clase: ".contacto" }
   ];
@@ -208,7 +310,7 @@ function navegarA(elemento) {
 }
 
 function smartphoneAnimation() {
-  var elements = document.querySelectorAll(".trabajo .cronograma-elemento")
+  var elements = document.querySelectorAll(".trabajo .cronograma-elemento");
   Array.from(elements).forEach(element => {
     let top = element.getBoundingClientRect().top;
     let vermas = element.querySelector(".vermas");
@@ -217,10 +319,9 @@ function smartphoneAnimation() {
       element.getBoundingClientRect().top <= window.innerHeight / 2 &&
       top >= -(window.innerHeight / 2 + 100)
     ) {
-
       vermas.classList.add("hover");
       background.classList.add("hover");
-    }else{
+    } else {
       vermas.classList.remove("hover");
       background.classList.remove("hover");
     }

@@ -102,7 +102,7 @@ footer div.creador {
 .titulo > h3 {
   font-style: italic;
   font-weight: 100;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 .secciones-navegacion {
@@ -126,7 +126,7 @@ footer div.creador {
 .secciones-navegacion li {
   text-align: center;
   margin-top: 10px;
-  font-size: 17px;
+  font-size: 0.9em;
 }
 
 .secciones-navegacion li:nth-child(n + 2):not(:nth-child(4))::before {
@@ -207,7 +207,7 @@ footer div.creador {
 }
 
 .seccion-izquierda h3 {
-  font-size: 50px;
+  font-size: 3em;
   margin: auto;
   margin-top: 42.7vh;
 }
@@ -244,18 +244,20 @@ footer div.creador {
 .trabajo .title {
   position: absolute;
   top: 0;
+  height: 100%;
   margin: 50px;
   text-align: center;
   margin-top: 45vh;
-  transition: margin-top 1s;
+  transition: margin-top 1s, height 1s;
 }
 
 .trabajo h3 {
   mix-blend-mode: difference;
   color: white;
   margin: 0;
-  margin-top: -25px;
-  font-size: 60px;
+
+  margin-top: -0.32em;
+  font-size: 3em;
 }
 
 .trabajo .cronograma-seccion {
@@ -263,7 +265,7 @@ footer div.creador {
   width: 100%;
   height: 100%;
   padding-top: 0;
-  
+  min-height: 100vh;
 }
 
 .trabajo.seccion-derecha {
@@ -308,12 +310,12 @@ footer div.creador {
 .trabajo .cronograma-elemento:hover .cronograma-contenido-background {
   transform: scale(1.3);
 }
-.trabajo .cronograma-contenido-background.hover{
+.trabajo .cronograma-contenido-background.hover {
   transform: scale(1.3);
 }
 .trabajo .cronograma-contenido-background.open {
   transform: scale(1.3);
-  height: 30vh;
+  height: 24.6vh;
   cursor: unset;
 }
 
@@ -666,14 +668,46 @@ footer div.creador {
   background: #ffc655;
   color: #292929;
 }
+.habilidades  .seccion-contenido {
+  padding: 10% 10% 10% 10%;
+  color: #292929;
+}
+
+.habilidades .seccion-contenido h3{
+  text-align: center;
+}
+
 
 .habilidades > .seccion-derecha {
   /* background: #fffffff5; */
   background-color: white;
   color: #292929;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
+.lista-habilidades{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.lista-habilidades div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:14px;
+}
+
+.lista-habilidades img {
+  /* max-width: 4em; */
+  max-height: 4em;
+  padding-bottom: 5px;
+}
+
+.lista-habilidades span{
+  font-style: oblique;
+}
 /*Contacto*/
 
 .contacto {
@@ -706,6 +740,9 @@ footer div.creador {
   main {
     display: flex;
     flex-direction: column;
+  }
+  body {
+    font-size: 0.9em;
   }
   .seccion {
     height: auto !important;
@@ -766,10 +803,9 @@ footer div.creador {
     font-size: 13px;
   }
   .estudios .cronograma-fecha {
-
     position: relative;
-    left:unset;
-    top:unset;
+    left: unset;
+    top: unset;
     justify-content: flex-start;
   }
 
@@ -792,7 +828,7 @@ footer div.creador {
     position: absolute;
     color: white;
     mix-blend-mode: difference;
-    left: 54px;
+    left: 15px;
   }
   .trabajo .vermas {
     margin-top: 20px;
@@ -801,26 +837,57 @@ footer div.creador {
   .trabajo .vermas.hover {
     width: 100px;
   }
-  .trabajo .cronograma-fecha{
+  .trabajo .cronograma-fecha {
     margin-top: 5vh;
   }
-  .trabajo .title{
+  .trabajo .title {
     top: 0;
     bottom: 0;
     right: 0;
-    margin-top:unset;
+    margin-top: unset;
     left: 0;
-    display:flex;
+    height: 100vh;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: height 1s, padding-top 1s;
   }
-  .cronograma-contenido>.texto{
+  .cronograma-contenido > .texto {
     margin-left: 3%;
     margin-right: 3%;
-    padding:0;
+    padding: 0;
   }
-  .cronograma-contenido>.texto>p{
-    margin-top:15px;
+  .cronograma-contenido > .texto > p {
+    margin-top: 15px;
+  }
+
+  .trabajo .cronograma-contenido-background.open,
+  .trabajo .title.open {
+    height: 25vh;
+  }
+  .trabajo .title.open {
+    padding-top: 6vh;
+  }
+
+  .secciones-navegacion {
+    padding-bottom: 9.3vh;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+  }
+
+  header .secciones-navegacion {
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  @supports (-webkit-appearance: none) {
+    .wrapper {
+      grid-template-rows: calc(100vh - 56px) auto 100vh;
+    }
   }
 }
