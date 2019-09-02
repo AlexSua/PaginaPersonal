@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 body {
-  font-family: "Open Sans";
+  font-family: "Source Sans Pro", sans-serif;
   margin: 0;
   color: white;
+  font-size: 110%;
 }
 
 h1,
@@ -246,7 +247,7 @@ footer div.creador {
   top: 0;
   height: 100%;
   margin: 50px;
-  text-align: center;
+  text-align: left;
   margin-top: 45vh;
   transition: margin-top 1s, height 1s;
 }
@@ -338,7 +339,7 @@ footer div.creador {
   height: 40px;
   display: flex;
   justify-content: center;
-
+  margin: 10px;
   mix-blend-mode: difference;
   align-items: center;
   white-space: nowrap;
@@ -608,9 +609,38 @@ footer div.creador {
   background: #009688 !important;
 }
 
+.texto h3 {
+  margin: 0;
+}
+
 .estudios .cronograma-fecha {
   left: -271px;
   top: -5px;
+}
+
+.cronograma-ubicacion {
+  display: flex;
+  /* padding-top:10px; */
+  /* margin-left: 5px; */
+}
+.cronograma-ubicacion::before {
+  /* background-image: url(../img/location.svg); */
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  display: inline-block;
+  background-size: contain;
+}
+
+.trabajo .cronograma-ubicacion {
+  mix-blend-mode: difference;
+  color: white;
+  margin-left: 5px;
+  font-weight: bold;
+}
+.trabajo .cronograma-ubicacion::before {
+  content: "";
+  background-image: url(../img/locationw.svg);
 }
 
 /* .cronograma-contenido::before {
@@ -668,15 +698,14 @@ footer div.creador {
   background: #ffc655;
   color: #292929;
 }
-.habilidades  .seccion-contenido {
+.habilidades .seccion-contenido {
   padding: 10% 10% 10% 10%;
   color: #292929;
 }
 
-.habilidades .seccion-contenido h3{
+.habilidades .seccion-contenido h3 {
   text-align: center;
 }
-
 
 .habilidades > .seccion-derecha {
   /* background: #fffffff5; */
@@ -685,7 +714,7 @@ footer div.creador {
   /* height: 100vh; */
 }
 
-.lista-habilidades{
+.lista-habilidades {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -696,7 +725,7 @@ footer div.creador {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin:14px;
+  margin: 14px;
 }
 
 .lista-habilidades img {
@@ -705,7 +734,7 @@ footer div.creador {
   padding-bottom: 5px;
 }
 
-.lista-habilidades span{
+.lista-habilidades span {
   font-style: oblique;
 }
 /*Contacto*/
@@ -801,17 +830,30 @@ footer div.creador {
     z-index: 5;
     max-width: unset;
     font-size: 13px;
+    padding-top:0;
   }
   .estudios .cronograma-fecha {
     position: relative;
     left: unset;
     top: unset;
     justify-content: flex-start;
+
   }
 
   .cronograma-fecha::after {
     content: "";
     display: none;
+  }
+  .cronograma-fecha div{
+    font-weight: unset;
+    margin-top: unset;
+  }
+  .cronograma-ubicacion{
+    font-weight: bold;
+  }
+  .trabajo .cronograma-ubicacion{
+    margin-left: -10px;
+    /* margin-left:0; */
   }
 
   .cronograma-elemento .cronograma-fecha div {
@@ -852,6 +894,7 @@ footer div.creador {
     align-items: center;
     justify-content: center;
     transition: height 1s, padding-top 1s;
+    text-align: center;
   }
   .cronograma-contenido > .texto {
     margin-left: 3%;
@@ -867,7 +910,7 @@ footer div.creador {
     height: 25vh;
   }
   .trabajo .title.open {
-    padding-top: 6vh;
+    padding-top: 8vh;
   }
 
   .secciones-navegacion {

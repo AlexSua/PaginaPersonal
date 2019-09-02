@@ -4,6 +4,7 @@ function initializeJS() {
   animacionTrabajo();
 }
 window.onload = () => {
+  initializeVariables()
   initializeJS();
   animationFrame();
 };
@@ -35,7 +36,7 @@ function initializeVariables() {
 }
 
 $(document).ready(function() {
-  initializeVariables();
+  // initializeVariables();
 
   // if (window.innerWidth > 1024) {
   //   fijarElementos();
