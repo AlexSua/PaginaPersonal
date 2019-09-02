@@ -6,7 +6,7 @@ function initializeJS() {
 window.onload = () => {
   initializeVariables()
   initializeJS();
-  animationFrame();
+  // animationFrame();
 };
 
 window.onresize = () => {
@@ -28,11 +28,15 @@ function initializeVariables() {
   cronograma_seccion_izquierda = $(cronograma).children(".seccion-izquierda");
   secciones = $(".seccion");
   windowWidth = window.innerWidth;
+  scrollAnterior = window.scrollY;
 
   cronograma_seccion_trabajo = $(cronograma).children(".seccion-trabajo")[0];
   cronograma_seccion_trabajo_element = $(".trabajo").get(0);
 
   seccion_trabajo_abierta = 0;
+  window.onscroll=()=>{
+    animationFrame()
+  }
 }
 
 $(document).ready(function() {
@@ -209,14 +213,18 @@ function animacionTrabajo() {
 }
 
 function animationFrame() {
-  if (window.innerWidth > 1024) {
-    aparicionElementos();
-  } else {
-    smartphoneAnimation();
-  }
-  fijarElementos();
+  if (window.scrollY!=scrollAnterior){
+    scrollAnterior=window.scrollY
 
-  window.requestAnimationFrame(animationFrame);
+    if (window.innerWidth > 1024) {
+      aparicionElementos();
+    } else {
+      smartphoneAnimation();
+    }
+    fijarElementos();
+  }
+
+  // window.requestAnimationFrame(animationFrame);
 }
 
 function fijarElemento(element, containerCoords) {
