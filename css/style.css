@@ -98,12 +98,16 @@ footer div.creador {
   margin: auto;
   transform: translateY(-10vh);
   z-index: 2;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 .titulo > h3 {
   font-style: italic;
   font-weight: 100;
   font-size: 0.9em;
+  max-width: 400px;
 }
 
 .secciones-navegacion {
@@ -583,6 +587,13 @@ footer div.creador {
   overflow: hidden;
   transition: width 0.5s;
   white-space: nowrap;
+  margin-right: -7px;
+}
+.cronograma-logo{
+  position: absolute;
+  max-width: 150px;
+  max-height: 60px;
+  right: 60px;
 }
 .cronograma-elemento:hover .cronograma-fecha div {
   width: 120px;
@@ -590,6 +601,8 @@ footer div.creador {
 
 .cronograma-fecha div span {
   display: block;
+  background:white;
+  color:#264653 !important;
 }
 
 .cronograma-fecha::after {
@@ -608,11 +621,19 @@ footer div.creador {
 .trabajo .cronograma-fecha:after {
   background: #009688 !important;
 }
+.trabajo .cronograma-fecha div span {
+  color:#009688 !important;
+}
 
 .texto h3 {
   margin: 0;
-}
+  font-size: 1.36em;
 
+}
+.texto h4 {
+  margin: 0;
+
+}
 .estudios .cronograma-fecha {
   left: -271px;
   top: -5px;
@@ -620,6 +641,7 @@ footer div.creador {
 
 .cronograma-ubicacion {
   display: flex;
+  font-weight: bold;
   /* padding-top:10px; */
   /* margin-left: 5px; */
 }
@@ -866,6 +888,7 @@ footer div.creador {
   .cronograma-elemento:hover .cronograma-fecha div {
     width: unset;
   }
+
   .trabajo .cronograma-fecha {
     position: absolute;
     color: white;
@@ -924,6 +947,13 @@ footer div.creador {
 
   header .secciones-navegacion {
     padding-bottom: 20px;
+  }
+  .cronograma-logo{
+    position: absolute;
+    max-width: 100px;
+    max-height: 60px;
+    right: 10px;
+    top:5px
   }
 }
 

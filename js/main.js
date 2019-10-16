@@ -4,7 +4,7 @@ function initializeJS() {
   animacionTrabajo();
 }
 window.onload = () => {
-  initializeVariables()
+  initializeVariables();
   initializeJS();
   // animationFrame();
 };
@@ -34,9 +34,9 @@ function initializeVariables() {
   cronograma_seccion_trabajo_element = $(".trabajo").get(0);
 
   seccion_trabajo_abierta = 0;
-  window.onscroll=()=>{
-    animationFrame()
-  }
+  window.onscroll = () => {
+    window.requestAnimationFrame(animationFrame);
+  };
 }
 
 $(document).ready(function() {
@@ -101,35 +101,34 @@ function animacionTrabajo() {
             "transitionend",
             function transition(event) {
               if (cronograma_title !== event.target) return;
-                let top = "";
-                if (cronograma_seccion_trabajo.style.width) {
-                  Array.from(elementos_trabajo).forEach(el => {
-                    if (el != elemento) {
-                      el.style.display = "none";
-                    }
-                  });
-                  cronograma_contenido.style.display = "flex";
-                  cronograma_contenido_background.classList.add("open");
-                } else {
-                  cronograma_title.removeEventListener(
-                    "transitionend",
-                    transition,
-                    false
-                  );
-                  cronograma_contenido.style.display = "none";
-                  Array.from(elementos_trabajo).forEach(el => {
-                    if (el != elemento) {
-                      el.style.display = "";
-                    }
-                  });
-                  cronograma_fecha_div.style.width = "";
-                }
-                document.body.style.overflow = "auto";
+              let top = "";
+              if (cronograma_seccion_trabajo.style.width) {
+                Array.from(elementos_trabajo).forEach(el => {
+                  if (el != elemento) {
+                    el.style.display = "none";
+                  }
+                });
+                cronograma_contenido.style.display = "flex";
+                cronograma_contenido_background.classList.add("open");
+              } else {
+                cronograma_title.removeEventListener(
+                  "transitionend",
+                  transition,
+                  false
+                );
+                cronograma_contenido.style.display = "none";
+                Array.from(elementos_trabajo).forEach(el => {
+                  if (el != elemento) {
+                    el.style.display = "";
+                  }
+                });
+                cronograma_fecha_div.style.width = "";
+              }
+              document.body.style.overflow = "auto";
 
-                top = elemento.getBoundingClientRect().top + window.scrollY;
+              top = elemento.getBoundingClientRect().top + window.scrollY;
 
-                window.scroll({ top: top, left: 0 });
-              
+              window.scroll({ top: top, left: 0 });
             },
             false
           );
@@ -139,7 +138,6 @@ function animacionTrabajo() {
       elemento.onclick = () => {};
       elemento.onclick = function() {
         if (!cronograma_title.classList.contains("open")) {
-
           let top = elemento.getBoundingClientRect().top + window.scrollY;
           window.scroll({ top: top, left: 0, behavior: "smooth" });
           document.body.style.overflow = "hidden";
@@ -174,7 +172,6 @@ function animacionTrabajo() {
               if (cronograma_title.classList.contains("open")) {
                 Array.from(elementos_trabajo).forEach(el => {
                   if (el != elemento) {
-                    console.log(el);
                     el.style.display = "none";
                   }
                 });
@@ -196,11 +193,9 @@ function animacionTrabajo() {
               }
               document.body.style.overflow = "auto";
 
-
               top = elemento.getBoundingClientRect().top + window.scrollY;
 
               window.scroll({ top: top, left: 0 });
-
             },
             false
           );
@@ -213,8 +208,8 @@ function animacionTrabajo() {
 }
 
 function animationFrame() {
-  if (window.scrollY!=scrollAnterior){
-    scrollAnterior=window.scrollY
+  if (window.scrollY != scrollAnterior) {
+    scrollAnterior = window.scrollY;
 
     if (window.innerWidth > 1024) {
       aparicionElementos();
@@ -233,10 +228,10 @@ function fijarElemento(element, containerCoords) {
     containerCoords.top <= 0 &&
     containerCoords.bottom >= window.innerHeight
   ) {
-    container.addClass("sticky").css({ top: 0 });
+    container.addClass("sticky").css({ top: "" });
   } else if (containerCoords.top > 0) {
     if ($(container).hasClass("sticky")) container.removeClass("sticky");
-    container.css({ top: 0 });
+    container.css({ top: "" });
   } else {
     if ($(container).hasClass("sticky")) container.removeClass("sticky");
     container.css({ top: containerCoords.height - window.innerHeight });
@@ -247,11 +242,11 @@ function fijarElementos() {
   Array.from(secciones).forEach((element, index) => {
     var coords = element.getBoundingClientRect();
     if (index == 0) {
-      if (coords.top < 0 && !videoIntro.paused) {
-        videoIntro.pause();
+      if (coords.top < 0) {
+        if (!videoIntro.paused) videoIntro.pause();
         // videoIntro.style.display = "none";
-      } else if (videoIntro.paused && coords.top >= 0) {
-        videoIntro.play();
+      } else if (coords.top >= 0) {
+        if (videoIntro.paused) videoIntro.play();
         // videoIntro.style.display = "";
       }
     }
@@ -275,12 +270,12 @@ function aparicionElementos() {
       cronograma[0].getBoundingClientRect().top + window.outerHeight / 3 <
       window.innerHeight
     ) {
-      $(cronograma_estudio[0]).css({ top: "0" });
+      $(cronograma_estudio[0]).css({ top: "" });
     } else {
       $(cronograma_estudio[0]).css({ top: cornograma_estudio_height + "px" });
     }
   } else {
-    $(cronograma_estudio[0]).css({ top: "0" });
+    $(cronograma_estudio[0]).css({ top: "" });
   }
 }
 
