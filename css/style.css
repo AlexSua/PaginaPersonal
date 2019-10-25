@@ -601,8 +601,8 @@ footer div.creador {
 
 .cronograma-fecha div span {
   display: block;
-  background:white;
-  color:#264653 !important;
+  /* background:white;
+  color:#264653 !important; */
 }
 
 .cronograma-fecha::after {
@@ -622,7 +622,7 @@ footer div.creador {
   background: #009688 !important;
 }
 .trabajo .cronograma-fecha div span {
-  color:#009688 !important;
+  /* color:#009688 !important; */
 }
 
 .texto h3 {
