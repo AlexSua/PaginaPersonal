@@ -6,7 +6,7 @@ function initializeJS() {
 window.onload = () => {
   initializeVariables();
   initializeJS();
-  // animationFrame();
+  navegacion();
 };
 
 window.onresize = () => {
@@ -17,38 +17,30 @@ window.onresize = () => {
 };
 
 function initializeVariables() {
-  cronograma_trabajo = $(".trabajo>div");
-  cronograma_estudio = $(".estudios>div");
-  cornograma_estudio_height = $(cronograma_estudio).height();
-  elementos_trabajo = $(".trabajo .cronograma-elemento");
-  cancel_button = $(".cancel")[0];
-  elementos_estudios = $(".estudios .cronograma-seccion");
-  cronograma_secciones = $(".cronograma-seccion");
-  cronograma = $(".cronograma");
-  cronograma_seccion_izquierda = $(cronograma).children(".seccion-izquierda");
-  secciones = $(".seccion");
+  cronograma_trabajo = document.querySelectorAll(".trabajo>div");
+  cronograma_estudio = document.querySelector(".estudios>div");
+  cronograma_estudio_height = cronograma_estudio.offsetHeight;
+  elementos_trabajo = document.querySelectorAll(
+    ".trabajo .cronograma-elemento"
+  );
+  cancel_button = document.querySelectorAll(".cancel")[0];
+  elementos_estudios = document.querySelectorAll(
+    ".estudios .cronograma-seccion"
+  );
+  cronograma_secciones = document.querySelectorAll(".cronograma-seccion");
+  cronograma = document.querySelectorAll(".cronograma");
+  secciones = document.querySelectorAll(".seccion");
   windowWidth = window.innerWidth;
   scrollAnterior = window.scrollY;
 
-  cronograma_seccion_trabajo = $(cronograma).children(".seccion-trabajo")[0];
-  cronograma_seccion_trabajo_element = $(".trabajo").get(0);
-
+  cronograma_seccion_trabajo = document.querySelector(".seccion-trabajo");
+  cronograma_seccion_trabajo_element = document.querySelector(".trabajo");
   seccion_trabajo_abierta = 0;
+
   window.onscroll = () => {
     window.requestAnimationFrame(animationFrame);
   };
 }
-
-$(document).ready(function() {
-  // initializeVariables();
-
-  // if (window.innerWidth > 1024) {
-  //   fijarElementos();
-  //   document.addEventListener("transitionend", aparicionElementos, false);
-  // }
-
-  navegacion();
-});
 
 function animacionTrabajo() {
   Array.from(elementos_trabajo).forEach(elemento => {
@@ -175,8 +167,6 @@ function animacionTrabajo() {
                     el.style.display = "none";
                   }
                 });
-                // cronograma_contenido.style.display = "flex";
-                // cronograma_contenido_background.classList.add("open");
               } else {
                 cronograma_title.removeEventListener(
                   "transitionend",
@@ -210,7 +200,6 @@ function animacionTrabajo() {
 function animationFrame() {
   if (window.scrollY != scrollAnterior) {
     scrollAnterior = window.scrollY;
-
     if (window.innerWidth > 1024) {
       aparicionElementos();
     } else {
@@ -218,23 +207,21 @@ function animationFrame() {
     }
     fijarElementos();
   }
-
-  // window.requestAnimationFrame(animationFrame);
 }
 
-function fijarElemento(element, containerCoords) {
-  let container = $(element);
+function fijarElemento(container, containerCoords) {
   if (
     containerCoords.top <= 0 &&
     containerCoords.bottom >= window.innerHeight
   ) {
-    container.addClass("sticky").css({ top: "" });
+    container.classList.add("sticky");
+    container.style.top = "";
   } else if (containerCoords.top > 0) {
-    if ($(container).hasClass("sticky")) container.removeClass("sticky");
-    container.css({ top: "" });
+    container.classList.remove("sticky");
+    container.style.top = "";
   } else {
-    if ($(container).hasClass("sticky")) container.removeClass("sticky");
-    container.css({ top: containerCoords.height - window.innerHeight });
+    container.classList.remove("sticky");
+    container.style.top = containerCoords.height - window.innerHeight + "px";
   }
 }
 
@@ -253,9 +240,10 @@ function fijarElementos() {
     if (window.innerWidth > 1024) {
       fijarElemento(element.children[0], coords);
     } else {
-      let container = $(element.children[0]);
-      if ($(container).hasClass("sticky")) container.removeClass("sticky");
-      container.css({ top: "unset" });
+      let container = element.children[0];
+      if (container.classList.contains("sticky"))
+        container.classList.remove("sticky");
+      container.style.top = "unset";
     }
   });
   fijarElemento(
@@ -270,12 +258,12 @@ function aparicionElementos() {
       cronograma[0].getBoundingClientRect().top + window.outerHeight / 3 <
       window.innerHeight
     ) {
-      $(cronograma_estudio[0]).css({ top: "" });
+      cronograma_estudio.style.top = "";
     } else {
-      $(cronograma_estudio[0]).css({ top: cornograma_estudio_height + "px" });
+      cronograma_estudio.style.top = cronograma_estudio_height + "px";
     }
   } else {
-    $(cronograma_estudio[0]).css({ top: "" });
+    cronograma_estudio.style.top = "";
   }
 }
 
@@ -305,12 +293,8 @@ function navegacion() {
 }
 
 function navegarA(elemento) {
-  $("html,body").animate(
-    {
-      scrollTop: $(elemento).offset().top
-    },
-    "slow"
-  );
+
+  window.scrollTo({ top: document.querySelector(elemento).getBoundingClientRect().top+ window.scrollY, behavior: 'smooth' });
 }
 
 function smartphoneAnimation() {
