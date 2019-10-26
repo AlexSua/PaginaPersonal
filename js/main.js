@@ -10,7 +10,7 @@ window.onload = () => {
 };
 
 window.onresize = () => {
-  if (window.innerWidth != windowWidth) {
+  if (windowWidth && window.innerWidth != windowWidth) {
     windowWidth = window.innerWidth;
     initializeJS();
   }
