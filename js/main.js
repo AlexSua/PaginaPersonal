@@ -109,21 +109,17 @@ function animacionTrabajo() {
                   false
                 );
                 cronograma_contenido.style.display = "none";
-                top = elemento.getBoundingClientRect().top + window.scrollY;
-                console.log(top)
-                window.scrollTo({ top: top, left: 0 });
                 Array.from(elementos_trabajo).forEach(el => {
                   if (el != elemento) {
                     el.style.display = "";
-                   
                   }
                 });
-               
                 cronograma_fecha_div.style.width = "";
               }
               document.body.style.overflow = "auto";
               top = elemento.getBoundingClientRect().top + window.scrollY;
-              console.log(top)
+              window.requestAnimationFrame(animationFrame);
+
               window.scrollTo({ top: top, left: 0 });
             },
             false
