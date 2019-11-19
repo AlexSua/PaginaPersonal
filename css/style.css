@@ -60,6 +60,8 @@ footer div.creador {
   margin: auto;
   color: #f2d492;
   font-size: x-large;
+  padding: 50px;
+  text-align: center;
 }
 
 /*footer::before{
@@ -108,9 +110,10 @@ footer div.creador {
   font-weight: 100;
   font-size: 0.9em;
   max-width: 400px;
+  margin: 20px;
 }
 
-.secciones-navegacion {
+nav {
   font-size: 1.2em;
   font-weight: 700;
   display: flex;
@@ -120,7 +123,7 @@ footer div.creador {
   z-index: 2;
 }
 
-.secciones-navegacion ul {
+nav ul {
   display: flex;
   max-width: 15em;
   flex-direction: row;
@@ -128,24 +131,24 @@ footer div.creador {
   justify-content: center;
 }
 
-.secciones-navegacion li {
+nav li {
   text-align: center;
   margin-top: 10px;
   font-size: 0.9em;
 }
 
-.secciones-navegacion li:nth-child(n + 2):not(:nth-child(4))::before {
+nav li:nth-child(n + 2):not(:nth-child(4))::before {
   content: "/";
   font-weight: 100;
   padding-left: 15px;
   padding-right: 10px;
 }
 
-.secciones-navegacion span {
+nav span {
   position: relative;
 }
 
-.secciones-navegacion span::after {
+nav span::after {
   content: "";
   position: absolute;
   left: 0;
@@ -157,15 +160,25 @@ footer div.creador {
   background: #f2d492;
 }
 
-.secciones-navegacion span:hover {
+nav span:hover {
   cursor: pointer;
 }
 
-.secciones-navegacion span:hover::after {
+nav span:hover::after {
   transition: width 0.5s;
   width: 100%;
   cursor: pointer;
 }
+
+nav.idioma{
+  position:absolute;
+  right:50px;
+  font-weight: 100;
+}
+nav.idioma li.selected{
+  font-weight: 700;
+}
+
 
 /*Seccion*/
 
@@ -367,11 +380,14 @@ footer div.creador {
 }
 
 .info > .seccion-izquierda {
+  /* background-color: #292929;
+  color: #f2d492; */
   background-color: #f2d492;
   color: #1f414d;
 }
 
 .info nav {
+  /* color: #f2d492; */
   color: #1f414d;
 }
 .info nav span::after {
@@ -497,7 +513,14 @@ footer div.creador {
 }
 
 .seccion-estudios > .titulo-seccion {
+  /* background-color: #f2d492f5;
+  color:#292929; */
   background-color: #1f414df5;
+
+}
+
+.seccion-estudios nav{
+  /* color:#292929; */
 }
 
 .cronograma > .seccion-derecha {
@@ -579,6 +602,13 @@ footer div.creador {
   display: flex;
   justify-content: flex-end;
 }
+
+.estudios .cronograma-fecha{
+  /* color:#292929; */
+  color: white;
+
+}
+
 .cronograma-fecha div {
   margin-top: -23px;
   text-align: center;
@@ -589,6 +619,12 @@ footer div.creador {
   white-space: nowrap;
   margin-right: -7px;
 }
+
+.cronograma-fecha div.linea{
+  margin-top: 0;
+  margin-right:5px;
+}
+
 .cronograma-logo{
   position: absolute;
   max-width: 150px;
@@ -876,9 +912,12 @@ footer div.creador {
   }
   .cronograma-ubicacion{
     font-weight: bold;
+    margin-right: 33%;
+
   }
   .trabajo .cronograma-ubicacion{
-    margin-left: -10px;
+    margin-left: auto;
+    margin-right:auto;
     /* margin-left:0; */
   }
 
@@ -901,7 +940,7 @@ footer div.creador {
   }
   .trabajo .vermas {
     margin-top: 20px;
-    margin-left: 5px;
+    /* margin-left: 5px; */
   }
   .trabajo .vermas.hover {
     width: 100px;
@@ -958,6 +997,9 @@ footer div.creador {
     max-height: 60px;
     right: 10px;
     top:5px
+  }
+  .texto h3{
+    margin-right: 33%;
   }
 }
 
