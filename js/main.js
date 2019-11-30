@@ -102,12 +102,32 @@ function animacionTrabajo() {
                 });
                 cronograma_contenido.style.display = "flex";
                 cronograma_contenido_background.classList.add("open");
+
+                let time = 0
+
+                cronograma_contenido.querySelectorAll(".texto").forEach(elemento_texto=>{
+                  time+=300
+                  setTimeout(()=>elemento_texto.classList.add("open"),time)
+                  
+                })
+                cronograma_contenido_background.addEventListener("transitionend",function transitionText(){
+                  cronograma_contenido_background.removeEventListener(
+                    "transitionend",
+                    transitionText,
+                    false
+                  );
+                })
               } else {
                 cronograma_title.removeEventListener(
                   "transitionend",
                   transition,
                   false
                 );
+                
+                cronograma_contenido.querySelectorAll(".texto").forEach(elemento_texto=>{
+                    elemento_texto.classList.remove("open")
+                })
+
                 cronograma_contenido.style.display = "none";
                 Array.from(elementos_trabajo).forEach(el => {
                   if (el != elemento) {
