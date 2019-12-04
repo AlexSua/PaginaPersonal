@@ -60,8 +60,8 @@ footer div.creador {
   margin: auto;
   color: #f2d492;
   font-size: x-large;
-  padding: 50px;
-  text-align: center;
+  /* padding: 50px; */
+  /* text-align: center; */
 }
 
 /*footer::before{
@@ -271,9 +271,9 @@ nav.idioma li.selected {
 .cronograma-trabajo{
   background-image: url(../img/work.jpg);
   background-attachment: fixed;
-  background-color: #292929;
-  background-position: center center;
-  background-repeat: no-repeat;
+  /* background-color: #292929; */
+  /* background-position: center center; */
+  /* background-repeat: no-repeat; */
   background-size: cover;
 }
 
