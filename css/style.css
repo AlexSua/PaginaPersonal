@@ -98,7 +98,7 @@ footer div.creador {
 .titulo {
   text-align: center;
   margin: auto;
-  transform: translateY(-10vh);
+  transform: translateY(-7vh);
   z-index: 2;
   flex-direction: column;
   display: flex;
@@ -919,8 +919,8 @@ nav.idioma li.selected {
     font-size: 1em;
   }
   .info > .seccion-izquierda::after {
-    right: 47%;
-    transform: translatex(50%);
+    left: 50%;
+    transform: translatex(-50%);
   }
 
   .seccion-trabajo > .titulo-seccion {
@@ -1047,6 +1047,12 @@ nav.idioma li.selected {
   }
   .texto h3 {
     margin-right: 33%;
+  }
+  .titulo{
+    transform: translateY(-2vh);
+  }
+  .titulo>h3{
+    max-width: 300px;
   }
 }
 
