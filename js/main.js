@@ -1,4 +1,5 @@
 function initializeJS() {
+  chequearNavegador()
   fijarElementos();
   aparicionElementos();
   animacionTrabajo();
@@ -15,6 +16,13 @@ window.onresize = () => {
     initializeJS();
   }
 };
+
+function chequearNavegador(){
+  if(window.innerWidth<=1024 && navigator.userAgent.indexOf("Firefox")>0){
+     document.querySelector(".wrapper").style.gridTemplateRows="100vh auto 100vh"
+  }
+}
+
 
 function initializeVariables() {
   cronograma_trabajo = document.querySelectorAll(".trabajo>div");
