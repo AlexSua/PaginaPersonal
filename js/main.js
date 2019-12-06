@@ -281,7 +281,7 @@ function fijarElementos() {
         if (!videoIntro.paused) videoIntro.pause();
         // videoIntro.style.display = "none";
       } else if (coords.top >= 0) {
-        videoIntro.style.bottom=window.scrollY/3+"px";
+        videoIntro.style.top=-window.scrollY/3+"px";
         if (videoIntro.paused) videoIntro.play();
         // videoIntro.style.display = "";
       }
