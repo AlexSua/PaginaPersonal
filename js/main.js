@@ -386,7 +386,7 @@ function writingAnimation(elemento, texto) {
 
       elemento.textContent = nextText + "|";
       if (index >= textArray.length - 1)
-        elemento.style.width =(elemento.offsetWidth) + "px";
+        elemento.style.width =(elemento.offsetWidth+10) + "px";
     }, nextLetter);
     nextLetter += 120;
   });

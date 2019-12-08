@@ -339,8 +339,8 @@ nav.idioma li.selected {
 .trabajo .cronograma-contenido p {
   max-width: 1000px;
   /* margin-left: 3%; */
-  margin-top: 40px;
-  padding: 7em;
+  /* margin-top: 40px; */
+  padding: 2em;
   padding-top: 0;
 }
 
@@ -795,9 +795,9 @@ nav.idioma li.selected {
 }
 
 .cronograma-contenido > .texto > p {
-  /* max-width: 700px; */
-  margin-left: 3%;
-  margin-top: 40px;
+    /* max-width: 700px; */
+    margin-left: 3%;
+    /* margin-top: 40px;*/
 }
 
 .estudios .cronograma-seccion {
