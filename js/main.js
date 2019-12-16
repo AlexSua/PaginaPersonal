@@ -362,10 +362,12 @@ function aparicionTitulos() {
   });
 }
 function writingAnimation(elemento, texto) {
+  elemento.style.width =(elemento.offsetWidth) + "px";
   elemento.textContent = "";
   let nextLetter = 0;
   let nextText = "";
   let maxTicks = 6;
+  
   let cursorBlink = () => {
     setTimeout(() => {
       elemento.textContent.substr(-1) == "|"
@@ -374,7 +376,8 @@ function writingAnimation(elemento, texto) {
       maxTicks--;
       if (maxTicks>0 || (maxTicks<=0 && elemento.textContent.substr(-1)=="|")) cursorBlink();
       else{
-        elemento.style.width=""
+
+        // elemento.style.width=""
       }
     }, 700);
   };
@@ -385,8 +388,8 @@ function writingAnimation(elemento, texto) {
       nextText = nextText + c;
 
       elemento.textContent = nextText + "|";
-      if (index >= textArray.length - 1)
-        elemento.style.width =(elemento.offsetWidth+10) + "px";
+      // if (index >= textArray.length - 1)
+        
     }, nextLetter);
     nextLetter += 120;
   });

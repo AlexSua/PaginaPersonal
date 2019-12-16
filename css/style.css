@@ -60,6 +60,7 @@ footer div.creador {
   margin: auto;
   color: #f2d492;
   font-size: x-large;
+  padding-left: 10px;
   /* padding: 50px; */
   /* text-align: center; */
 }
@@ -227,6 +228,7 @@ nav.idioma li.selected {
   font-size: 3em;
   margin: auto;
   margin-top: 42.7vh;
+  padding-left: 0.4em;
 }
 
 .sticky {
@@ -264,8 +266,10 @@ nav.idioma li.selected {
   height: 100%;
   margin: 50px;
   text-align: left;
+  mix-blend-mode: difference;
   margin-top: 45vh;
   transition: margin-top 1s, height 1s;
+  color:white;
 }
 
 .cronograma-trabajo{
@@ -278,8 +282,7 @@ nav.idioma li.selected {
 }
 
 .trabajo h3 {
-  mix-blend-mode: difference;
-  color: white;
+  mix-blend-mode: inherit;
   margin: 0;
 
   margin-top: -0.32em;
@@ -312,7 +315,8 @@ nav.idioma li.selected {
   /* align-items: center; */
   margin-left: 300px;
   opacity: 0;
-  transition: margin-left 1s ease-out, opacity 1s ease-out;
+  transform:rotateY(-45deg);
+  transition: margin-left 1s ease-out, opacity 1s ease-out, transform 1s ease-out;
   width: calc(100%);
 }
 
@@ -320,6 +324,7 @@ nav.idioma li.selected {
   margin-left: 0;
   opacity: 1;
   background:white;
+  transform:rotateY(0deg);
 }
 
 .trabajo .cronograma-contenido h3 {
@@ -405,7 +410,7 @@ nav.idioma li.selected {
   display: flex;
   justify-content: center;
   margin: 10px;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
   align-items: center;
   white-space: nowrap;
   cursor: pointer;
@@ -725,6 +730,12 @@ nav.idioma li.selected {
   top: -5px;
 }
 
+.cronograma-descripcion { 
+  padding: 5px;
+  padding-left: 8px;
+  padding-top: 0;
+}
+
 .cronograma-ubicacion {
   display: flex;
   font-weight: bold;
@@ -741,7 +752,7 @@ nav.idioma li.selected {
 }
 
 .trabajo .cronograma-ubicacion {
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
   color: white;
   margin-left: 5px;
   font-weight: bold;
@@ -982,7 +993,7 @@ nav.idioma li.selected {
   .trabajo .cronograma-fecha {
     position: absolute;
     color: white;
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; */
     left: 15px;
   }
   .trabajo .vermas {
