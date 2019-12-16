@@ -1,13 +1,13 @@
 function initializeJS() {
-  chequearNavegador()
+  chequearNavegador();
   fijarElementos();
   aparicionElementos();
   animacionTrabajo();
 }
 window.onload = () => {
+  navegacion();
   initializeVariables();
   initializeJS();
-  navegacion();
 };
 
 window.onresize = () => {
@@ -17,12 +17,12 @@ window.onresize = () => {
   }
 };
 
-function chequearNavegador(){
-  if(window.innerWidth<=1024 && navigator.userAgent.indexOf("Firefox")>0){
-     document.querySelector(".wrapper").style.gridTemplateRows="100vh auto 100vh"
+function chequearNavegador() {
+  if (window.innerWidth <= 1024 && navigator.userAgent.indexOf("Firefox") > 0) {
+    document.querySelector(".wrapper").style.gridTemplateRows =
+      "100vh auto 100vh";
   }
 }
-
 
 function initializeVariables() {
   cronograma_trabajo = document.querySelectorAll(".trabajo>div");
@@ -45,7 +45,7 @@ function initializeVariables() {
   cronograma_seccion_trabajo_element = document.querySelector(".trabajo");
 
   seccion_titulos = document.querySelectorAll(".seccion-izquierda h3");
-  creador_titulo = document.querySelector(".creador")
+  creador_titulo = document.querySelector(".creador");
 
   seccion_trabajo_abierta = 0;
 
@@ -54,26 +54,19 @@ function initializeVariables() {
   };
 }
 
-function animacionAparicionTextosTrabajo(cronograma_contenido){
+function animacionAparicionTextosTrabajo(cronograma_contenido) {
   let time = 0;
 
-  cronograma_contenido
-    .querySelectorAll(".texto")
-    .forEach(elemento_texto => {
-      time += 300;
-      setTimeout(
-        () => elemento_texto.classList.add("open"),
-        time
-      );
-    });
+  cronograma_contenido.querySelectorAll(".texto").forEach(elemento_texto => {
+    time += 300;
+    setTimeout(() => elemento_texto.classList.add("open"), time);
+  });
 }
 
-function eliminarAparicionTextosTrabajo(cronograma_contenido){
-  cronograma_contenido
-                  .querySelectorAll(".texto")
-                  .forEach(elemento_texto => {
-                    elemento_texto.classList.remove("open");
-                  });
+function eliminarAparicionTextosTrabajo(cronograma_contenido) {
+  cronograma_contenido.querySelectorAll(".texto").forEach(elemento_texto => {
+    elemento_texto.classList.remove("open");
+  });
 }
 
 function animacionTrabajo() {
@@ -137,7 +130,7 @@ function animacionTrabajo() {
                 cronograma_contenido.style.display = "flex";
                 cronograma_contenido_background.classList.add("open");
 
-                animacionAparicionTextosTrabajo(cronograma_contenido)
+                animacionAparicionTextosTrabajo(cronograma_contenido);
 
                 cronograma_contenido_background.addEventListener(
                   "transitionend",
@@ -156,7 +149,7 @@ function animacionTrabajo() {
                   false
                 );
 
-                eliminarAparicionTextosTrabajo(cronograma_contenido)
+                eliminarAparicionTextosTrabajo(cronograma_contenido);
 
                 cronograma_contenido.style.display = "none";
                 Array.from(elementos_trabajo).forEach(el => {
@@ -192,8 +185,7 @@ function animacionTrabajo() {
           cronograma_vermas.style.width = 0;
           cancel_button.classList.add("show");
 
-          animacionAparicionTextosTrabajo(cronograma_contenido)
-
+          animacionAparicionTextosTrabajo(cronograma_contenido);
 
           cancel_button.onclick = () => {
             document.body.style.overflow = "hidden";
@@ -233,7 +225,7 @@ function animacionTrabajo() {
                   }
                 });
                 cronograma_contenido.style.display = "none";
-                eliminarAparicionTextosTrabajo(cronograma_contenido)
+                eliminarAparicionTextosTrabajo(cronograma_contenido);
               }
               document.body.style.overflow = "auto";
 
@@ -289,7 +281,7 @@ function fijarElementos() {
         if (!videoIntro.paused) videoIntro.pause();
         // videoIntro.style.display = "none";
       } else if (coords.top >= 0) {
-        videoIntro.style.top=-window.scrollY/3+"px";
+        videoIntro.style.top = -window.scrollY / 3 + "px";
         if (videoIntro.paused) videoIntro.play();
         // videoIntro.style.display = "";
       }
@@ -332,28 +324,24 @@ function navegacion() {
     { nombre: "Habilidades", clase: ".habilidades" },
     { nombre: "Contacto", clase: ".contacto" }
   ];
-  document.querySelectorAll(".secciones-navegacion").forEach(navegacion => {
-    let ul = document.createElement("ul");
-    elementosNavegacion.forEach(elemento => {
-      let li = document.createElement("li");
-      let span = document.createElement("span");
-      let text = document.createTextNode(elemento.nombre);
-      span.appendChild(text);
-      li.appendChild(span);
-      li.onclick = () => {
-        navegarA(elemento.clase);
-      };
-      ul.appendChild(li);
+  let nav = document.querySelector(".secciones-navegacion>ul");
+  document
+    .querySelectorAll(".secciones-navegacion")
+    .forEach((navegacion, index) => {
+      if (index != 0) navegacion.appendChild(nav.cloneNode(true));
+      Array.from(navegacion.children[0].children).forEach(
+        (navElement, index) => {
+          navElement.onclick = () => {
+            navegarA(elementosNavegacion[index].clase);
+          };
+        }
+      );
     });
-    navegacion.appendChild(ul);
-  });
 }
+
 function aparicionTitulos() {
-  [...seccion_titulos,creador_titulo].forEach(titulo => {
-    if (
-      titulo.getBoundingClientRect().top - window.innerHeight <
-        0
-    ) {
+  [...seccion_titulos, creador_titulo].forEach(titulo => {
+    if (titulo.getBoundingClientRect().top - window.innerHeight < 0) {
       if (!titulo.classList.contains("ok")) {
         titulo.classList.add("ok");
         writingAnimation(titulo, titulo.textContent);
@@ -362,21 +350,24 @@ function aparicionTitulos() {
   });
 }
 function writingAnimation(elemento, texto) {
-  elemento.style.width =(elemento.offsetWidth) + "px";
+  elemento.style.width = elemento.offsetWidth + "px";
   elemento.textContent = "";
   let nextLetter = 0;
   let nextText = "";
   let maxTicks = 6;
-  
+
   let cursorBlink = () => {
     setTimeout(() => {
       elemento.textContent.substr(-1) == "|"
         ? (elemento.textContent = elemento.textContent.slice(0, -1))
         : (elemento.textContent += "|");
       maxTicks--;
-      if (maxTicks>0 || (maxTicks<=0 && elemento.textContent.substr(-1)=="|")) cursorBlink();
-      else{
-
+      if (
+        maxTicks > 0 ||
+        (maxTicks <= 0 && elemento.textContent.substr(-1) == "|")
+      )
+        cursorBlink();
+      else {
         // elemento.style.width=""
       }
     }, 700);
@@ -389,7 +380,6 @@ function writingAnimation(elemento, texto) {
 
       elemento.textContent = nextText + "|";
       // if (index >= textArray.length - 1)
-        
     }, nextLetter);
     nextLetter += 120;
   });
