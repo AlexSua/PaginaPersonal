@@ -8,6 +8,7 @@ window.onload = () => {
   navegacion();
   initializeVariables();
   initializeJS();
+  document.body.style.overflow = "auto";
 };
 
 window.onresize = () => {
@@ -56,15 +57,15 @@ function initializeVariables() {
 
 function animacionAparicionTextosTrabajo(cronograma_contenido) {
   let time = 0;
-
-  cronograma_contenido.querySelectorAll(".texto").forEach(elemento_texto => {
+  console.log("asd")
+  cronograma_contenido.querySelectorAll(".texto").forEach(function(elemento_texto) {
     time += 300;
     setTimeout(() => elemento_texto.classList.add("open"), time);
   });
 }
 
 function eliminarAparicionTextosTrabajo(cronograma_contenido) {
-  cronograma_contenido.querySelectorAll(".texto").forEach(elemento_texto => {
+  cronograma_contenido.querySelectorAll(".texto").forEach(function(elemento_texto) {
     elemento_texto.classList.remove("open");
   });
 }
@@ -132,16 +133,7 @@ function animacionTrabajo() {
 
                 animacionAparicionTextosTrabajo(cronograma_contenido);
 
-                cronograma_contenido_background.addEventListener(
-                  "transitionend",
-                  function transitionText() {
-                    cronograma_contenido_background.removeEventListener(
-                      "transitionend",
-                      transitionText,
-                      false
-                    );
-                  }
-                );
+        
               } else {
                 cronograma_title.removeEventListener(
                   "transitionend",
