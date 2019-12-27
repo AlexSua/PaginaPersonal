@@ -173,7 +173,6 @@ function animacionTrabajo() {
 
           cronograma_contenido_background.classList.add("open");
           cronograma_title.classList.add("open");
-          // cronograma_vermas.style.display="none";
           cronograma_vermas.style.width = 0;
           cancel_button.classList.add("show");
 
@@ -183,7 +182,7 @@ function animacionTrabajo() {
             document.body.style.overflow = "hidden";
             let top = elemento.getBoundingClientRect().top + window.scrollY;
             window.scroll({ top: top, left: 0, behavior: "smooth" });
-            cronograma_vermas.style.width = "";
+            cronograma_vermas.style = "";
 
             cronograma_title.classList.remove("open");
             cronograma_contenido_background.classList.remove("open");
@@ -195,8 +194,6 @@ function animacionTrabajo() {
             "transitionend",
             function transition(event) {
               if (cronograma_title !== event.target || event.propertyName!=="height") return;
-              console.log("asdd")
-
               let top = "";
 
               if (cronograma_title.classList.contains("open")) {
@@ -218,9 +215,9 @@ function animacionTrabajo() {
                   }
                 });
                 eliminarAparicionTextosTrabajo(cronograma_contenido);
-                cronograma_contenido.style.display = "none";
+                cronograma_contenido.style.display = "";
               }
-              document.body.style.overflow = "auto";
+              document.body.style.overflow = "";
 
               top = elemento.getBoundingClientRect().top + window.scrollY;
 
@@ -391,13 +388,16 @@ function smartphoneAnimation() {
   Array.from(cronograma_elementos_trabajo).forEach(element => {
     let top = element.getBoundingClientRect().top;
     let vermas = element.querySelector(".vermas");
+    let background = element.querySelector(".cronograma-contenido-background");
     if (
       element.getBoundingClientRect().top <= window.innerHeight / 2 &&
       top >= -(window.innerHeight / 2 + 100)
     ) {
       vermas.classList.add("hover");
+      background.classList.add("hover");
     } else {
       vermas.classList.remove("hover");
+      background.classList.remove("hover");
     }
   });
 }

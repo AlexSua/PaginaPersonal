@@ -276,6 +276,7 @@ nav.idioma li.selected {
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
+  border-radius: 0%;
 }
 
 .trabajo h3 {
@@ -1048,6 +1049,12 @@ nav.idioma li.selected {
     right: 30px;
     top:25px;
   }
+  .cronograma-trabajo{
+    background-attachment: unset;
+    background-size: unset;
+    background-position: unset;
+  }
+
 }
 
 @media only screen and (max-width: 600px) {
