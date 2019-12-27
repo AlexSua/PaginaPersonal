@@ -4,11 +4,10 @@ function initializeJS() {
   aparicionElementos();
   animacionTrabajo();
 }
-window.onload = () => {
+window.onload = function(){
   navegacion();
   initializeVariables();
   initializeJS();
-  document.body.style.overflow = "auto";
 };
 
 window.onresize = () => {
@@ -36,12 +35,14 @@ function initializeVariables() {
   elementos_estudios = document.querySelectorAll(
     ".estudios .cronograma-seccion"
   );
+  cronograma_elementos_trabajo = document.querySelectorAll(".trabajo .cronograma-elemento");
+
   cronograma_secciones = document.querySelectorAll(".cronograma-seccion");
   cronograma = document.querySelectorAll(".cronograma");
   secciones = document.querySelectorAll(".seccion");
   windowWidth = window.innerWidth;
   scrollAnterior = window.scrollY;
-
+  
   cronograma_seccion_trabajo = document.querySelector(".seccion-trabajo");
   cronograma_seccion_trabajo_element = document.querySelector(".trabajo");
 
@@ -57,7 +58,6 @@ function initializeVariables() {
 
 function animacionAparicionTextosTrabajo(cronograma_contenido) {
   let time = 0;
-  console.log("asd")
   cronograma_contenido.querySelectorAll(".texto").forEach(function(elemento_texto) {
     time += 300;
     setTimeout(() => elemento_texto.classList.add("open"), time);
@@ -194,7 +194,8 @@ function animacionTrabajo() {
           cronograma_title.addEventListener(
             "transitionend",
             function transition(event) {
-              if (cronograma_title !== event.target) return;
+              if (cronograma_title !== event.target || event.propertyName!=="height") return;
+              console.log("asdd")
 
               let top = "";
 
@@ -216,8 +217,8 @@ function animacionTrabajo() {
                     el.style.display = "";
                   }
                 });
-                cronograma_contenido.style.display = "none";
                 eliminarAparicionTextosTrabajo(cronograma_contenido);
+                cronograma_contenido.style.display = "none";
               }
               document.body.style.overflow = "auto";
 
@@ -387,20 +388,16 @@ function navegarA(elemento) {
 }
 
 function smartphoneAnimation() {
-  var elements = document.querySelectorAll(".trabajo .cronograma-elemento");
-  Array.from(elements).forEach(element => {
+  Array.from(cronograma_elementos_trabajo).forEach(element => {
     let top = element.getBoundingClientRect().top;
     let vermas = element.querySelector(".vermas");
-    let background = element.querySelector(".cronograma-contenido-background");
     if (
       element.getBoundingClientRect().top <= window.innerHeight / 2 &&
       top >= -(window.innerHeight / 2 + 100)
     ) {
       vermas.classList.add("hover");
-      background.classList.add("hover");
     } else {
       vermas.classList.remove("hover");
-      background.classList.remove("hover");
     }
   });
 }

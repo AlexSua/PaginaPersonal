@@ -8,7 +8,7 @@
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  overflow: hidden;
+  overflow: auto;
   margin: 0;
   color: white;
   font-size: 1em;
@@ -74,23 +74,9 @@ footer div.creador {
   color: #f2d492;
   font-size: x-large;
   padding-left: 10px;
-  /* padding: 50px; */
-  /* text-align: center; */
 }
 
-/*footer::before{
-    content: "";
-    position: absolute;
-    background: white;
-    left:0;
 
-    top:0;
-    width: 100%;
-    height:7px;
-}
-*/
-
-/*header*/
 
 .background {
   position: absolute;
@@ -225,10 +211,6 @@ nav.idioma li.selected {
 .seccion-derecha.estudios > div {
   padding-top: 10vh;
 }
-.seccion-derecha.trabajo {
-  /* background: #fbf3e4; */
-  /* background: white; */
-}
 
 .contenido-detalle {
   flex: 1;
@@ -255,7 +237,6 @@ nav.idioma li.selected {
 .sticky {
   top: 0;
   position: fixed !important;
-  /* width: 50%; */
 }
 
 .show {
@@ -268,12 +249,9 @@ nav.idioma li.selected {
 
 /*trabajo*/
 
-.trabajo .texto > p {
-  /* display: none; */
-}
+
 
 .trabajo .cronograma-elemento {
-  /* height:100vh; */
   padding-top: 0;
 }
 
@@ -296,10 +274,8 @@ nav.idioma li.selected {
 .cronograma-trabajo {
   background-image: url(../img/work.jpg);
   background-attachment: fixed;
-  /* background-color: #292929; */
-  /* background-position: center center; */
-  /* background-repeat: no-repeat; */
   background-size: cover;
+  background-position: center center;
 }
 
 .trabajo h3 {
@@ -321,7 +297,6 @@ nav.idioma li.selected {
 
 .trabajo.seccion-derecha {
   transition: left 1s ease 0s, width 1s;
-  /* transition: width 2s ease 0s; */
 }
 
 .seccion-izquierda.seccion-trabajo {
@@ -333,7 +308,6 @@ nav.idioma li.selected {
   padding: 0;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   margin-left: 300px;
   opacity: 0;
   transform: rotateY(-45deg);
@@ -365,8 +339,6 @@ nav.idioma li.selected {
 
 .trabajo .cronograma-contenido p {
   max-width: 1000px;
-  /* margin-left: 3%; */
-  /* margin-top: 40px; */
   padding: 2em;
   padding-top: 0;
 }
@@ -393,11 +365,7 @@ nav.idioma li.selected {
 .cronograma-contenido-background {
   position: relative;
   height: 100vh;
-  /* position:absolute;
-    top:0;
-    bottom: 0;
-    left:0;
-    right:0; */
+
   background-size: cover !important;
   background-position: center center !important;
   transform: scale(1);
@@ -514,36 +482,6 @@ nav.idioma li.selected {
   cursor: pointer;
 }
 
-/*TimeLine*/
-
-/* .cancel.show{
-
-    width: 80px;
-}
-
-.cancel{
-    top: 0px;
-    position: absolute;
-
-
-    background-color: #393e41c9;
-    width: 0px;
-    height: 80px;
-    background-image: url(../img/close.svg);
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    z-index: 3;
-    right: 0;
-    margin-top: 7vh;
-    transition: width 1s;
-} */
-
-.cronograma {
-}
-
 .cronograma > .seccion-izquierda {
   background-attachment: fixed;
   background-color: #292929;
@@ -572,15 +510,8 @@ nav.idioma li.selected {
 }
 
 .cronograma > .seccion-trabajo {
-  /* background-image: url(../img/work.jpg); */
-  background: unset;
-  background-attachment: unset;
-  background-color: unset;
-  background-position: unset;
-  background-repeat: unset;
-  background-size: unset;
-  /* left: 50%; */
-  /* transition: left 1s cubic-bezier(0.06, 1.13, 0.67, 0.95) */
+  background-color: #009688f5;
+
 }
 
 .abierta {
@@ -594,9 +525,6 @@ nav.idioma li.selected {
   flex-direction: column;
 }
 
-.seccion-trabajo > .titulo-seccion {
-  background-color: #009688f5;
-}
 
 .seccion-estudios > .titulo-seccion {
   /* background-color: #f2d492f5;
@@ -923,7 +851,7 @@ nav.idioma li.selected {
     font-size: 0.9em;
   }
   .seccion {
-    height: auto !important;
+    /* height: auto !important; */
     display: flex;
     flex-direction: column;
   }
