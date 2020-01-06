@@ -316,6 +316,19 @@ nav.idioma li.selected {
   width: calc(100%);
 }
 
+.trabajo .cronograma-contenido>.texto:not(:nth-last-of-type(1)) img{
+  max-width: 80px;
+  object-fit: contain;
+  margin:0 20px 0 0;
+}
+
+.trabajo .cronograma-contenido .lista-habilidades{
+  margin:0;
+  margin-left: 3%;
+  justify-content: unset;
+  padding: 2em;
+}
+
 .trabajo .cronograma-contenido > .texto.open {
   margin-left: 0;
   opacity: 1;
@@ -332,8 +345,9 @@ nav.idioma li.selected {
   max-width: 700px;
   width: 400px;
   margin: 50px;
+  margin-top: 30px;
   padding-left: 20p;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   margin-bottom: 0;
 }
 
@@ -341,6 +355,11 @@ nav.idioma li.selected {
   max-width: 1000px;
   padding: 2em;
   padding-top: 0;
+  display:flex;
+}
+
+.trabajo .cronograma-contenido>.texto:nth-of-type(1) p {
+  max-width: 500px;
 }
 
 .trabajo .cronograma-contenido {
@@ -761,7 +780,7 @@ nav.idioma li.selected {
 }
 
 .cronograma-contenido > .texto > p {
-  /* max-width: 700px; */
+  max-width: 700px;
   margin-left: 3%;
   /* margin-top: 40px;*/
 }
