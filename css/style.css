@@ -308,9 +308,9 @@ nav.idioma li.selected {
   padding: 0;
   display: flex;
   flex-direction: column;
-  margin-left: 300px;
+  transform: translate3d(300px,0,0);
   opacity: 0;
-  transform: rotateY(-45deg);
+  /* transform: rotateY(-45deg); */
   transition: margin-left 1s ease-out, opacity 1s ease-out,
     transform 1s ease-out;
   width: calc(100%);
@@ -330,10 +330,10 @@ nav.idioma li.selected {
 }
 
 .trabajo .cronograma-contenido > .texto.open {
-  margin-left: 0;
+  transform: translate3d(0,0,0);
   opacity: 1;
   background: white;
-  transform: rotateY(0deg);
+  /* transform: rotateY(0deg); */
 }
 
 .trabajo .cronograma-contenido h3 {
