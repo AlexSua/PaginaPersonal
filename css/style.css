@@ -38,7 +38,7 @@ h1 {
   position: relative;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 100vh auto 100vh;
+  grid-template-rows: 100vh auto 60vh;
 }
 
 main {
@@ -54,14 +54,17 @@ header {
 footer {
   position: relative;
   overflow: hidden;
-  background: url("../img/footer2.jpg") center center fixed;
+  background:#292929;
+  /* background: url(../img/footer2.jpg) center center fixed; */
   background-size: cover;
+  height: 100%;
+  display: flex;
 }
 
 footer > div {
   width: 100%;
   display: flex;
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(
     to bottom,
     rgba(12, 37, 45, 0.7),
@@ -263,11 +266,12 @@ nav.idioma li.selected {
   position: absolute;
   top: 0;
   height: 100%;
-  margin: 50px;
+  margin-left: 50px;
   text-align: left;
   mix-blend-mode: difference;
-  margin-top: 45vh;
-  transition: margin-top 1s, height 1s;
+  /* margin-top: 45vh; */
+  transform:translate3d(0,45vh,0);
+  transition: transform 1s, height 1s;
   color: white;
 }
 
@@ -405,8 +409,10 @@ nav.idioma li.selected {
 }
 
 .trabajo .cronograma-fecha {
-  margin-top: 45vh;
-  transition: margin-top 1s;
+  /* margin-top: 45vh; */
+  transform:translate3d(0,45vh,0);
+  z-index: 5;
+  transition: transform 1s;
 }
 
 .trabajo .cronograma-elemento:last-child {
@@ -861,6 +867,16 @@ nav.idioma li.selected {
   display: inline;
 }
 
+.contacto .secciones-navegacion{
+  color:White;
+}
+
+.arriba{
+  height: 100%;
+  width: 200px;
+  background: #fbf6ec;
+}
+
 @media (max-width: 1024px) {
   main {
     display: flex;
@@ -983,9 +999,11 @@ nav.idioma li.selected {
     width: 100px;
   }
   .trabajo .cronograma-fecha {
+    transform:unset;
     margin-top: 1.5em;
   }
   .trabajo .title {
+    transform:unset;
     top: 0;
     bottom: 0;
     right: 0;
@@ -1027,8 +1045,8 @@ nav.idioma li.selected {
     padding-top: 3em;
   }
   .trabajo .cronograma-contenido > .texto {
-    transform: unset;
-    transition: margin-left 1s ease-out, opacity 1s ease-out;
+    /* transform: unset;
+    transition: margin-left 1s ease-out, opacity 1s ease-out; */
   }
   .secciones-navegacion {
     padding-bottom: 9.3vh;

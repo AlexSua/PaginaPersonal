@@ -4,7 +4,7 @@ function initializeJS() {
   aparicionElementos();
   animacionTrabajo();
 }
-window.onload = function(){
+window.onload = function() {
   navegacion();
   initializeVariables();
   initializeJS();
@@ -24,6 +24,19 @@ function chequearNavegador() {
   }
 }
 
+function translateObject(x, y, element) {
+  element.style.transform = "translate3d(" + x + ", " + y + ", 0)";
+}
+
+
+function getObjectTranslation (el) {
+  var values = el.style.transform.split(/\w+\(|\);?/);
+  if (!values[1] || !values[1].length) {
+      return [];
+  }
+  return values[1].split(/,\s?/g);
+}
+
 function initializeVariables() {
   cronograma_trabajo = document.querySelectorAll(".trabajo>div");
   cronograma_estudio = document.querySelector(".estudios>div");
@@ -35,14 +48,16 @@ function initializeVariables() {
   elementos_estudios = document.querySelectorAll(
     ".estudios .cronograma-seccion"
   );
-  cronograma_elementos_trabajo = document.querySelectorAll(".trabajo .cronograma-elemento");
+  cronograma_elementos_trabajo = document.querySelectorAll(
+    ".trabajo .cronograma-elemento"
+  );
 
   cronograma_secciones = document.querySelectorAll(".cronograma-seccion");
   cronograma = document.querySelectorAll(".cronograma");
   secciones = document.querySelectorAll(".seccion");
   windowWidth = window.innerWidth;
   scrollAnterior = window.scrollY;
-  
+
   cronograma_seccion_trabajo = document.querySelector(".seccion-trabajo");
   cronograma_seccion_trabajo_element = document.querySelector(".trabajo");
 
@@ -58,16 +73,20 @@ function initializeVariables() {
 
 function animacionAparicionTextosTrabajo(cronograma_contenido) {
   let time = 0;
-  cronograma_contenido.querySelectorAll(".texto").forEach(function(elemento_texto) {
-    time += 300;
-    setTimeout(() => elemento_texto.classList.add("open"), time);
-  });
+  cronograma_contenido
+    .querySelectorAll(".texto")
+    .forEach(function(elemento_texto) {
+      time += 300;
+      setTimeout(() => elemento_texto.classList.add("open"), time);
+    });
 }
 
 function eliminarAparicionTextosTrabajo(cronograma_contenido) {
-  cronograma_contenido.querySelectorAll(".texto").forEach(function(elemento_texto) {
-    elemento_texto.classList.remove("open");
-  });
+  cronograma_contenido
+    .querySelectorAll(".texto")
+    .forEach(function(elemento_texto) {
+      elemento_texto.classList.remove("open");
+    });
 }
 
 function animacionTrabajo() {
@@ -86,7 +105,7 @@ function animacionTrabajo() {
     if (window.innerWidth > 1024) {
       elemento.onclick = () => {};
       elemento.onclick = function() {
-        if (cronograma_fecha.style.marginTop != margin_fecha_open) {
+        if (getObjectTranslation(cronograma_fecha)[1] != margin_fecha_open) {
           document.body.style.overflow = "hidden";
 
           let top = elemento.getBoundingClientRect().top + window.scrollY;
@@ -100,8 +119,13 @@ function animacionTrabajo() {
             window.scroll({ top: top, left: 0, behavior: "smooth" });
 
             cronograma_seccion_trabajo.style.width = "";
-            cronograma_fecha.style.marginTop = "";
-            cronograma_title.style.marginTop = "";
+
+            // translateObject(0, 0, cronograma_fecha);
+            // translateObject(0, 0, cronograma_title);
+
+            cronograma_fecha.style.transform = "";
+            cronograma_title.style.transform = "";
+
             cronograma_seccion_trabajo_element.style.width = "";
             cronograma_seccion_trabajo_element.style.left = "";
             cronograma_contenido_background.classList.remove("open");
@@ -110,8 +134,13 @@ function animacionTrabajo() {
           };
 
           cronograma_seccion_trabajo.style.width = width_titulo_seccion_trabajo_abierta;
-          cronograma_fecha.style.marginTop = margin_fecha_open;
-          cronograma_title.style.marginTop = margin_fecha_open;
+
+          // cronograma_fecha.style.marginTop = margin_fecha_open;
+          // cronograma_title.style.marginTop = margin_fecha_open;
+          translateObject(0, margin_fecha_open, cronograma_fecha);
+          translateObject(0, margin_fecha_open, cronograma_title);
+
+
           cronograma_fecha_div.style.width = "120px";
           cronograma_seccion_trabajo_element.style.width = "70%";
           cronograma_seccion_trabajo_element.style.left = width_titulo_seccion_trabajo_abierta;
@@ -132,8 +161,6 @@ function animacionTrabajo() {
                 cronograma_contenido_background.classList.add("open");
 
                 animacionAparicionTextosTrabajo(cronograma_contenido);
-
-        
               } else {
                 cronograma_title.removeEventListener(
                   "transitionend",
@@ -193,7 +220,11 @@ function animacionTrabajo() {
           cronograma_title.addEventListener(
             "transitionend",
             function transition(event) {
-              if (cronograma_title !== event.target || event.propertyName!=="height") return;
+              if (
+                cronograma_title !== event.target ||
+                event.propertyName !== "height"
+              )
+                return;
               let top = "";
 
               if (cronograma_title.classList.contains("open")) {
@@ -271,7 +302,7 @@ function fijarElementos() {
         if (!videoIntro.paused) videoIntro.pause();
         // videoIntro.style.display = "none";
       } else if (coords.top >= 0) {
-        videoIntro.style.top = -window.scrollY / 3 + "px";
+        translateObject(0, -window.scrollY / 3+"px", videoIntro);
         if (videoIntro.paused) videoIntro.play();
         // videoIntro.style.display = "";
       }
