@@ -28,11 +28,10 @@ function translateObject(x, y, element) {
   element.style.transform = "translate3d(" + x + ", " + y + ", 0)";
 }
 
-
-function getObjectTranslation (el) {
+function getObjectTranslation(el) {
   var values = el.style.transform.split(/\w+\(|\);?/);
   if (!values[1] || !values[1].length) {
-      return [];
+    return [];
   }
   return values[1].split(/,\s?/g);
 }
@@ -63,7 +62,7 @@ function initializeVariables() {
 
   seccion_titulos = document.querySelectorAll(".seccion-izquierda h3");
   creador_titulo = document.querySelector(".creador");
-
+  creador = document.querySelector(".creador");
   seccion_trabajo_abierta = 0;
 
   window.onscroll = () => {
@@ -139,7 +138,6 @@ function animacionTrabajo() {
           // cronograma_title.style.marginTop = margin_fecha_open;
           translateObject(0, margin_fecha_open, cronograma_fecha);
           translateObject(0, margin_fecha_open, cronograma_title);
-
 
           cronograma_fecha_div.style.width = "120px";
           cronograma_seccion_trabajo_element.style.width = "70%";
@@ -267,14 +265,16 @@ function animacionTrabajo() {
 function animationFrame() {
   if (window.scrollY != scrollAnterior) {
     scrollAnterior = window.scrollY;
+    aparicionElementos();
     if (window.innerWidth > 1024) {
-      aparicionElementos();
+     
       // aparicionTitulos();
     } else {
       smartphoneAnimation();
     }
     aparicionTitulos();
     fijarElementos();
+    footerAnimation();
   }
 }
 
@@ -302,7 +302,7 @@ function fijarElementos() {
         if (!videoIntro.paused) videoIntro.pause();
         // videoIntro.style.display = "none";
       } else if (coords.top >= 0) {
-        translateObject(0, -window.scrollY / 3+"px", videoIntro);
+        translateObject(0, -window.scrollY / 3 + "px", videoIntro);
         if (videoIntro.paused) videoIntro.play();
         // videoIntro.style.display = "";
       }
@@ -323,17 +323,35 @@ function fijarElementos() {
 }
 
 function aparicionElementos() {
-  if (window.innerWidth > 1024) {
-    if (
-      cronograma[0].getBoundingClientRect().top + window.outerHeight / 3 <
-      window.innerHeight
-    ) {
-      cronograma_estudio.style.top = "";
-    } else {
-      cronograma_estudio.style.top = cronograma_estudio_height + "px";
-    }
-  } else {
-    cronograma_estudio.style.top = "";
+  // if (window.innerWidth > 1024) {
+  //   if (
+  //     cronograma[0].getBoundingClientRect().top + window.outerHeight / 3 <
+  //     window.innerHeight
+  //   ) {
+  //     cronograma_estudio.style.top = "";
+  //   } else {
+  //     cronograma_estudio.style.top = cronograma_estudio_height + "px";
+  //   }
+  // } else {
+  //   cronograma_estudio.style.top = "";
+  // }
+  var ce = cronograma[0];
+  var bcr = ce.getBoundingClientRect();
+  if (bcr.top < window.innerHeight && bcr.bottom > 0) {
+    ce.querySelectorAll(".cronograma-elemento").forEach(element => {
+      let elbcr = element.getBoundingClientRect();
+      if (elbcr.top + window.outerHeight / 3 < window.innerHeight) {
+        translateObject(0, 0, element.children[0]);
+        element.children[0].style.opacity = "1";
+      }
+    });
+  } else if (bcr.top > window.innerHeight) {
+    ce.querySelectorAll(".cronograma-elemento").forEach(element => {
+      if (element.children[0].style.transform && element.children[0].style.transform != ""){
+        element.children[0].style.transform = "";
+        element.children[0].style.opacity = "0";
+      }
+    });
   }
 }
 
@@ -361,7 +379,7 @@ function navegacion() {
 }
 
 function aparicionTitulos() {
-  [...seccion_titulos, creador_titulo].forEach(titulo => {
+  [...seccion_titulos].forEach(titulo => {
     if (titulo.getBoundingClientRect().top - window.innerHeight < 0) {
       if (!titulo.classList.contains("ok")) {
         titulo.classList.add("ok");
@@ -370,6 +388,7 @@ function aparicionTitulos() {
     }
   });
 }
+
 function writingAnimation(elemento, texto) {
   elemento.style.width = elemento.offsetWidth + "px";
   elemento.textContent = "";
@@ -413,6 +432,16 @@ function navegarA(elemento) {
       window.scrollY,
     behavior: "smooth"
   });
+}
+
+function footerAnimation() {
+  let scrollYBottom = window.scrollY + window.innerHeight;
+  let maxHeight = document.body.scrollHeight;
+  if (scrollYBottom > maxHeight - window.innerHeight) {
+    let x = scrollYBottom - maxHeight;
+    translateObject(0, x / 2 + "px", creador);
+    creador.style.opacity = 1 - -x / 500;
+  }
 }
 
 function smartphoneAnimation() {

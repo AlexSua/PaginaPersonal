@@ -577,6 +577,10 @@ nav.idioma li.selected {
   left: 0;
 }
 
+.cronograma > .seccion-derecha.estudios::before {
+ z-index: 0;
+}
+
 .estudios > div,
 .trabajo > div {
   transition: top 0.5s;
@@ -639,6 +643,12 @@ nav.idioma li.selected {
   color: white;
   display: flex;
   justify-content: flex-end;
+}
+
+.estudios .cronograma-elemento>.cronograma-seccion{
+  transform: translate3d(0,20vh,0);
+  opacity: 0;
+  transition: 1s transform,1s opacity;
 }
 
 .estudios .cronograma-fecha {
@@ -1009,6 +1019,7 @@ nav.idioma li.selected {
     right: 0;
     margin-top: unset;
     left: 0;
+    margin:0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -1089,6 +1100,9 @@ nav.idioma li.selected {
     background-attachment: unset;
     background-size: unset;
     background-position: unset;
+  }
+  .arriba{
+    display:none;
   }
 
 }
