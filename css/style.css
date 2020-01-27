@@ -54,7 +54,7 @@ header {
 footer {
   position: relative;
   overflow: hidden;
-  background:#292929;
+  background: #292929;
   /* background: url(../img/footer2.jpg) center center fixed; */
   background-size: cover;
   height: 100%;
@@ -65,11 +65,12 @@ footer > div {
   width: 100%;
   display: flex;
   height: 100%;
-  background-image: linear-gradient(
+  background:#17424f;
+  /* background-image: linear-gradient(
     to bottom,
     rgba(12, 37, 45, 0.7),
     rgba(12, 37, 45, 1)
-  );
+  ); */
 }
 
 footer div.creador {
@@ -78,8 +79,6 @@ footer div.creador {
   font-size: x-large;
   padding-left: 10px;
 }
-
-
 
 .background {
   position: absolute;
@@ -176,14 +175,14 @@ nav span:hover::after {
 nav.idioma {
   position: absolute;
   right: 50px;
-  top:40px;
+  top: 40px;
   font-weight: 100;
 }
-nav.idioma>ul {
-  margin:0;
-  padding:0;
+nav.idioma > ul {
+  margin: 0;
+  padding: 0;
 }
-nav.idioma li{
+nav.idioma li {
   margin-top: 0;
 }
 nav.idioma li.selected {
@@ -252,8 +251,6 @@ nav.idioma li.selected {
 
 /*trabajo*/
 
-
-
 .trabajo .cronograma-elemento {
   padding-top: 0;
 }
@@ -270,7 +267,7 @@ nav.idioma li.selected {
   text-align: left;
   mix-blend-mode: difference;
   /* margin-top: 45vh; */
-  transform:translate3d(0,45vh,0);
+  transform: translate3d(0, 45vh, 0);
   transition: transform 1s, height 1s;
   color: white;
 }
@@ -312,7 +309,7 @@ nav.idioma li.selected {
   padding: 0;
   display: flex;
   flex-direction: column;
-  transform: translate3d(300px,0,0);
+  transform: translate3d(300px, 0, 0);
   opacity: 0;
   /* transform: rotateY(-45deg); */
   transition: margin-left 1s ease-out, opacity 1s ease-out,
@@ -320,21 +317,21 @@ nav.idioma li.selected {
   width: calc(100%);
 }
 
-.trabajo .cronograma-contenido>.texto:not(:nth-last-of-type(1)) img{
+.trabajo .cronograma-contenido > .texto:not(:nth-last-of-type(1)) img {
   max-width: 80px;
   object-fit: contain;
-  margin:0 20px 0 0;
+  margin: 0 20px 0 0;
 }
 
-.trabajo .cronograma-contenido .lista-habilidades{
-  margin:0;
+.trabajo .cronograma-contenido .lista-habilidades {
+  margin: 0;
   margin-left: 3%;
   justify-content: unset;
   padding: 2em;
 }
 
 .trabajo .cronograma-contenido > .texto.open {
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   opacity: 1;
   background: white;
   /* transform: rotateY(0deg); */
@@ -359,10 +356,10 @@ nav.idioma li.selected {
   max-width: 1000px;
   padding: 2em;
   padding-top: 0;
-  display:flex;
+  display: flex;
 }
 
-.trabajo .cronograma-contenido>.texto:nth-of-type(1) p {
+.trabajo .cronograma-contenido > .texto:nth-of-type(1) p {
   max-width: 500px;
 }
 
@@ -410,7 +407,7 @@ nav.idioma li.selected {
 
 .trabajo .cronograma-fecha {
   /* margin-top: 45vh; */
-  transform:translate3d(0,45vh,0);
+  transform: translate3d(0, 45vh, 0);
   z-index: 5;
   transition: transform 1s;
 }
@@ -536,7 +533,6 @@ nav.idioma li.selected {
 
 .cronograma > .seccion-trabajo {
   background-color: #009688f5;
-
 }
 
 .abierta {
@@ -549,7 +545,6 @@ nav.idioma li.selected {
   height: 100%;
   flex-direction: column;
 }
-
 
 .seccion-estudios > .titulo-seccion {
   /* background-color: #f2d492f5;
@@ -578,7 +573,7 @@ nav.idioma li.selected {
 }
 
 .cronograma > .seccion-derecha.estudios::before {
- z-index: 0;
+  z-index: 0;
 }
 
 .estudios > div,
@@ -645,10 +640,10 @@ nav.idioma li.selected {
   justify-content: flex-end;
 }
 
-.estudios .cronograma-elemento>.cronograma-seccion{
-  transform: translate3d(0,20vh,0);
+.estudios .cronograma-elemento > .cronograma-seccion {
+  transform: translate3d(0, 40vh, 0);
   opacity: 0;
-  transition: 1s transform,1s opacity;
+  transition: 1s transform, 1s opacity;
 }
 
 .estudios .cronograma-fecha {
@@ -877,14 +872,28 @@ nav.idioma li.selected {
   display: inline;
 }
 
-.contacto .secciones-navegacion{
-  color:White;
+.contacto .secciones-navegacion {
+  color: White;
 }
 
-.arriba{
+.arriba {
   height: 100%;
   width: 200px;
   background: #fbf6ec;
+  display: flex;
+  justify-content: center;
+}
+
+.arriba > img {
+  width: 100px;
+  transform: rotateZ(180deg);
+  position: absolute;
+  bottom: 0;
+  border: solid #17424f 10px;
+  height: 100px;
+  border-radius: 100px;
+  margin-bottom: 50px;
+  cursor: pointer;
 }
 
 @media (max-width: 1024px) {
@@ -985,11 +994,10 @@ nav.idioma li.selected {
   }
   .cronograma-elemento .cronograma-fecha span {
     display: unset;
-
   }
   .cronograma-elemento:hover .cronograma-fecha div {
     width: unset;
-    color:white;
+    color: white;
   }
 
   .trabajo .cronograma-fecha {
@@ -1009,17 +1017,16 @@ nav.idioma li.selected {
     width: 100px;
   }
   .trabajo .cronograma-fecha {
-    transform:unset;
+    transform: unset;
     margin-top: 1.5em;
   }
   .trabajo .title {
-    transform:unset;
+    transform: unset;
     top: 0;
     bottom: 0;
     right: 0;
     margin: unset;
     left: 0;
-    margin:0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -1029,7 +1036,7 @@ nav.idioma li.selected {
     text-align: center;
   }
   .cronograma-contenido > .texto {
-    padding:0;
+    padding: 0;
     padding-left: 3%;
     padding-right: 3%;
   }
@@ -1042,8 +1049,8 @@ nav.idioma li.selected {
     padding-left: 3%;
     padding-right: 3%; */
   }
-  .trabajo .cronograma-contenido p{
-    padding:0;
+  .trabajo .cronograma-contenido p {
+    padding: 0;
     padding-left: 3%;
     padding-right: 3%;
   }
@@ -1081,10 +1088,10 @@ nav.idioma li.selected {
   .texto h3 {
     margin-right: 33%;
   }
-  .trabajo .cronograma-contenido h3{
+  .trabajo .cronograma-contenido h3 {
     margin-left: 3%;
     margin-right: 33%;
-    width:unset;
+    width: unset;
   }
   .titulo {
     transform: translateY(-2vh);
@@ -1094,17 +1101,16 @@ nav.idioma li.selected {
   }
   nav.idioma {
     right: 30px;
-    top:25px;
+    top: 25px;
   }
-  .cronograma-trabajo{
+  .cronograma-trabajo {
     background-attachment: unset;
     background-size: unset;
     background-position: unset;
   }
-  .arriba{
-    display:none;
+  .arriba {
+    display: none;
   }
-
 }
 
 @media only screen and (max-width: 600px) {

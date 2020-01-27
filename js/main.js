@@ -190,8 +190,9 @@ function animacionTrabajo() {
       elemento.onclick = () => {};
       elemento.onclick = function() {
         if (!cronograma_title.classList.contains("open")) {
-          let top = elemento.getBoundingClientRect().top + window.scrollY;
-          window.scroll({ top: top, left: 0, behavior: "smooth" });
+          elemento.scrollIntoView({ 
+            behavior: 'smooth' 
+          });
           document.body.style.overflow = "hidden";
 
           cronograma_contenido.style.display = "flex";
@@ -205,8 +206,9 @@ function animacionTrabajo() {
 
           cancel_button.onclick = () => {
             document.body.style.overflow = "hidden";
-            let top = elemento.getBoundingClientRect().top + window.scrollY;
-            window.scroll({ top: top, left: 0, behavior: "smooth" });
+            elemento.scrollIntoView({ 
+              behavior: 'smooth' 
+            });
             cronograma_vermas.style = "";
 
             cronograma_title.classList.remove("open");
@@ -250,7 +252,7 @@ function animacionTrabajo() {
 
               top = elemento.getBoundingClientRect().top + window.scrollY;
 
-              window.scroll({ top: top, left: 0 });
+              window.scroll({ top: top});
             },
             false
           );
