@@ -63,11 +63,17 @@ function initializeVariables() {
   seccion_titulos = document.querySelectorAll(".seccion-izquierda h3");
   creador_titulo = document.querySelector(".creador");
   creador = document.querySelector(".creador");
+  arriba = document.querySelector(".arriba>img");
+  arriba.addEventListener("click",goTop)
   seccion_trabajo_abierta = 0;
 
   window.onscroll = () => {
     window.requestAnimationFrame(animationFrame);
   };
+}
+
+function goTop(){
+    window.scrollTo({top:0,behavior:"smooth"})
 }
 
 function animacionAparicionTextosTrabajo(cronograma_contenido) {
@@ -308,6 +314,11 @@ function fijarElementos() {
         if (videoIntro.paused) videoIntro.play();
         // videoIntro.style.display = "";
       }
+      if(window.scrollY+window.innerHeight>=document.body.offsetHeight){
+        translateObject(0,"0",arriba)
+      }else{
+        arriba.style.transform="";
+      }
     }
     if (window.innerWidth > 1024) {
       fijarElemento(element.children[0], coords);
@@ -354,7 +365,7 @@ function aparicionElementos() {
         element.children[0].style.opacity = "0";
       }
     });
-  }
+  } 
 }
 
 function navegacion() {

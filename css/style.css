@@ -889,12 +889,14 @@ nav.idioma li.selected {
   transform: rotateZ(180deg);
   position: absolute;
   bottom: 0;
-  border: solid #17424f 10px;
   height: 100px;
   border-radius: 100px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   cursor: pointer;
+  transform: translate3d(0,100px,0);
+  transition:1s transform;
 }
+
 
 @media (max-width: 1024px) {
   main {
