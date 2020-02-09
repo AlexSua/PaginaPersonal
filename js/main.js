@@ -43,7 +43,7 @@ function initializeVariables() {
   elementos_trabajo = document.querySelectorAll(
     ".trabajo .cronograma-elemento"
   );
-  cancel_button = document.querySelectorAll(".cancel")[0];
+  cancel_buttons = [];
   elementos_estudios = document.querySelectorAll(
     ".estudios .cronograma-seccion"
   );
@@ -64,7 +64,7 @@ function initializeVariables() {
   creador_titulo = document.querySelector(".creador");
   creador = document.querySelector(".creador");
   arriba = document.querySelector(".arriba>img");
-  arriba.addEventListener("click",goTop)
+  arriba.addEventListener("click", goTop);
   seccion_trabajo_abierta = 0;
 
   window.onscroll = () => {
@@ -72,26 +72,54 @@ function initializeVariables() {
   };
 }
 
-function goTop(){
-    window.scrollTo({top:0,behavior:"smooth"})
+function goTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function animacionAparicionTextosTrabajo(cronograma_contenido) {
   let time = 0;
+  let height = 0;
   cronograma_contenido
     .querySelectorAll(".texto")
     .forEach(function(elemento_texto) {
       time += 300;
+      height += elemento_texto.offsetHeight;
       setTimeout(() => elemento_texto.classList.add("open"), time);
     });
+
+  cronograma_contenido.style.minHeight = height + "px";
 }
 
 function eliminarAparicionTextosTrabajo(cronograma_contenido) {
+  cronograma_contenido.style.minHeight = "";
   cronograma_contenido
     .querySelectorAll(".texto")
     .forEach(function(elemento_texto) {
       elemento_texto.classList.remove("open");
     });
+}
+
+function transitionEnd(element, callback) {
+  element.addEventListener("transitionend", function transition(event) {
+    element.removeEventListener("transitionend", transition, false);
+    return callback();
+  });
+}
+
+function createCancelButton(elemento) {
+  let cancel_button = document.createElement("div");
+  cancel_button.className = "cancel";
+  elemento.appendChild(cancel_button);
+  cancel_buttons.push({ element: cancel_button, section: elemento });
+  seccion_trabajo_abierta = elemento;
+  fijarElementos();
+  return cancel_button;
+}
+
+function deleteCancelButton(cancel_button){
+  cancel_buttons = cancel_buttons.filter(el=>{
+    return el.element!==cancel_button
+  })
 }
 
 function animacionTrabajo() {
@@ -111,95 +139,62 @@ function animacionTrabajo() {
       elemento.onclick = () => {};
       elemento.onclick = function() {
         if (getObjectTranslation(cronograma_fecha)[1] != margin_fecha_open) {
-          document.body.style.overflow = "hidden";
-
-          let top = elemento.getBoundingClientRect().top + window.scrollY;
-
+          // document.body.style.overflow = "hidden";
+          let cancel_button =createCancelButton(elemento)
           cancel_button.classList.add("show");
-          window.scroll({ top: top, left: 0, behavior: "smooth" });
-
-          cancel_button.onclick = () => {
-            document.body.style.overflow = "hidden";
-            let top = elemento.getBoundingClientRect().top + window.scrollY;
-            window.scroll({ top: top, left: 0, behavior: "smooth" });
-
-            cronograma_seccion_trabajo.style.width = "";
-
-            // translateObject(0, 0, cronograma_fecha);
-            // translateObject(0, 0, cronograma_title);
-
+          // window.scroll({ top: top, left: 0, behavior: "smooth" });
+          elemento.scrollIntoView({ behavior: "smooth" })
+          cancel_button.onclick = event => {
+            event.stopPropagation();
+            elemento.scrollIntoView({ behavior: "smooth" })
+            deleteCancelButton(cancel_button)
+            transitionEnd(cronograma_contenido, () => {
+              cronograma_fecha_div.style.width = "";
+              seccion_trabajo_abierta = 0;
+              elemento.removeChild(cancel_button);
+            });
+            cronograma_seccion_trabajo_element.style.width = "";
             cronograma_fecha.style.transform = "";
             cronograma_title.style.transform = "";
-
-            cronograma_seccion_trabajo_element.style.width = "";
-            cronograma_seccion_trabajo_element.style.left = "";
-            cronograma_contenido_background.classList.remove("open");
             cronograma_vermas.classList.remove("close");
+            cronograma_contenido_background.classList.remove("open");
+
+            if(cancel_buttons.length<=0)
+              cronograma_seccion_trabajo.style.width = "";
+            
+           
+            eliminarAparicionTextosTrabajo(cronograma_contenido);
+
+            cronograma_contenido.classList.remove("open");
+
+            Array.from(elementos_trabajo).forEach(el => {
+              if (el != elemento) {
+                el.style.display = "";
+              }
+            });
             cancel_button.classList.remove("show");
           };
 
           cronograma_seccion_trabajo.style.width = width_titulo_seccion_trabajo_abierta;
-
-          // cronograma_fecha.style.marginTop = margin_fecha_open;
-          // cronograma_title.style.marginTop = margin_fecha_open;
           translateObject(0, margin_fecha_open, cronograma_fecha);
           translateObject(0, margin_fecha_open, cronograma_title);
 
           cronograma_fecha_div.style.width = "120px";
-          cronograma_seccion_trabajo_element.style.width = "70%";
-          cronograma_seccion_trabajo_element.style.left = width_titulo_seccion_trabajo_abierta;
           cronograma_vermas.classList.add("close");
-
-          cronograma_title.addEventListener(
-            "transitionend",
-            function transition(event) {
-              if (cronograma_title !== event.target) return;
-              let top = "";
-              if (cronograma_seccion_trabajo.style.width) {
-                Array.from(elementos_trabajo).forEach(el => {
-                  if (el != elemento) {
-                    el.style.display = "none";
-                  }
-                });
-                cronograma_contenido.style.display = "flex";
-                cronograma_contenido_background.classList.add("open");
-
-                animacionAparicionTextosTrabajo(cronograma_contenido);
-              } else {
-                cronograma_title.removeEventListener(
-                  "transitionend",
-                  transition,
-                  false
-                );
-
-                eliminarAparicionTextosTrabajo(cronograma_contenido);
-
-                cronograma_contenido.style.display = "none";
-                Array.from(elementos_trabajo).forEach(el => {
-                  if (el != elemento) {
-                    el.style.display = "";
-                  }
-                });
-                cronograma_fecha_div.style.width = "";
-              }
-              document.body.style.overflow = "auto";
-              top = elemento.getBoundingClientRect().top + window.scrollY;
-              window.requestAnimationFrame(animationFrame);
-
-              window.scrollTo({ top: top, left: 0 });
-            },
-            false
-          );
+          cronograma_contenido.classList.add("open");
+          cronograma_contenido_background.classList.add("open");
+          animacionAparicionTextosTrabajo(cronograma_contenido);
         }
       };
     } else {
       elemento.onclick = () => {};
       elemento.onclick = function() {
         if (!cronograma_title.classList.contains("open")) {
-          elemento.scrollIntoView({ 
-            behavior: 'smooth' 
+          elemento.scrollIntoView({
+            behavior: "smooth"
           });
           document.body.style.overflow = "hidden";
+          let cancel_button =createCancelButton(elemento)
 
           cronograma_contenido.style.display = "flex";
 
@@ -210,10 +205,12 @@ function animacionTrabajo() {
 
           animacionAparicionTextosTrabajo(cronograma_contenido);
 
-          cancel_button.onclick = () => {
+          cancel_button.onclick = (event) => {
+            event.stopPropagation();
+            deleteCancelButton(cancel_button)
             document.body.style.overflow = "hidden";
-            elemento.scrollIntoView({ 
-              behavior: 'smooth' 
+            elemento.scrollIntoView({
+              behavior: "smooth"
             });
             cronograma_vermas.style = "";
 
@@ -255,10 +252,8 @@ function animacionTrabajo() {
                 cronograma_contenido.style.display = "";
               }
               document.body.style.overflow = "";
+              elemento.scrollIntoView({ })
 
-              top = elemento.getBoundingClientRect().top + window.scrollY;
-
-              window.scroll({ top: top});
             },
             false
           );
@@ -266,7 +261,9 @@ function animacionTrabajo() {
       };
     }
     if (cronograma_contenido_background.classList.contains("open"))
-      cancel_button.onclick ? cancel_button.onclick() : null;
+      cancel_buttons.forEach(cancel_button=>{
+        cancel_button.element.onclick ? cancel_button.element.onclick(event) : null;
+      });
   });
 }
 
@@ -275,7 +272,6 @@ function animationFrame() {
     scrollAnterior = window.scrollY;
     aparicionElementos();
     if (window.innerWidth > 1024) {
-     
       // aparicionTitulos();
     } else {
       smartphoneAnimation();
@@ -286,19 +282,20 @@ function animationFrame() {
   }
 }
 
-function fijarElemento(container, containerCoords) {
+function fijarElemento(element, container) {
+  let containerCoords = container.getBoundingClientRect();
   if (
     containerCoords.top <= 0 &&
     containerCoords.bottom >= window.innerHeight
   ) {
-    container.classList.add("sticky");
-    container.style.top = "";
+    element.classList.add("sticky");
+    element.style.top = "";
   } else if (containerCoords.top > 0) {
-    container.classList.remove("sticky");
-    container.style.top = "";
+    element.classList.remove("sticky");
+    element.style.top = 0 + "px";
   } else {
-    container.classList.remove("sticky");
-    container.style.top = containerCoords.height - window.innerHeight + "px";
+    element.classList.remove("sticky");
+    element.style.top = containerCoords.height - window.innerHeight + "px";
   }
 }
 
@@ -314,25 +311,26 @@ function fijarElementos() {
         if (videoIntro.paused) videoIntro.play();
         // videoIntro.style.display = "";
       }
-      if(window.scrollY+window.innerHeight>=document.body.offsetHeight){
-        translateObject(0,"0",arriba)
-      }else{
-        arriba.style.transform="";
+      if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+        translateObject(0, "0", arriba);
+      } else {
+        arriba.style.transform = "";
       }
     }
     if (window.innerWidth > 1024) {
-      fijarElemento(element.children[0], coords);
+      // fijarElemento(element.children[0], coords);
     } else {
       let container = element.children[0];
       if (container.classList.contains("sticky"))
         container.classList.remove("sticky");
-      container.style.top = "unset";
+      container.style.top = "";
+      if (seccion_trabajo_abierta)
+      cancel_buttons.forEach(cancel => {
+        fijarElemento(cancel.element, cancel.section);
+      });
     }
   });
-  fijarElemento(
-    cancel_button,
-    cronograma_seccion_trabajo_element.getBoundingClientRect()
-  );
+ 
 }
 
 function aparicionElementos() {
@@ -353,19 +351,22 @@ function aparicionElementos() {
   if (bcr.top < window.innerHeight && bcr.bottom > 0) {
     ce.querySelectorAll(".cronograma-elemento").forEach(element => {
       let elbcr = element.getBoundingClientRect();
-      if (elbcr.top + window.outerHeight / 3 < window.innerHeight) {
+      if (elbcr.top + window.outerHeight / 10 < window.innerHeight) {
         translateObject(0, 0, element.children[0]);
         element.children[0].style.opacity = "1";
       }
     });
   } else if (bcr.top > window.innerHeight) {
     ce.querySelectorAll(".cronograma-elemento").forEach(element => {
-      if (element.children[0].style.transform && element.children[0].style.transform != ""){
+      if (
+        element.children[0].style.transform &&
+        element.children[0].style.transform != ""
+      ) {
         element.children[0].style.transform = "";
         element.children[0].style.opacity = "0";
       }
     });
-  } 
+  }
 }
 
 function navegacion() {
@@ -439,12 +440,7 @@ function writingAnimation(elemento, texto) {
 }
 
 function navegarA(elemento) {
-  window.scrollTo({
-    top:
-      document.querySelector(elemento).getBoundingClientRect().top +
-      window.scrollY,
-    behavior: "smooth"
-  });
+  document.querySelector(elemento).scrollIntoView({ behavior: "smooth" })
 }
 
 function footerAnimation() {
