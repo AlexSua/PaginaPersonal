@@ -51,7 +51,7 @@ function initializeVariables() {
     ".trabajo .cronograma-elemento"
   );
 
-  cronograma_secciones = document.querySelectorAll(".cronograma-seccion");
+  cronograma_secciones = document.querySelectorAll(".trabajo .cronograma-seccion");
   cronograma = document.querySelectorAll(".cronograma");
   secciones = document.querySelectorAll(".seccion");
   windowWidth = window.innerWidth;
@@ -122,6 +122,28 @@ function deleteCancelButton(cancel_button){
   })
 }
 
+function closeAllExcept(cancel_button){
+   cancel_buttons.forEach(el=>{
+    if(el.element!==cancel_button && el.element.onclick)
+      el.element.onclick(event)
+  })
+}
+
+function calculateDistanceToScroll(element){ 
+  let height = 0;
+  let i = 0;
+  cronograma_secciones.forEach((seccion,index)=>{
+    if(seccion.offsetHeight>height){
+      height=seccion.offsetHeight;
+    }
+    if(element.children[1]===seccion){
+      i=index;
+    }
+  })
+  let trabajo_coords = cronograma_seccion_trabajo_element.getBoundingClientRect();
+  window.scrollTo({top:(window.scrollY+trabajo_coords.top)+(i*height),behavior:"smooth"})
+}
+
 function animacionTrabajo() {
   Array.from(elementos_trabajo).forEach(elemento => {
     let cronograma_fecha = elemento.querySelector(".cronograma-fecha");
@@ -141,12 +163,15 @@ function animacionTrabajo() {
         if (getObjectTranslation(cronograma_fecha)[1] != margin_fecha_open) {
           // document.body.style.overflow = "hidden";
           let cancel_button =createCancelButton(elemento)
+          closeAllExcept(cancel_button)
           cancel_button.classList.add("show");
           // window.scroll({ top: top, left: 0, behavior: "smooth" });
-          elemento.scrollIntoView({ behavior: "smooth" })
+          // elemento.scrollIntoView({ behavior: "smooth" })
+          calculateDistanceToScroll(elemento);
+
           cancel_button.onclick = event => {
             event.stopPropagation();
-            elemento.scrollIntoView({ behavior: "smooth" })
+            // elemento.scrollIntoView({ behavior: "smooth" })
             deleteCancelButton(cancel_button)
             transitionEnd(cronograma_contenido, () => {
               cronograma_fecha_div.style.width = "";
