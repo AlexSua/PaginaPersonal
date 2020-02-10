@@ -3,6 +3,7 @@ function initializeJS() {
   fijarElementos();
   aparicionElementos();
   animacionTrabajo();
+  aparicionTitulos();
 }
 window.onload = function() {
   navegacion();
@@ -16,6 +17,12 @@ window.onresize = () => {
     initializeJS();
   }
 };
+
+function initializeTitles(){
+  Array.from(document.querySelectorAll(".seccion-izquierda h3")).map(el=>{
+    el.textContent="";
+  })
+}
 
 function chequearNavegador() {
   if (window.innerWidth <= 1024 && navigator.userAgent.indexOf("Firefox") > 0) {
@@ -186,8 +193,7 @@ function animacionTrabajo() {
 
             if(cancel_buttons.length<=0)
               cronograma_seccion_trabajo.style.width = "";
-            
-           
+
             eliminarAparicionTextosTrabajo(cronograma_contenido);
 
             cronograma_contenido.classList.remove("open");
