@@ -287,6 +287,18 @@ nav.idioma li.selected {
   background-size: cover;
   background-position: center center;
 }
+.cronograma-trabajo::before{
+  content: "";
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #009688f5;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+
+}
 
 .trabajo h3 {
   mix-blend-mode: inherit;
@@ -306,7 +318,6 @@ nav.idioma li.selected {
 
 .trabajo.seccion-derecha {
   transition: left 1s ease 0s, width 1s;
-  background-color: #009688f5;
 }
 
 .seccion-izquierda.seccion-trabajo {
@@ -517,13 +528,6 @@ nav.idioma li.selected {
   cursor: pointer;
 }
 
-.cronograma > .seccion-izquierda {
-  background-attachment: fixed;
-  background-color: #292929;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 .seccion-estudios {
   background-image: url(../img/studies.jpg);
@@ -544,9 +548,6 @@ nav.idioma li.selected {
   background: #292929f5;
 }
 
-.cronograma > .seccion-trabajo {
-  background-color: #009688f5;
-}
 
 .abierta {
   left: 0;
