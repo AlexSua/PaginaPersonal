@@ -90,7 +90,7 @@ footer div.creador {
 }
 
 #videoIntro {
-  position: fixed;
+  position: absolute;
   object-fit: cover;
   object-position: bottom;
   width: 100%;

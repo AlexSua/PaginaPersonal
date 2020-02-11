@@ -364,7 +364,7 @@ function fijarElementos() {
         } 
         // videoIntro.style.display = "none";
       } else if (coords.top >= 0) {
-        translateObject(0, -window.scrollY / 3 + "px", videoIntro);
+        translateObject(0, window.scrollY / 3 + "px", videoIntro);
         if (videoIntro.paused) {videoIntro.play();videoIntro.style.display=""};
         // videoIntro.style.display = "";
       }
