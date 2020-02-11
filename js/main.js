@@ -18,10 +18,10 @@ window.onresize = () => {
   }
 };
 
-function initializeTitles(){
-  Array.from(document.querySelectorAll(".seccion-izquierda h3")).map(el=>{
-    el.textContent="";
-  })
+function initializeTitles() {
+  Array.from(document.querySelectorAll(".seccion-izquierda h3")).map(el => {
+    el.textContent = "";
+  });
 }
 
 function chequearNavegador() {
@@ -58,7 +58,9 @@ function initializeVariables() {
     ".trabajo .cronograma-elemento"
   );
 
-  cronograma_secciones = document.querySelectorAll(".trabajo .cronograma-seccion");
+  cronograma_secciones = document.querySelectorAll(
+    ".trabajo .cronograma-seccion"
+  );
   cronograma = document.querySelectorAll(".cronograma");
   secciones = document.querySelectorAll(".seccion");
   windowWidth = window.innerWidth;
@@ -123,32 +125,50 @@ function createCancelButton(elemento) {
   return cancel_button;
 }
 
-function deleteCancelButton(cancel_button){
-  cancel_buttons = cancel_buttons.filter(el=>{
-    return el.element!==cancel_button
-  })
+function createNextButton(elemento) {
+  let next = elemento.querySelector(".siguiente");
+  if (!next) {
+    next = document.createElement("div");
+    next.className = "siguiente";
+    elemento.children[1].appendChild(next);
+    next.onclick=function(event) {
+      event.stopPropagation();
+      elemento.nextElementSibling.onclick()
+    };
+  }
+  if(elemento.nextElementSibling) next.classList.add("open");
+  return next;
 }
 
-function closeAllExcept(cancel_button){
-   cancel_buttons.forEach(el=>{
-    if(el.element!==cancel_button && el.element.onclick)
-      el.element.onclick(event)
-  })
+function deleteCancelButton(cancel_button) {
+  cancel_buttons = cancel_buttons.filter(el => {
+    return el.element !== cancel_button;
+  });
 }
 
-function calculateDistanceToScroll(element){ 
+function closeAllExcept(cancel_button) {
+  cancel_buttons.forEach(el => {
+    if (el.element !== cancel_button && el.element.onclick)
+      el.element.onclick(event);
+  });
+}
+
+function calculateDistanceToScroll(element) {
   let height = 0;
   let i = 0;
-  cronograma_secciones.forEach((seccion,index)=>{
-    if(seccion.offsetHeight>height){
-      height=seccion.offsetHeight;
+  cronograma_secciones.forEach((seccion, index) => {
+    if (seccion.offsetHeight > height) {
+      height = seccion.offsetHeight;
     }
-    if(element.children[1]===seccion){
-      i=index;
+    if (element.children[1] === seccion) {
+      i = index;
     }
-  })
+  });
   let trabajo_coords = cronograma_seccion_trabajo_element.getBoundingClientRect();
-  window.scrollTo({top:(window.scrollY+trabajo_coords.top)+(i*height),behavior:"smooth"})
+  window.scrollTo({
+    top: window.scrollY + trabajo_coords.top + i * height,
+    behavior: "smooth"
+  });
 }
 
 function animacionTrabajo() {
@@ -169,8 +189,9 @@ function animacionTrabajo() {
       elemento.onclick = function() {
         if (getObjectTranslation(cronograma_fecha)[1] != margin_fecha_open) {
           // document.body.style.overflow = "hidden";
-          let cancel_button =createCancelButton(elemento)
-          closeAllExcept(cancel_button)
+          let cancel_button = createCancelButton(elemento);
+          let next_button = createNextButton(elemento);
+          closeAllExcept(cancel_button);
           cancel_button.classList.add("show");
           // window.scroll({ top: top, left: 0, behavior: "smooth" });
           // elemento.scrollIntoView({ behavior: "smooth" })
@@ -179,7 +200,8 @@ function animacionTrabajo() {
           cancel_button.onclick = event => {
             event.stopPropagation();
             // elemento.scrollIntoView({ behavior: "smooth" })
-            deleteCancelButton(cancel_button)
+            next_button.classList.remove("open");
+            deleteCancelButton(cancel_button);
             transitionEnd(cronograma_contenido, () => {
               cronograma_fecha_div.style.width = "";
               seccion_trabajo_abierta = 0;
@@ -191,7 +213,7 @@ function animacionTrabajo() {
             cronograma_vermas.classList.remove("close");
             cronograma_contenido_background.classList.remove("open");
 
-            if(cancel_buttons.length<=0)
+            if (cancel_buttons.length <= 0)
               cronograma_seccion_trabajo.style.width = "";
 
             eliminarAparicionTextosTrabajo(cronograma_contenido);
@@ -225,7 +247,7 @@ function animacionTrabajo() {
             behavior: "smooth"
           });
           document.body.style.overflow = "hidden";
-          let cancel_button =createCancelButton(elemento)
+          let cancel_button = createCancelButton(elemento);
 
           cronograma_contenido.style.display = "flex";
 
@@ -236,9 +258,9 @@ function animacionTrabajo() {
 
           animacionAparicionTextosTrabajo(cronograma_contenido);
 
-          cancel_button.onclick = (event) => {
+          cancel_button.onclick = event => {
             event.stopPropagation();
-            deleteCancelButton(cancel_button)
+            deleteCancelButton(cancel_button);
             document.body.style.overflow = "hidden";
             elemento.scrollIntoView({
               behavior: "smooth"
@@ -283,8 +305,7 @@ function animacionTrabajo() {
                 cronograma_contenido.style.display = "";
               }
               document.body.style.overflow = "";
-              elemento.scrollIntoView({ })
-
+              elemento.scrollIntoView({});
             },
             false
           );
@@ -292,8 +313,10 @@ function animacionTrabajo() {
       };
     }
     if (cronograma_contenido_background.classList.contains("open"))
-      cancel_buttons.forEach(cancel_button=>{
-        cancel_button.element.onclick ? cancel_button.element.onclick(event) : null;
+      cancel_buttons.forEach(cancel_button => {
+        cancel_button.element.onclick
+          ? cancel_button.element.onclick(event)
+          : null;
       });
   });
 }
@@ -356,12 +379,11 @@ function fijarElementos() {
         container.classList.remove("sticky");
       container.style.top = "";
       if (seccion_trabajo_abierta)
-      cancel_buttons.forEach(cancel => {
-        fijarElemento(cancel.element, cancel.section);
-      });
+        cancel_buttons.forEach(cancel => {
+          fijarElemento(cancel.element, cancel.section);
+        });
     }
   });
- 
 }
 
 function aparicionElementos() {
@@ -471,7 +493,7 @@ function writingAnimation(elemento, texto) {
 }
 
 function navegarA(elemento) {
-  document.querySelector(elemento).scrollIntoView({ behavior: "smooth" })
+  document.querySelector(elemento).scrollIntoView({ behavior: "smooth" });
 }
 
 function footerAnimation() {

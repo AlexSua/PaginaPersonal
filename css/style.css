@@ -955,6 +955,22 @@ nav.idioma li.selected {
   justify-content: center;
 }
 
+.siguiente{
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  height: 50px;
+  width: 70px;
+  background-image: url(../img/ArrowDown.svg);
+  transform: translate3d(-50%,50px,0);
+  left: 50%;
+  transition: 1s transform;
+
+}
+.siguiente.open{
+  transform: translate3d(-50%,0,0);
+  cursor: pointer;
+}
 
 @media (max-width: 1024px) {
   main {
