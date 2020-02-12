@@ -358,15 +358,12 @@ function fijarElementos() {
     var coords = element.getBoundingClientRect();
     if (index == 0) {
       if (coords.top < 0) {
-        if (!videoIntro.paused){
-          videoIntro.pause();
-          videoIntro.style.display="none"
-        } 
-        // videoIntro.style.display = "none";
+        if (!videoIntro.paused) videoIntro.pause();
+        videoIntro.style.display = "none";
       } else if (coords.top >= 0) {
         translateObject(0, window.scrollY / 3 + "px", videoIntro);
-        if (videoIntro.paused) {videoIntro.play();videoIntro.style.display=""};
-        // videoIntro.style.display = "";
+        if (videoIntro.paused) videoIntro.play();
+        videoIntro.style.display = "";
       }
       if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
         translateObject(0, "0", arriba);
