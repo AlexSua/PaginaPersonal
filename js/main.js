@@ -181,7 +181,7 @@ function animacionTrabajo() {
       ".cronograma-contenido-background"
     );
     let cronograma_fecha_div = elemento.querySelector(".cronograma-fecha div");
-    let margin_fecha_open = "10vh";
+    let margin_fecha_open = "7vh";
     let width_titulo_seccion_trabajo_abierta = "30%";
 
     if (window.innerWidth > 1024) {
