@@ -540,7 +540,7 @@ nav.idioma li.selected {
   background-image: url(../img/studies.jpg);
   background-position: center center;
   background-attachment: fixed;
-  background-size: contain;
+  background-size: cover;
   min-height: 100vh;
 }
 .seccion-estudios nav,
