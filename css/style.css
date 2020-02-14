@@ -241,9 +241,14 @@ nav.idioma li.selected {
   font-size: 3em;
   margin: auto;
   margin-top: 42.7vh;
-  padding-left: 0.4em;
 }
-
+.seccion-izquierda h3::after{
+  content:"";
+  position: absolute;
+}
+.seccion-izquierda h3.tick::after{
+  content:"|";
+}
 .sticky {
   top: 0;
   position: fixed !important;

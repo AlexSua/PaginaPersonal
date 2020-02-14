@@ -7,6 +7,7 @@ function initializeJS() {
 }
 window.onload = function() {
   navegacion();
+  initializeTitles()
   initializeVariables();
   initializeJS();
 };
@@ -450,14 +451,14 @@ function aparicionTitulos() {
     if (titulo.getBoundingClientRect().top - window.innerHeight < 0) {
       if (!titulo.classList.contains("ok")) {
         titulo.classList.add("ok");
-        writingAnimation(titulo, titulo.textContent);
+        writingAnimation(titulo, titulo.getAttribute("text"));
       }
     }
   });
 }
 
 function writingAnimation(elemento, texto) {
-  elemento.style.width = elemento.offsetWidth + "px";
+  // elemento.style.width = elemento.offsetWidth + "px";
   elemento.textContent = "";
   let nextLetter = 0;
   let nextText = "";
@@ -465,13 +466,13 @@ function writingAnimation(elemento, texto) {
 
   let cursorBlink = () => {
     setTimeout(() => {
-      elemento.textContent.substr(-1) == "|"
-        ? (elemento.textContent = elemento.textContent.slice(0, -1))
-        : (elemento.textContent += "|");
+      elemento.classList.contains("tick")
+        ? elemento.classList.remove("tick")
+        : elemento.classList.add("tick");
       maxTicks--;
       if (
         maxTicks > 0 ||
-        (maxTicks <= 0 && elemento.textContent.substr(-1) == "|")
+        (maxTicks <= 0 &&  elemento.classList.contains("tick"))
       )
         cursorBlink();
       else {
@@ -485,7 +486,8 @@ function writingAnimation(elemento, texto) {
     setTimeout(() => {
       nextText = nextText + c;
 
-      elemento.textContent = nextText + "|";
+      elemento.textContent = nextText;
+      elemento.classList.add("tick")
       // if (index >= textArray.length - 1)
     }, nextLetter);
     nextLetter += 120;
