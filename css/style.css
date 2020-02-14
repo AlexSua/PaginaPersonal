@@ -1024,6 +1024,9 @@ nav.idioma li.selected {
   .seccion-contenido {
     padding: 20% 3% 20% 3%;
   }
+  .seccion-contenido p{
+    margin:0;
+  }
   .seccion-trabajo {
     background-image: url(../img/work.jpg);
     background-attachment: unset;
