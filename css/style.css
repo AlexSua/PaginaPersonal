@@ -1,20 +1,17 @@
-/* @font-face {
-  font-family: "TESLA";
-  src: url("../webfonts/TESLA.woff2") format("woff2"),
-    url("../webfonts/TESLA.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-} */
 html {
   font-size: 16px;
   text-align: justify;
 }
 body {
   font-family: "Source Sans Pro", sans-serif;
-  overflow: auto;
+  overflow: hidden;
   margin: 0;
   color: white;
   font-size: 1em;
+}
+
+body.loaded {
+  overflow: auto;
 }
 
 h1,
@@ -28,20 +25,16 @@ ul {
 }
 
 h1 {
-  /* font-family: "TESLA", fallback,"Source Sans Pro",fallback,sans-serif; */
   font-size: 3em;
 }
-/* .seccion-izquierda h3{
-  font-family: "TESLA", fallback,"Source Sans Pro",fallback,sans-serif;
 
-} */
 p {
   font-size: 1.1em;
   text-align: justify;
   line-height: 150%;
 }
-strong{
-  /* color:yellow; */
+strong {
+  color: #000000ad;
 }
 
 .wrapper {
@@ -60,13 +53,25 @@ header {
   background-size: cover;
   display: flex;
   flex-direction: column;
+  background: url(../img/loading.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+header .secciones-navegacion ul {
+  transform: translate3D(0, 160px, 0);
+  transition: transform 1s;
+}
+body.loaded header{
+    background: unset;
 }
 
+body.loaded header .secciones-navegacion ul {
+  transform: translate3D(0, 0, 0);
+}
 footer {
   position: relative;
   overflow: hidden;
   background: #292929;
-  /* background: url(../img/footer2.jpg) center center fixed; */
   background-size: cover;
   height: 100%;
   display: flex;
@@ -77,11 +82,6 @@ footer > div {
   display: flex;
   height: 100%;
   background: #17424f;
-  /* background-image: linear-gradient(
-    to bottom,
-    rgba(12, 37, 45, 0.7),
-    rgba(12, 37, 45, 1)
-  ); */
 }
 
 footer div.creador {
@@ -100,13 +100,18 @@ footer div.creador {
   z-index: 1;
 }
 
+
 #videoIntro {
   position: absolute;
   object-fit: cover;
   object-position: bottom;
   width: 100%;
   height: 100vh;
-  z-index: 0;
+  z-index: -1;
+}
+
+body.loaded #videoIntro{
+    z-index: 0;
 }
 
 .titulo {
@@ -122,9 +127,9 @@ footer div.creador {
 .titulo > h3 {
   font-style: italic;
   font-weight: 100;
-  font-size: 0.9em;
+  font-size: 1.1rem;
   max-width: 25rem;
-  margin: 1.25rem;
+  margin: 0.8rem;
 }
 
 nav {
@@ -148,7 +153,7 @@ nav ul {
 nav li {
   text-align: center;
   margin-top: 0.625rem;
-  font-size: 0.9em;
+  font-size: 1.1rem;
 }
 
 nav li:nth-child(n + 2):not(:nth-child(4))::before {
@@ -218,7 +223,6 @@ nav.idioma li.selected {
   height: auto;
   float: right;
   min-height: 100vh;
-  /* left: 50%; */
 }
 
 .seccion-derecha.estudios {
@@ -291,8 +295,7 @@ nav.idioma li.selected {
   margin-left: 3.125rem;
   text-align: left;
   mix-blend-mode: difference;
-  /* margin-top: 45vh; */
-  transform: translate3d(0, 20vh, 0);
+  transform: translate3d(0, 19vh, 0);
   transition: transform 1s, height 1s;
   color: white;
 }
@@ -344,7 +347,6 @@ nav.idioma li.selected {
   background: white;
   transform: translate3d(18.75rem, 0, 0);
   opacity: 0;
-  /* transform: rotateY(-45deg); */
   transition: margin-left 1s ease-out, opacity 1s ease-out,
     transform 1s ease-out;
   padding-top: 1rem;
@@ -372,7 +374,6 @@ nav.idioma li.selected {
 .trabajo .cronograma-contenido > .texto.open {
   transform: translate3d(0, 0, 0);
   opacity: 1;
-  /* transform: rotateY(0deg); */
 }
 
 .trabajo .cronograma-contenido h3 {
@@ -380,13 +381,11 @@ nav.idioma li.selected {
   justify-content: left;
   border-bottom: 0.0625rem solid;
   mix-blend-mode: unset;
-  color: #264653;
   max-width: 43.75rem;
   width: 25rem;
   margin: 3.125rem;
   margin-top: 0;
   padding-left: 20p;
-  /* padding-bottom: 1.25rem; */
   margin-bottom: 0;
 }
 
@@ -397,7 +396,7 @@ nav.idioma li.selected {
   padding-bottom: 0;
 }
 .trabajo .cronograma-contenido a {
-  float:left;
+  float: left;
 }
 .trabajo .cronograma-contenido > .texto:nth-of-type(1) p {
   max-width: 31.25rem;
@@ -405,7 +404,6 @@ nav.idioma li.selected {
 
 .trabajo .cronograma-contenido {
   margin: 0;
-  /* padding: 15vh; */
   overflow: hidden;
   display: flex;
   flex: 1;
@@ -415,13 +413,10 @@ nav.idioma li.selected {
   max-height: 0vh;
   min-height: 0vh;
   flex-direction: column;
-  /* padding-bottom: 12.5rem; */
   transition: min-height 1s;
-  /* justify-content: center; */
 }
 .trabajo .cronograma-contenido.open {
   display: flex;
-  /* min-height: 100vh; */
 }
 
 .cronograma-contenido-background {
@@ -451,11 +446,8 @@ nav.idioma li.selected {
 .trabajo .cronograma-fecha {
   position: absolute;
   display: none;
-  /* margin-top: 45vh; */
-  /* transform: translate3d(0, 20vh, 0); */
   z-index: 5;
   transition: transform 1s;
-  /* mix-blend-mode: difference; */
   color: white;
 }
 
@@ -474,11 +466,9 @@ nav.idioma li.selected {
   display: flex;
   justify-content: center;
   margin: 0.625rem;
-  /* mix-blend-mode: difference; */
   align-items: center;
   white-space: nowrap;
   cursor: pointer;
-  /* border-radius: 1.875rem 0rem 0rem 1.875rem; */
   overflow: hidden;
   font-weight: 600;
   transition: width 0.5s;
@@ -497,14 +487,11 @@ nav.idioma li.selected {
 }
 
 .info > .seccion-izquierda {
-  /* background-color: #292929;
-  color: #f2d492; */
   background-color: #f2d492;
   color: #1f414d;
 }
 
 .info nav {
-  /* color: #f2d492; */
   color: #1f414d;
 }
 .info nav span::after {
@@ -525,16 +512,22 @@ nav.idioma li.selected {
 
 .info > .seccion-derecha {
   background-color: floralwhite;
-  color: #1f414d;
+  color: black;
 }
 .info h3 {
   margin-top: 2rem;
 }
-.info p{
-  margin-top: 0.5rem;
+.info > .seccion-izquierda h3 {
+  margin-top: 0;
+}
+.info p {
+  margin-top: 0.3rem;
+}
+.info > .seccion-derecha h3 {
+  font-size: 1.36em;
 }
 .info h4 {
-  font-size: 1.13em;
+  font-size: 1.2em;
   font-weight: 600;
   margin-left: 3%;
   font-style: italic;
@@ -547,7 +540,7 @@ nav.idioma li.selected {
   font-size: 1.1em;
 }
 
-.info .seccion-derecha ul>li {
+.info .seccion-derecha ul > li {
   padding-bottom: 0.8rem;
 }
 .cancel.show {
@@ -607,42 +600,15 @@ nav.idioma li.selected {
 }
 
 .seccion-estudios > .titulo-seccion {
-  /* background-color: #f2d492f5;
-  color:#292929; */
   background-color: #1f414df5;
 }
 
 .seccion-estudios nav {
-  /* color:#292929; */
 }
 
 .cronograma > .seccion-derecha {
-  /* background-color: antiquewhite; */
   z-index: 1;
 }
-
-/* .cronograma > .seccion-derecha::before {
-  content: "";
-  width: 0.4375rem;
-  background: white;
-  z-index: 5;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-} */
-
-/* .cronograma > .seccion-derecha::before {
-  content: "";
-  width: 0.4375rem;
-  background: white;
-  z-index: 5;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-} */
-
 .cronograma > .seccion-derecha.estudios::before {
   z-index: 0;
 }
@@ -657,20 +623,15 @@ nav.idioma li.selected {
   top: 0vh;
 }
 
-.trabajo > div {
-  /* top:100vh; */
-}
-
 .cronograma-seccion {
   position: relative;
-  /* right:-100%; */
   top: 0vh;
   transition: right 2s;
 }
 
 .cronograma-elemento {
   display: flex;
-  color: #264653;
+  color: black;
   height: auto;
   padding-top: 5vh;
   transition: padding-top 0.5s;
@@ -678,40 +639,15 @@ nav.idioma li.selected {
 
 .trabajo .cronograma-elemento {
   flex-direction: column;
-  /* min-height: 50vh; */
   position: relative;
 }
-
-.cronograma-elemento:last-child {
-  /* padding-bottom: 3.125rem; */
-}
-
-/*
-.cronograma-elemento.visible {
-  padding-top: 5vh;
-    right:0;
-}
-*/
 
 .cronograma-seccion.visible {
   right: 0;
 }
 
-.cronograma-elemento:first-child {
-  /* padding-top: 15vh; */
-}
-
 .cronograma-fecha {
-  /* position: absolute; */
-  /* left: -13.6813rem; */
-  /* border-radius: 10%; */
   padding: 1.25rem;
-  /* min-width: 12.5rem; */
-  /* max-width: 12.5rem; */
-  /* padding-top: 0.4375rem; */
-  /* color: white; */
-  /* display: flex; */
-  /* justify-content: flex-end;*/
 }
 
 .estudios .cronograma-elemento > .cronograma-seccion {
@@ -721,21 +657,8 @@ nav.idioma li.selected {
 }
 
 .estudios .cronograma-fecha {
-  color: #264653;
   font-weight: bold;
   padding: 0;
-  /* color: white; */
-}
-
-.cronograma-fecha div {
-  /* margin-top: -1.4375rem;
-  text-align: center;
-  font-weight: bold;
-  width: 0;
-  overflow: hidden;
-  transition: width 0.5s;
-  white-space: nowrap;
-  margin-right: -0.4375rem; */
 }
 
 .cronograma-fecha div.linea {
@@ -749,34 +672,9 @@ nav.idioma li.selected {
   max-height: 3.75rem;
   right: 3.75rem;
 }
-.cronograma-elemento:hover .cronograma-fecha div {
-  /* width: 7.5rem; */
-}
-
-.cronograma-fecha div span {
-  /* display: block; */
-  /* background:white;
-  color:#264653 !important; */
-}
-
-/* .cronograma-fecha::after {
-  content: "";
-  position: absolute;
-  background: #393e41;
-  right: -2.625rem;
-  top: -0.125rem;
-  width: 1.875rem;
-  height: 1.875rem;
-  z-index: 5;
-  border-radius: 50%;
-  border: 0.3125rem solid white;
-} */
 
 .trabajo .cronograma-fecha:after {
   background: #009688 !important;
-}
-.trabajo .cronograma-fecha div span {
-  /* color:#009688 !important; */
 }
 
 .texto h3 {
@@ -795,16 +693,17 @@ nav.idioma li.selected {
   padding: 0.3125rem;
   padding-left: 0.5rem;
   padding-top: 0;
+  font-size: 1.13rem;
 }
 
 .cronograma-ubicacion {
   display: flex;
   font-weight: bold;
-  /* padding-top:0.625rem; */
-  /* margin-left: 0.3125rem; */
+  font-size: 1.13rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
 }
 .cronograma-ubicacion::before {
-  /* background-image: url(../img/location.svg); */
   width: 1.25rem;
   height: 1.25rem;
   margin-right: 0.3125rem;
@@ -813,7 +712,6 @@ nav.idioma li.selected {
 }
 
 .trabajo .cronograma-ubicacion {
-  /* mix-blend-mode: difference; */
   color: white;
   margin-left: 0.3125rem;
   font-weight: bold;
@@ -823,40 +721,10 @@ nav.idioma li.selected {
   background-image: url(../img/locationw.svg);
 }
 
-/* .cronograma-contenido::before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-top: solid 1.25rem transparent;
-    border-bottom: solid 1.25rem transparent;
-    border-right: solid 0.625rem white;
-    border-left: solid 0.625rem transparent;
-    position: absolute;
-    left: 1.875rem;
-}
-
-
-.cronograma-contenido::before {
-
-
-    content: "";
-    width: 0;
-    height: 0;
-    border-top: solid 1.25rem #d9d5d6;
-    border-bottom: solid 1.25rem transparent;
-    border-right: solid 1.25rem white;
-    border-left: solid 1.25rem #d8d4d6;
-    position: absolute;
-} */
-
 .cronograma-contenido {
   flex: 1;
-  /* left: 0.625rem; */
   position: relative;
-  /* left: 50%; */
   margin: 0 1.875rem 0.625rem 3.125rem;
-  /* background: white; */
-  /* box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.2), 0 0.375rem 1.25rem 0 rgba(0, 0, 0, 0.19);*/
 }
 
 .estudios p {
@@ -873,7 +741,6 @@ nav.idioma li.selected {
 .cronograma-contenido > .texto > p {
   max-width: 43.75rem;
   margin-left: 3%;
-  /* margin-top: 2.5rem;*/
 }
 
 .estudios .cronograma-seccion {
@@ -895,10 +762,8 @@ nav.idioma li.selected {
 }
 
 .habilidades > .seccion-derecha {
-  /* background: #fffffff5; */
   background-color: white;
   color: #292929;
-  /* height: 100vh; */
 }
 
 .lista-habilidades {
@@ -916,7 +781,6 @@ nav.idioma li.selected {
 }
 
 .lista-habilidades img {
-  /* max-width: 4em; */
   max-height: 4em;
   padding-bottom: 0.3125rem;
 }
@@ -942,7 +806,6 @@ nav.idioma li.selected {
 }
 
 .contacto > .seccion-derecha {
-  /* background: #fffffff5; */
   background: #fffaf0e8;
   color: #292929;
   height: 100vh;
@@ -961,7 +824,6 @@ nav.idioma li.selected {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* align-content: center; */
   max-width: unset;
   height: 100%;
 }
@@ -1020,6 +882,39 @@ nav.idioma li.selected {
   transform: translate3d(-50%, 0, 0);
   cursor: pointer;
 }
+.load-animation {
+  display: inline-block;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+}
+body.loaded .load-animation {
+  display: none;
+}
+.load-animation div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: load-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #f2d492 transparent transparent transparent;
+}
+.load-animation div:nth-child(2) {
+  animation-delay: -0.6s;
+}
+
+@keyframes load-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @media screen and (min-width: 2560px) {
   html {
@@ -1040,8 +935,10 @@ nav.idioma li.selected {
   body {
     font-size: 0.9em;
   }
+  p {
+    line-height: 140%;
+  }
   .seccion {
-    /* height: auto !important; */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -1060,6 +957,12 @@ nav.idioma li.selected {
   }
   .info > .seccion-derecha {
     height: auto;
+  }
+  .info h4 {
+    margin-left: 0;
+  }
+  .info > .seccion-izquierda h3 {
+    margin-top: 1.5rem;
   }
   .seccion-contenido {
     padding: 20% 3% 20% 3%;
@@ -1093,6 +996,10 @@ nav.idioma li.selected {
     left: 50%;
     transform: translatex(-50%);
   }
+  .info img {
+    margin-top: 17vh;
+    margin-bottom: 0;
+  }
 
   .seccion-trabajo > .titulo-seccion {
     z-index: 3;
@@ -1109,7 +1016,6 @@ nav.idioma li.selected {
   }
   .cronograma-fecha {
     left: 20px;
-    color: #264753;
     z-index: 5;
     max-width: unset;
     font-size: 13px;
@@ -1138,11 +1044,9 @@ nav.idioma li.selected {
   .trabajo .cronograma-ubicacion {
     margin-left: auto;
     margin-right: auto;
-    /* margin-left:0; */
   }
 
   .cronograma-elemento .cronograma-fecha div {
-    /* margin-top: 10px; */
     width: unset;
   }
   .cronograma-elemento .cronograma-fecha span {
@@ -1166,7 +1070,6 @@ nav.idioma li.selected {
   }
   .trabajo .vermas {
     margin-top: 20px;
-    /* margin-left: 5px; */
   }
   .trabajo .vermas.hover {
     width: 100px;
@@ -1199,11 +1102,7 @@ nav.idioma li.selected {
     margin-top: 15px;
     margin-left: 0;
   }
-  .trabajo .cronograma-contenido > .texto {
-    /* padding:0;
-    padding-left: 3%;
-    padding-right: 3%; */
-  }
+
   .habilidades .seccion-contenido {
     padding: 0;
   }
@@ -1232,13 +1131,10 @@ nav.idioma li.selected {
     height: 25vh;
   }
   .trabajo .title.open {
-    padding-top: 3em;
+    padding-top: 2.5em;
   }
   .trabajo .cronograma-contenido > .texto {
     width: 100%;
-    /* transform: unset;
-    
-    transition: margin-left 1s ease-out, opacity 1s ease-out; */
   }
   .secciones-navegacion {
     padding-bottom: 9.3vh;

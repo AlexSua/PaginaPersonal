@@ -7,9 +7,10 @@ function initializeJS() {
 }
 window.onload = function() {
   navegacion();
-  initializeTitles()
+  initializeTitles();
   initializeVariables();
   initializeJS();
+  document.body.classList.add("loaded");
 };
 
 window.onresize = () => {
@@ -132,12 +133,12 @@ function createNextButton(elemento) {
     next = document.createElement("div");
     next.className = "siguiente";
     elemento.children[1].appendChild(next);
-    next.onclick=function(event) {
+    next.onclick = function(event) {
       event.stopPropagation();
-      elemento.nextElementSibling.onclick()
+      elemento.nextElementSibling.onclick();
     };
   }
-  if(elemento.nextElementSibling) next.classList.add("open");
+  if (elemento.nextElementSibling) next.classList.add("open");
   return next;
 }
 
@@ -327,7 +328,6 @@ function animationFrame() {
     scrollAnterior = window.scrollY;
     aparicionElementos();
     if (window.innerWidth > 1024) {
-      // aparicionTitulos();
     } else {
       smartphoneAnimation();
     }
@@ -373,7 +373,6 @@ function fijarElementos() {
       }
     }
     if (window.innerWidth > 1024) {
-      // fijarElemento(element.children[0], coords);
     } else {
       let container = element.children[0];
       if (container.classList.contains("sticky"))
@@ -388,18 +387,6 @@ function fijarElementos() {
 }
 
 function aparicionElementos() {
-  // if (window.innerWidth > 1024) {
-  //   if (
-  //     cronograma[0].getBoundingClientRect().top + window.outerHeight / 3 <
-  //     window.innerHeight
-  //   ) {
-  //     cronograma_estudio.style.top = "";
-  //   } else {
-  //     cronograma_estudio.style.top = cronograma_estudio_height + "px";
-  //   }
-  // } else {
-  //   cronograma_estudio.style.top = "";
-  // }
   var ce = cronograma[0];
   var bcr = ce.getBoundingClientRect();
   if (bcr.top < window.innerHeight && bcr.bottom > 0) {
@@ -458,7 +445,6 @@ function aparicionTitulos() {
 }
 
 function writingAnimation(elemento, texto) {
-  // elemento.style.width = elemento.offsetWidth + "px";
   elemento.textContent = "";
   let nextLetter = 0;
   let nextText = "";
@@ -472,12 +458,9 @@ function writingAnimation(elemento, texto) {
       maxTicks--;
       if (
         maxTicks > 0 ||
-        (maxTicks <= 0 &&  elemento.classList.contains("tick"))
+        (maxTicks <= 0 && elemento.classList.contains("tick"))
       )
         cursorBlink();
-      else {
-        // elemento.style.width=""
-      }
     }, 700);
   };
   cursorBlink();
@@ -487,8 +470,7 @@ function writingAnimation(elemento, texto) {
       nextText = nextText + c;
 
       elemento.textContent = nextText;
-      elemento.classList.add("tick")
-      // if (index >= textArray.length - 1)
+      elemento.classList.add("tick");
     }, nextLetter);
     nextLetter += 120;
   });
