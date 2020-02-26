@@ -40,6 +40,9 @@ p {
   text-align: justify;
   line-height: 150%;
 }
+strong{
+  /* color:yellow; */
+}
 
 .wrapper {
   width: 100%;
