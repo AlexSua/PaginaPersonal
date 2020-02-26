@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,44 +10,39 @@
     />
     <link
       rel="preload"
-      href="./webfonts/SourceSans.woff2"
+      href="../webfonts/SourceSans.woff2"
       as="font"
       type="font/woff"
       crossorigin
     />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script src="../js/main.js"></script>
   </head>
 
   <body>
-    <script>
-      if(navigator.language.toLocaleLowerCase().startsWith("en")){
-        window.location.replace("./en/index.html");
-      }
-    </script>
     <section class="wrapper">
       <header>
-        <img src="./img/loading.jpg" />
+        <img src="../img/loading.jpg" />
         <video autoplay muted loop id="videoIntro">
-          <source src="./img/intro.webm" type="video/webm" />
+          <source src="../img/intro.webm" type="video/webm" />
         </video>
 
         <div class="titulo">
           <h1>Alejandro Suárez</h1>
-          <h2>Ingeniero Informático.</h2>
+          <h2>Software Engineer</h2>
           <h3>
-            "Siempre a mejor, nunca a peor"
+            "Always getting better, never getting worse"
           </h3>
         </div>
         <nav class="idioma">
           <ul>
-            <li class="selected">
-              <span>
+            <li>
+              <span onclick="window.location.replace('../es/index.html');">
                 ES
               </span>
             </li>
-            <li>
-              <span onclick='window.location.replace("./en/index.html");'>
+            <li class="selected">
+              <span>
                 EN
               </span>
             </li>
@@ -59,11 +54,11 @@
             <div></div>
           </div>
           <ul>
-            <li><span>Sobre mi</span></li>
-            <li><span>Estudios</span></li>
-            <li><span>Trabajo</span></li>
-            <li><span>Habilidades</span></li>
-            <li><span>Contacto</span></li>
+            <li><span>About me</span></li>
+            <li><span>Studies</span></li>
+            <li><span>Experience</span></li>
+            <li><span>Abilities</span></li>
+            <li><span>Contact</span></li>
           </ul>
         </nav>
       </header>
@@ -71,73 +66,71 @@
       <main>
         <section class="seccion info">
           <div class="seccion-izquierda">
-            <img src="img/profile.jpg" />
-            <h3 text="Sobre mi">Sobre mi</h3>
+            <img src="../img/profile.jpg" />
+            <h3 text="About me">About me</h3>
             <nav class="secciones-navegacion"></nav>
           </div>
           <div class="seccion-derecha">
             <div class="seccion-contenido">
               <h3>
-                Soy un ingeniero informático gallego que se encuentra ahora
-                mismo viviendo en Santiago de Compostela.
+                I am a spanish software engineer who currently lives in Santiago
+                de Compostela.
               </h3>
               <p>
-                Con un máster en Ingeniería Web, 1’5 años de experiencia como
-                desarrollador FullStack y con capacidad para hablar de forma
-                fluida en idiomas español, inglés y gallego, busco aprender y
-                participar en el desarrollo de proyectos con los que encontrar
-                mis límites y crecer profesionalmente.
+                With a master’s degree in Web Engineering, 1.5 years of
+                experience as FullStack Developer and the ability to speak
+                English, Spanish and Galician, I am looking to learn and
+                participate in the development of new projects that allow me to
+                grow professionally.
               </p>
               <h4>
-                Versátil
+                Versatile
               </h4>
               <p>
-                Tengo más experiencia es en el desarrollo FullStack pero también
-                tengo conocimientos en desarrollo a bajo nivel, administración
-                de servidores así como codificación de audio y video. Me gusta
-                experimentar y probar nuevos campos dentro de la informática.
+                Where I have more experience is in FullStack development but I
+                also have knowledge in low level development, system
+                administration, as well as video and audio transcoding. I like
+                to experiment and discover new fields in computer science.
               </p>
               <h4>
-                Busco la manera de automatizar las tareas
+                Looking for ways to automate tasks
               </h4>
               <p>
-                Las tareas repetitivas son mi peor enemigo y cuando tengo que
-                enfrentarme a ellas siempre buscaré una manera de automatizarlas
-                y evitar a toda costa hacerlas a mano.
+                Repetitive tasks are my worst enemy and when I have to deal with
+                them I will always look for a way to automate or avoid doing
+                them by hand.
               </p>
               <h4>
-                Al tanto de las novedades tecnológicas
+                Aware of technological news
               </h4>
               <p>
-                Me informo habitualmente de las nuevas tecnologías y siempre me
-                pregunto en que proyecto podría emplearlas para tener la
-                oportunidad de aprenderlas, o para solucionar un determinado
-                tipo de escenario.
+                I usually get informed about new technologies and I always
+                wonder in which project I could use these new things to have the
+                opportunity to learn about them or solve a specific type of
+                scenario.
               </p>
               <h4>
-                Trato de encontrar una manera de hacerlo mejor
+                Finding a way to do it better
               </h4>
               <p>
-                No me conformo con solucionar el problema y siempre intento
-                buscar la mejor manera de resolverlo.
+                I don't settle just solving the problem and I am always trying
+                to find a better way to do so.
               </p>
               <h3>
-                Motivaciones
+                Motivations
               </h3>
               <ul>
                 <li>
-                  Un <strong>reto</strong> que me haga plantear muchas
-                  posibilidades para poder resolverlo.
+                  A <strong>challenge</strong> that makes me raise many
+                  possibilities in order to solve it.
                 </li>
                 <li>
-                  <strong>Entorno cambiante</strong> donde pueda aprender nuevas
-                  tecnologías.
+                  A variable environment where I can learn new technologies.
                 </li>
                 <li>
-                  Libertad. <strong>Tener la libertad</strong> para configurar
-                  mi entorno de trabajo y no tener restricciones cuando voy a
-                  resolver un problema me ayuda a
-                  <strong>maximizar la productividad.</strong>
+                  Freedom. Having the freedom to set my work environment and not
+                  having restrictions when I solve a problem helps me maximize
+                  productivity.
                 </li>
               </ul>
 
@@ -147,19 +140,19 @@
 
               <ul>
                 <li>
-                  Pensar
+                  Thinking
                 </li>
                 <li>
-                  La música
+                  Music
                 </li>
                 <li>
-                  Reparar aparatos electrónicos
+                  Fixing electronic devices
                 </li>
                 <li>
-                  Escapar de la rutina
+                  Getting away from the routine
                 </li>
                 <li>
-                  Gimnasio y boxeo
+                  Gym and Boxing
                 </li>
               </ul>
             </div>
@@ -168,7 +161,7 @@
         <section class="seccion cronograma">
           <div class="seccion-izquierda seccion-estudios" style="top: 0px;">
             <div class="titulo-seccion">
-              <h3 text="Estudios">Estudios</h3>
+              <h3 text="Studies">Studies</h3>
               <nav class="secciones-navegacion"></nav>
             </div>
           </div>
@@ -181,13 +174,13 @@
                     <div class="texto">
                       <img
                         class="cronograma-logo"
-                        src="./img/estudios/logo_cit.png"
+                        src="../img/estudios/logo_cit.png"
                       />
                       <h3>
                         Software Development
                       </h3>
                       <div class="cronograma-ubicacion">
-                        Cork Institute of Technology, Irlanda
+                        Cork Institute of Technology, Ireland
                       </div>
                       <div class="cronograma-fecha">
                         <div>
@@ -195,22 +188,18 @@
                         </div>
                       </div>
                       <p>
-                        Durante mi estancia en el CIT he estudiado en la rama de
-                        desarrollo del software, donde he aprendido a
-                        desarrollar
-                        <strong>aplicaciones web progresivas</strong>, a
-                        analizar datos usando
-                        <strong>Hadoop y Spark</strong> así como a desarrollar
-                        plugins y herramientas para el gestor de contenidos
-                        <strong>Drupal</strong>. En esta etapa también participé
-                        en un <strong>curso de diseño</strong> lo que me
-                        proporcionó unas nociones para mejorar el aspecto visual
-                        de nuevas interfaces de usuario que pudiese desarrollar.
+                        During my Erasmus stay at CIT, I studied in the software
+                        development branch, where I learned to develop
+                        progressive web applications, analyse data sets using
+                        Hadoop and Spark, as well as develop addons, themes and
+                        tools for the Drupal content manager system. During this
+                        time I also participated in a design course that brings
+                        me some notions to improve the visual appearance of user
+                        interfaces.
                         <br /><br />
-                        Gracias a esta oportunidad pude mejorar mi nivel de
-                        <strong>inglés</strong> hasta el nivel de poder
-                        <strong>mantener una conversación</strong> en este
-                        idioma <strong>sin dificultad.</strong>
+                        Thanks to this opportunity I could improve my English up
+                        to the level of being able to keep a conversation
+                        without problems.
                       </p>
                     </div>
                   </div>
@@ -221,29 +210,24 @@
                   <div class="cronograma-contenido">
                     <img
                       class="cronograma-logo"
-                      src="./img/estudios/logo_uniovi.png"
+                      src="../img/estudios/logo_uniovi.png"
                     />
                     <div class="texto">
-                      <h3>Master en Ingeniería Web</h3>
+                      <h3>Master's degree in web engineering</h3>
                       <div class="cronograma-ubicacion">
-                        Universidad de Oviedo
+                        University of Oviedo
                       </div>
                       <div class="cronograma-fecha">
                         <div class="linea">2017 - 2019</div>
                       </div>
                       <p>
-                        El máster en Ingeniería Web me ofreció una formación
-                        transversal dentro de la Ingeniería Informática. Desde
-                        <strong>administración de sistemas</strong> como
-                        administración de servidores web
-                        <strong>Apache y Nginx</strong>,
-                        <strong>recuperación de datos</strong> y
-                        <strong>machine learning</strong> hasta
-                        <strong>frameworks web y patrones de diseño</strong>.
-                        Con esto el máster me proporcionó un amplio abanico de
-                        conocimientos haciéndome una persona
-                        <strong>versátil</strong>
-                        en el ámbito de la informática.
+                        This master’s degree offered me a transversal training
+                        inside computer science. From the administration of web
+                        servers such as Apache and Nginx, data mining and
+                        machine learning to web frameworks and design patterns.
+                        With this, the master gave me a broad spectrum of
+                        knowledge which made me a versatile person in the field
+                        of Computer Science.
                       </p>
                     </div>
                   </div>
@@ -254,32 +238,29 @@
                   <div class="cronograma-contenido">
                     <img
                       class="cronograma-logo"
-                      src="./img/estudios/logo_usc.png"
+                      src="../img/estudios/logo_usc.png"
                     />
 
                     <div class="texto">
-                      <h3>Grado en ingeniería informática</h3>
+                      <h3>University degree in Computer Science</h3>
                       <div class="cronograma-ubicacion">
-                        Universidad de Santiago de Compostela
+                        University of Santiago de Compostela
                       </div>
                       <div class="cronograma-fecha">
                         <div class="linea">2012 - 2016</div>
                       </div>
                       <p>
-                        Una carrera con una formación mayormente práctica que me
-                        sirvió para establecer las bases de la Ingeniería
-                        Informática. Dentro de las habilidades adquiridas
-                        durante esta etapa he de destacar:
-                        <strong
-                          >resolución de problemas, trabajo en equipo y
-                          organización</strong
-                        >
-                        para afrontar las prácticas que nos proponían.
+                        A university degree with mainly practical training which
+                        helped me stablish the foundations of Computer Science.
+                        Operating Systems, software development, compilers,
+                        project management and databases are some of the
+                        subjects I went through during this time. Within the
+                        acquired skills I got, I also need to highlight: problem
+                        solving, teamwork and organization in order to solve the
+                        practices that were proposed to us.
                         <br /><br />
-                        Durante la carrera aprendí a programar usando
-                        <strong>C y Java</strong>
-                        como principales lenguajes de programación sobre los
-                        cuáles se han sustentado mis conocimientos.
+                        During the degree I learned programming using C and Java
+                        as the main languages on which I sustained my learning.
                       </p>
                     </div>
                   </div>
@@ -292,7 +273,7 @@
         <section class="seccion cronograma cronograma-trabajo">
           <div class="seccion-izquierda seccion-trabajo">
             <div class="titulo-seccion">
-              <h3 text="Trabajo">Trabajo</h3>
+              <h3 text="Experience">Experience</h3>
               <nav class="secciones-navegacion"></nav>
             </div>
           </div>
@@ -306,7 +287,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/enxine.jpg");'
+                    style='background:url("../img/trabajo/enxine.jpg");'
                   ></div>
                   <div class="title" style="mix-blend-mode:hard-light;">
                     <h3>Enxine</h3>
@@ -324,47 +305,44 @@
                     <h3>Sobre la empresa</h3>
                     <p>
                       <a href="https://www.enxine.com" target="_blank">
-                        <img src="img/trabajo/logo/enxine.png"
+                        <img src="../img/trabajo/logo/enxine.png"
                       /></a>
 
-                      Enxine es una empresa especializada en
-                      <strong>Internet de las Cosas</strong>. Ofrecen todo tipo
-                      de soluciones hardware o software para controlar y
-                      monitorizar componentes electrónicos a través de internet.
+                      Enxine is a company specialized in Internet of Things.
+                      They offer all kind of hardware and software solutions to
+                      control and monitor electronic devices through internet.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Trabajo realizado</h3>
                     <p>
-                      Dentro de la empresa he participado en el mantenimiento y
-                      desarrollo de nuevas funcionalidades dentro de la parte de
-                      <strong>backend</strong> de un sistema que se encarga del
-                      <strong>control de cargadores de coches eléctricos</strong
-                      >. Este sistema pertenece a Efimob, empresa que
-                      proporciona una red de cargadores para coches eléctricos
-                      en toda España. La monitorización, pago automático de
-                      recargas, mantenimiento y control de estos cargadores son
-                      algunas de las funcionalidades que este sistema incluye y
-                      en las cuales yo participo activamente.
+                      Inside the company I participate in the maintenance and
+                      development of new functionalities in the backend part of
+                      a system which controls electrical car chargers. This
+                      system belongs to Efimob, company that provides an
+                      electrical car charging network in Spain. Monitoring,
+                      automatic recharges payment, maintenance and control of
+                      this chargers are some of the features this system
+                      includes and where I actively work in.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/javascript.png" />
+                        <img src="../img/habilidades/javascript.png" />
                         <span>Javascript</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/nodejs.png" />
+                        <img src="../img/habilidades/nodejs.png" />
                         <span>NodeJS</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/postgresql.png" />
+                        <img src="../img/habilidades/postgresql.png" />
                         <span>PostgreSQL</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/redis.png" />
+                        <img src="../img/habilidades/redis.png" />
                         <span>Redis</span>
                       </div>
                     </ul>
@@ -378,7 +356,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/overon.jpeg");'
+                    style='background:url("../img/trabajo/overon.jpeg");'
                   ></div>
                   <div class="title">
                     <h3>Overon</h3>
@@ -394,39 +372,37 @@
                     <h3>Sobre la empresa</h3>
                     <p>
                       <a href="https://www.overon.es" target="_blank">
-                        <img src="img/trabajo/logo/overon.png"
+                        <img src="../img/trabajo/logo/overon.png"
                       /></a>
 
-                      Empresa multinacional de telecomunicaciones cuya principal
-                      fuente de ingresos es la
-                      <strong>difusión de contenidos multimedia.</strong>
+                      International telecommunications company whose main source
+                      of income is the broadcasting of multimedia content.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Trabajo realizado</h3>
                     <p>
-                      Durante mi período en Overon me encargué del desarrollo de
-                      un <strong>transcodificador</strong> que tenía la misión
-                      de transformar una señal de video/audio y subtítulos desde
-                      cualquier formato u origen a un formato que pueda ser
-                      interpretado por cualquier navegador web. Junto con el
-                      transcodificador también cree un
-                      <strong>reproductor web</strong> a medida para la empresa.
+                      During this time I was in charge of a transcoder
+                      development whose mission was the transformation of
+                      audio/video/subtitles signals from any format or origin to
+                      a format which could be interpreted by any web browser.
+                      Together with the transcoder, I also created a custom web
+                      player for this company.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/golang.png" />
+                        <img src="../img/habilidades/golang.png" />
                         <span>GoLang</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/ffmpeg.png" />
+                        <img src="../img/habilidades/ffmpeg.png" />
                         <span>FFmpeg</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/javascript.png" />
+                        <img src="../img/habilidades/javascript.png" />
                         <span>Javascript</span>
                       </div>
                     </ul>
@@ -440,7 +416,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/connectors.jpeg");'
+                    style='background:url("../img/trabajo/connectors.jpeg");'
                   ></div>
                   <div class="title">
                     <h3>Connectors</h3>
@@ -458,40 +434,38 @@
                     <h3>Sobre la empresa</h3>
                     <p>
                       <a href="https://connectors-plus.com/" target="_blank">
-                        <img src="img/trabajo/logo/connectors.jpg"
+                        <img src="../img/trabajo/logo/connectors.jpg"
                       /></a>
-                      <strong>Agencia de movilidad internacional</strong> que
-                      facilita experiencias en el extranjero con el fin de
-                      mejorar las capacidades lingüísticas y formativas de las
-                      personas.
+                      International mobility agency that facilitates experiences
+                      abroad in order to improve the linguistic and training
+                      capacities of people.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Trabajo realizado</h3>
                     <p>
-                      Desarrollé una
-                      <strong>red social multiplataforma</strong> que fomenta
-                      las relaciones entre los clientes adscritos a los
-                      programas de movilidad asi como la comunicación entre la
-                      empresa y sus clientes. Entre algunas de las
-                      funcionalidades de la red social se incluye la subida y
-                      gestión de imágenes, creación de grupos, gestión de roles,
-                      permisos, usuarios y chats grupales.
+                      I developed a cross-platform social network whose function
+                      was to promote relationships between clients linked to
+                      mobility programs and improve communication between
+                      company and customers. Among some of its features, the
+                      social network includes administration and uploading of
+                      pictures, group creation, role management, permissions,
+                      user administration and group chats.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/react-redux.png" />
+                        <img src="../img/habilidades/react-redux.png" />
                         <span>React & Redux</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/spring-framework.png" />
+                        <img src="../img/habilidades/spring-framework.png" />
                         <span>Spring</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/postgresql.png" />
+                        <img src="../img/habilidades/postgresql.png" />
                         <span>PostgreSQL</span>
                       </div>
                     </ul>
@@ -505,7 +479,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/almacen.jpeg");'
+                    style='background:url("../img/trabajo/almacen.jpeg");'
                   ></div>
                   <div class="title">
                     <h3>Amazon Provider</h3>
@@ -520,32 +494,30 @@
                   <div class="texto">
                     <h3>Sobre la empresa</h3>
                     <p>
-                      Durante mi estancia en Reino Unido he trabajado para un
-                      pequeño proveedor de Amazon.
+                      During my stay in United Kingdom I have worked for a small
+                      Amazon Provider.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Trabajo realizado</h3>
                     <p>
-                      El trabajo que hice fue el de crear un software cuyo
-                      objetivo era la
-                      <strong>automatización de procesos</strong> como llevar un
-                      registro de los productos y su stock, los pedidos y la
-                      generación e impresión de las etiquetas de envío. La
-                      visualización de los registros y ejecución de las tareas
-                      podían realizarse a través de la interacción con una
-                      interfaz gráfica.
+                      I created software whose purpose was to automate processes
+                      like keeping record of orders, products and stock and the
+                      generation and printing of shipping tags. The
+                      visualization of these records and the execution of tasks
+                      could be done through interaction with a user interface
+                      written in java Swing.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/java.png" />
+                        <img src="../img/habilidades/java.png" />
                         <span>Java</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/postgresql.png" />
+                        <img src="../img/habilidades/postgresql.png" />
                         <span>PostgreSQL</span>
                       </div>
                     </ul>
@@ -560,7 +532,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/plexus.jpg");'
+                    style='background:url("../img/trabajo/plexus.jpg");'
                   ></div>
                   <div class="title">
                     <h3>Plexus</h3>
@@ -581,39 +553,32 @@
                         href="https://www.tecnologiasplexus.com/"
                         target="_blank"
                       >
-                        <img src="img/trabajo/logo/Plexus.png"
+                        <img src="../img/trabajo/logo/Plexus.png"
                       /></a>
-                      Empresa internacional de consultaría software
+                      Multinational software consulting company.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Trabajo realizado</h3>
                     <p>
-                      Participé en el desarrollo de un
-                      <strong
-                        >sistema de ingesta de datos y su procesado</strong
-                      >
-                      para la muestra de estadísticas sobre ciertos parámetros
-                      como puede ser el sexo, edad, localidad.. de gente que
-                      realiza conexiones desde diferentes plataformas. Participé
-                      en la
-                      <strong
-                        >refactorización de una base de datos y el sistema
-                        asociado</strong
-                      >
-                      encargado de realizar la gestión de usuarios para
-                      distintas aplicaciones haciendo uso de servicios Web REST
+                      I took part in the development of a data gathering system
+                      and its processing in order to show statistics based on
+                      some parameters such as gender, age, location… of people
+                      who make connections from different platforms. I
+                      participated as well in the refactoring of a database and
+                      the associated system in charge of the user management of
+                      different platforms.
                     </p>
                   </div>
                   <div class="texto">
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/java.png" />
+                        <img src="../img/habilidades/java.png" />
                         <span>Java</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/mysql.png" />
+                        <img src="../img/habilidades/mysql.png" />
                         <span>MySQL</span>
                       </div>
                     </ul>
@@ -626,7 +591,7 @@
 
         <section class="seccion habilidades">
           <div class="seccion-izquierda">
-            <h3 text="Habilidades">Habilidades</h3>
+            <h3 text="Abilities">Abilities</h3>
             <nav class="secciones-navegacion"></nav>
           </div>
           <div class="seccion-derecha">
@@ -634,31 +599,31 @@
               <h3>Lenguajes de programación</h3>
               <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/c.png" />
+                  <img src="../img/habilidades/c.png" />
                   <span>C</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/java.png" />
+                  <img src="../img/habilidades/java.png" />
                   <span>Java</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/javascript.png" />
+                  <img src="../img/habilidades/javascript.png" />
                   <span>Javascript</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/golang.png" />
+                  <img src="../img/habilidades/golang.png" />
                   <span>GoLang</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/python.svg" />
+                  <img src="../img/habilidades/python.svg" />
                   <span>Python</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/html.png" />
+                  <img src="../img/habilidades/html.png" />
                   <span>HTML</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/css.png" />
+                  <img src="../img/habilidades/css.png" />
                   <span>CSS</span>
                 </div>
               </ul>
@@ -666,77 +631,77 @@
               <h3>Bases de datos</h3>
               <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/postgresql.png" />
+                  <img src="../img/habilidades/postgresql.png" />
                   <span>PostgreSQL</span>
                 </div>
 
                 <div>
-                  <img src="img/habilidades/mysql.png" />
+                  <img src="../img/habilidades/mysql.png" />
                   <span>MySQL</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/redis.png" />
+                  <img src="../img/habilidades/redis.png" />
                   <span>Redis</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/oracle.png" />
+                  <img src="../img/habilidades/oracle.png" />
                   <span>OracleDB</span>
                 </div>
               </ul>
               <h3>Frameworks</h3>
               <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/spring-framework.png" />
+                  <img src="../img/habilidades/spring-framework.png" />
                   <span>Spring</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/nodejs.png" />
+                  <img src="../img/habilidades/nodejs.png" />
                   <span>NodeJS</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/react-redux.png" />
+                  <img src="../img/habilidades/react-redux.png" />
                   <span>React & Redux</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/angular2.png" />
+                  <img src="../img/habilidades/angular2.png" />
                   <span>Angular</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/ffmpeg.png" />
+                  <img src="../img/habilidades/ffmpeg.png" />
                   <span>FFmpeg</span>
                 </div>
               </ul>
               <h3>Otros conocimientos</h3>
               <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/spark.png" />
+                  <img src="../img/habilidades/spark.png" />
                   <span>Apache spark</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/linux.png" />
+                  <img src="../img/habilidades/linux.png" />
                   <span>Linux</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/machine-learning.png" />
+                  <img src="../img/habilidades/machine-learning.png" />
                   <span>Machine learning</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/git.png" />
+                  <img src="../img/habilidades/git.png" />
                   <span>Git</span>
                 </div>
               </ul>
               <!-- <h3>Idiomas hablados</h3> -->
               <!-- <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/spanish.png">
+                  <img src="../img/habilidades/spanish.png">
                   <span>Español</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/english.png">
+                  <img src="../img/habilidades/english.png">
                   <span>Ingles</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/galician.gif">
+                  <img src="../img/habilidades/galician.gif">
                   <span>Gallego</span>
                 </div>
               
@@ -746,7 +711,7 @@
         </section>
         <section class="seccion contacto">
           <div class="seccion-izquierda">
-            <h3 text="Contacto">Contacto</h3>
+            <h3 text="Contact">Contact</h3>
             <nav class="secciones-navegacion"></nav>
           </div>
           <div class="seccion-derecha">
@@ -754,7 +719,7 @@
               <ul>
                 <li>
                   <a href="mailto:alexsuahh@gmail.com" target="_blank">
-                    <img src="./img/contacto/gmail.png" />
+                    <img src="../img/contacto/gmail.png" />
                   </a>
                 </li>
                 <li>
@@ -762,19 +727,19 @@
                     href="https://www.linkedin.com/in/alejandro-suárez-430986b4"
                     target="_blank"
                   >
-                    <img src="./img/contacto/linkedin.png" />
+                    <img src="../img/contacto/linkedin.png" />
                   </a>
                 </li>
                 <li>
                   <a href="https://github.com/AlexSua" target="_blank">
-                    <img src="./img/contacto/github.png" />
+                    <img src="../img/contacto/github.png" />
                   </a>
                 </li>
                 <li>
                   <a
                     href="https://stackoverflow.com/users/10006284/alexsua"
                     target="_blank"
-                    ><img src="./img/contacto/stackoverflow.png"
+                    ><img src="../img/contacto/stackoverflow.png"
                   /></a>
                 </li>
               </ul>
@@ -797,7 +762,7 @@
 
           <div>
             <div class="arriba">
-              <img src="./img/Arrow.svg" />
+              <img src="../img/Arrow.svg" />
             </div>
           </div>
         </div>

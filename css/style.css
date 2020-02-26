@@ -160,7 +160,7 @@ nav {
 
 nav ul {
   display: flex;
-  max-width: 15em;
+  max-width: 16em;
   flex-direction: row;
   flex-flow: wrap;
   justify-content: center;
@@ -855,6 +855,10 @@ nav.idioma li.selected {
 .contacto img {
   width: 4em;
   margin: 0.625rem;
+}
+
+.contacto nav span::after {
+    background: white;
 }
 
 .arriba {

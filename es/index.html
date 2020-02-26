@@ -10,26 +10,21 @@
     />
     <link
       rel="preload"
-      href="./webfonts/SourceSans.woff2"
+      href="../webfonts/SourceSans.woff2"
       as="font"
       type="font/woff"
       crossorigin
     />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script src="../js/main.js"></script>
   </head>
 
   <body>
-    <script>
-      if(navigator.language.toLocaleLowerCase().startsWith("en")){
-        window.location.replace("./en/index.html");
-      }
-    </script>
     <section class="wrapper">
       <header>
-        <img src="./img/loading.jpg" />
+        <img src="../img/loading.jpg" />
         <video autoplay muted loop id="videoIntro">
-          <source src="./img/intro.webm" type="video/webm" />
+          <source src="../img/intro.webm" type="video/webm" />
         </video>
 
         <div class="titulo">
@@ -47,7 +42,7 @@
               </span>
             </li>
             <li>
-              <span onclick='window.location.replace("./en/index.html");'>
+              <span onclick='window.location.replace("../en/index.html");'>
                 EN
               </span>
             </li>
@@ -71,7 +66,7 @@
       <main>
         <section class="seccion info">
           <div class="seccion-izquierda">
-            <img src="img/profile.jpg" />
+            <img src="../img/profile.jpg" />
             <h3 text="Sobre mi">Sobre mi</h3>
             <nav class="secciones-navegacion"></nav>
           </div>
@@ -181,7 +176,7 @@
                     <div class="texto">
                       <img
                         class="cronograma-logo"
-                        src="./img/estudios/logo_cit.png"
+                        src="../img/estudios/logo_cit.png"
                       />
                       <h3>
                         Software Development
@@ -221,7 +216,7 @@
                   <div class="cronograma-contenido">
                     <img
                       class="cronograma-logo"
-                      src="./img/estudios/logo_uniovi.png"
+                      src="../img/estudios/logo_uniovi.png"
                     />
                     <div class="texto">
                       <h3>Master en Ingeniería Web</h3>
@@ -254,7 +249,7 @@
                   <div class="cronograma-contenido">
                     <img
                       class="cronograma-logo"
-                      src="./img/estudios/logo_usc.png"
+                      src="../img/estudios/logo_usc.png"
                     />
 
                     <div class="texto">
@@ -306,7 +301,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/enxine.jpg");'
+                    style='background:url("../img/trabajo/enxine.jpg");'
                   ></div>
                   <div class="title" style="mix-blend-mode:hard-light;">
                     <h3>Enxine</h3>
@@ -324,7 +319,7 @@
                     <h3>Sobre la empresa</h3>
                     <p>
                       <a href="https://www.enxine.com" target="_blank">
-                        <img src="img/trabajo/logo/enxine.png"
+                        <img src="../img/trabajo/logo/enxine.png"
                       /></a>
 
                       Enxine es una empresa especializada en
@@ -352,19 +347,19 @@
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/javascript.png" />
+                        <img src="../img/habilidades/javascript.png" />
                         <span>Javascript</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/nodejs.png" />
+                        <img src="../img/habilidades/nodejs.png" />
                         <span>NodeJS</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/postgresql.png" />
+                        <img src="../img/habilidades/postgresql.png" />
                         <span>PostgreSQL</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/redis.png" />
+                        <img src="../img/habilidades/redis.png" />
                         <span>Redis</span>
                       </div>
                     </ul>
@@ -378,7 +373,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/overon.jpeg");'
+                    style='background:url("../img/trabajo/overon.jpeg");'
                   ></div>
                   <div class="title">
                     <h3>Overon</h3>
@@ -394,7 +389,7 @@
                     <h3>Sobre la empresa</h3>
                     <p>
                       <a href="https://www.overon.es" target="_blank">
-                        <img src="img/trabajo/logo/overon.png"
+                        <img src="../img/trabajo/logo/overon.png"
                       /></a>
 
                       Empresa multinacional de telecomunicaciones cuya principal
@@ -418,15 +413,15 @@
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/golang.png" />
+                        <img src="../img/habilidades/golang.png" />
                         <span>GoLang</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/ffmpeg.png" />
+                        <img src="../img/habilidades/ffmpeg.png" />
                         <span>FFmpeg</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/javascript.png" />
+                        <img src="../img/habilidades/javascript.png" />
                         <span>Javascript</span>
                       </div>
                     </ul>
@@ -440,7 +435,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/connectors.jpeg");'
+                    style='background:url("../img/trabajo/connectors.jpeg");'
                   ></div>
                   <div class="title">
                     <h3>Connectors</h3>
@@ -458,7 +453,7 @@
                     <h3>Sobre la empresa</h3>
                     <p>
                       <a href="https://connectors-plus.com/" target="_blank">
-                        <img src="img/trabajo/logo/connectors.jpg"
+                        <img src="../img/trabajo/logo/connectors.jpg"
                       /></a>
                       <strong>Agencia de movilidad internacional</strong> que
                       facilita experiencias en el extranjero con el fin de
@@ -483,15 +478,15 @@
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/react-redux.png" />
+                        <img src="../img/habilidades/react-redux.png" />
                         <span>React & Redux</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/spring-framework.png" />
+                        <img src="../img/habilidades/spring-framework.png" />
                         <span>Spring</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/postgresql.png" />
+                        <img src="../img/habilidades/postgresql.png" />
                         <span>PostgreSQL</span>
                       </div>
                     </ul>
@@ -505,7 +500,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/almacen.jpeg");'
+                    style='background:url("../img/trabajo/almacen.jpeg");'
                   ></div>
                   <div class="title">
                     <h3>Amazon Provider</h3>
@@ -541,11 +536,11 @@
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/java.png" />
+                        <img src="../img/habilidades/java.png" />
                         <span>Java</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/postgresql.png" />
+                        <img src="../img/habilidades/postgresql.png" />
                         <span>PostgreSQL</span>
                       </div>
                     </ul>
@@ -560,7 +555,7 @@
                 <div class="cronograma-seccion">
                   <div
                     class="cronograma-contenido-background"
-                    style='background:url("./img/trabajo/plexus.jpg");'
+                    style='background:url("../img/trabajo/plexus.jpg");'
                   ></div>
                   <div class="title">
                     <h3>Plexus</h3>
@@ -581,7 +576,7 @@
                         href="https://www.tecnologiasplexus.com/"
                         target="_blank"
                       >
-                        <img src="img/trabajo/logo/Plexus.png"
+                        <img src="../img/trabajo/logo/Plexus.png"
                       /></a>
                       Empresa internacional de consultaría software
                     </p>
@@ -609,11 +604,11 @@
                     <h3>Tecnologías usadas</h3>
                     <ul class="lista-habilidades">
                       <div>
-                        <img src="img/habilidades/java.png" />
+                        <img src="../img/habilidades/java.png" />
                         <span>Java</span>
                       </div>
                       <div>
-                        <img src="img/habilidades/mysql.png" />
+                        <img src="../img/habilidades/mysql.png" />
                         <span>MySQL</span>
                       </div>
                     </ul>
@@ -634,31 +629,31 @@
               <h3>Lenguajes de programación</h3>
               <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/c.png" />
+                  <img src="../img/habilidades/c.png" />
                   <span>C</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/java.png" />
+                  <img src="../img/habilidades/java.png" />
                   <span>Java</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/javascript.png" />
+                  <img src="../img/habilidades/javascript.png" />
                   <span>Javascript</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/golang.png" />
+                  <img src="../img/habilidades/golang.png" />
                   <span>GoLang</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/python.svg" />
+                  <img src="../img/habilidades/python.svg" />
                   <span>Python</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/html.png" />
+                  <img src="../img/habilidades/html.png" />
                   <span>HTML</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/css.png" />
+                  <img src="../img/habilidades/css.png" />
                   <span>CSS</span>
                 </div>
               </ul>
@@ -666,77 +661,77 @@
               <h3>Bases de datos</h3>
               <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/postgresql.png" />
+                  <img src="../img/habilidades/postgresql.png" />
                   <span>PostgreSQL</span>
                 </div>
 
                 <div>
-                  <img src="img/habilidades/mysql.png" />
+                  <img src="../img/habilidades/mysql.png" />
                   <span>MySQL</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/redis.png" />
+                  <img src="../img/habilidades/redis.png" />
                   <span>Redis</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/oracle.png" />
+                  <img src="../img/habilidades/oracle.png" />
                   <span>OracleDB</span>
                 </div>
               </ul>
               <h3>Frameworks</h3>
               <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/spring-framework.png" />
+                  <img src="../img/habilidades/spring-framework.png" />
                   <span>Spring</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/nodejs.png" />
+                  <img src="../img/habilidades/nodejs.png" />
                   <span>NodeJS</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/react-redux.png" />
+                  <img src="../img/habilidades/react-redux.png" />
                   <span>React & Redux</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/angular2.png" />
+                  <img src="../img/habilidades/angular2.png" />
                   <span>Angular</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/ffmpeg.png" />
+                  <img src="../img/habilidades/ffmpeg.png" />
                   <span>FFmpeg</span>
                 </div>
               </ul>
               <h3>Otros conocimientos</h3>
               <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/spark.png" />
+                  <img src="../img/habilidades/spark.png" />
                   <span>Apache spark</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/linux.png" />
+                  <img src="../img/habilidades/linux.png" />
                   <span>Linux</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/machine-learning.png" />
+                  <img src="../img/habilidades/machine-learning.png" />
                   <span>Machine learning</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/git.png" />
+                  <img src="../img/habilidades/git.png" />
                   <span>Git</span>
                 </div>
               </ul>
               <!-- <h3>Idiomas hablados</h3> -->
               <!-- <ul class="lista-habilidades">
                 <div>
-                  <img src="img/habilidades/spanish.png">
+                  <img src="../img/habilidades/spanish.png">
                   <span>Español</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/english.png">
+                  <img src="../img/habilidades/english.png">
                   <span>Ingles</span>
                 </div>
                 <div>
-                  <img src="img/habilidades/galician.gif">
+                  <img src="../img/habilidades/galician.gif">
                   <span>Gallego</span>
                 </div>
               
@@ -754,7 +749,7 @@
               <ul>
                 <li>
                   <a href="mailto:alexsuahh@gmail.com" target="_blank">
-                    <img src="./img/contacto/gmail.png" />
+                    <img src="../img/contacto/gmail.png" />
                   </a>
                 </li>
                 <li>
@@ -762,19 +757,19 @@
                     href="https://www.linkedin.com/in/alejandro-suárez-430986b4"
                     target="_blank"
                   >
-                    <img src="./img/contacto/linkedin.png" />
+                    <img src="../img/contacto/linkedin.png" />
                   </a>
                 </li>
                 <li>
                   <a href="https://github.com/AlexSua" target="_blank">
-                    <img src="./img/contacto/github.png" />
+                    <img src="../img/contacto/github.png" />
                   </a>
                 </li>
                 <li>
                   <a
                     href="https://stackoverflow.com/users/10006284/alexsua"
                     target="_blank"
-                    ><img src="./img/contacto/stackoverflow.png"
+                    ><img src="../img/contacto/stackoverflow.png"
                   /></a>
                 </li>
               </ul>
@@ -797,7 +792,7 @@
 
           <div>
             <div class="arriba">
-              <img src="./img/Arrow.svg" />
+              <img src="../img/Arrow.svg" />
             </div>
           </div>
         </div>
