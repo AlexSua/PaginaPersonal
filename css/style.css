@@ -35,6 +35,11 @@ h1 {
   font-family: "TESLA", fallback,"Source Sans Pro",fallback,sans-serif;
 
 } */
+p {
+  font-size: 1.1em;
+  text-align: justify;
+  line-height: 150%;
+}
 
 .wrapper {
   width: 100%;
@@ -242,12 +247,12 @@ nav.idioma li.selected {
   margin: auto;
   margin-top: 42.7vh;
 }
-.seccion-izquierda h3::after{
-  content:"";
+.seccion-izquierda h3::after {
+  content: "";
   position: absolute;
 }
-.seccion-izquierda h3.tick::after{
-  content:"|";
+.seccion-izquierda h3.tick::after {
+  content: "|";
 }
 .sticky {
   top: 0;
@@ -259,7 +264,7 @@ nav.idioma li.selected {
 }
 
 .seccion-contenido {
-  padding: 10vh 1.875rem 0.625rem 3.125rem;
+  padding: 10vh 1.875rem 10vh 3.125rem;
   max-width: 43.75rem;
 }
 .seccion-contenido p {
@@ -339,20 +344,26 @@ nav.idioma li.selected {
   /* transform: rotateY(-45deg); */
   transition: margin-left 1s ease-out, opacity 1s ease-out,
     transform 1s ease-out;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   width: calc(130%);
 }
 
+.trabajo .cronograma-contenido > .texto:first-child {
+  padding-top: 2rem;
+}
 .trabajo .cronograma-contenido > .texto:not(:nth-last-of-type(1)) img {
   max-width: 5rem;
+  max-height: 5rem;
   object-fit: contain;
-  margin: 0 1.25rem 0 0;
+  margin: 0.5rem 1.25rem 0 0;
 }
 
 .trabajo .cronograma-contenido .lista-habilidades {
   margin: 0;
   margin-left: 3%;
   justify-content: unset;
-  padding: 2em;
+  padding: 1em;
 }
 
 .trabajo .cronograma-contenido > .texto.open {
@@ -370,7 +381,7 @@ nav.idioma li.selected {
   max-width: 43.75rem;
   width: 25rem;
   margin: 3.125rem;
-  margin-top: 1.875rem;
+  margin-top: 0;
   padding-left: 20p;
   /* padding-bottom: 1.25rem; */
   margin-bottom: 0;
@@ -380,9 +391,11 @@ nav.idioma li.selected {
   max-width: 62.5rem;
   padding: 2em;
   padding-top: 0;
-  display: flex;
+  padding-bottom: 0;
 }
-
+.trabajo .cronograma-contenido a {
+  float:left;
+}
 .trabajo .cronograma-contenido > .texto:nth-of-type(1) p {
   max-width: 31.25rem;
 }
@@ -512,9 +525,28 @@ nav.idioma li.selected {
   color: #1f414d;
 }
 .info h3 {
-  margin-top: 0;
+  margin-top: 2rem;
+}
+.info p{
+  margin-top: 0.5rem;
+}
+.info h4 {
+  font-size: 1.13em;
+  font-weight: 600;
+  margin-left: 3%;
+  font-style: italic;
+  margin-block-end: 0;
+}
+.info .seccion-derecha ul {
+  list-style: unset;
+  padding: unset;
+  margin-left: 6%;
+  font-size: 1.1em;
 }
 
+.info .seccion-derecha ul>li {
+  padding-bottom: 0.8rem;
+}
 .cancel.show {
   transform: scale(1) rotateZ(360deg);
 }
@@ -1029,8 +1061,8 @@ nav.idioma li.selected {
   .seccion-contenido {
     padding: 20% 3% 20% 3%;
   }
-  .seccion-contenido p{
-    margin:0;
+  .seccion-contenido p {
+    margin: 0;
   }
   .seccion-trabajo {
     background-image: url(../img/work.jpg);
