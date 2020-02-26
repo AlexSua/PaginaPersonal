@@ -191,6 +191,11 @@ nav li:nth-child(n + 2):not(:nth-child(4))::before {
 
 nav span {
   position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 nav span::after {
