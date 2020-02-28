@@ -418,7 +418,7 @@ function navegacion() {
     { nombre: "Habilidades", clase: ".habilidades" },
     { nombre: "Contacto", clase: ".contacto" }
   ];
-  let nav = document.querySelector(".secciones-navegacion>ul");
+  let nav = document.querySelector(".secciones-navegacion ul");
   document
     .querySelectorAll(".secciones-navegacion")
     .forEach((navegacion, index) => {

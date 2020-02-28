@@ -160,7 +160,7 @@ nav {
 
 nav ul {
   display: flex;
-  max-width: 16em;
+  max-width: 16.8em;
   flex-direction: row;
   flex-flow: wrap;
   justify-content: center;
@@ -920,8 +920,8 @@ nav.idioma li.selected {
 .load-animation {
   display: inline-block;
   position: absolute;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
 }
 body.loaded .load-animation {
   display: none;
@@ -930,9 +930,8 @@ body.loaded .load-animation {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
+  width: inherit;
+  height: inherit;
   border: 8px solid #fff;
   border-radius: 50%;
   animation: load-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -970,10 +969,6 @@ body.loaded .load-animation {
   body {
     font-size: 0.9em;
   }
-  .load-animation {
-    width: 2rem;
-    height: 2rem;
-  }
   p {
     line-height: 140%;
   }
@@ -1004,7 +999,7 @@ body.loaded .load-animation {
     margin-top: 1.5rem;
   }
   .seccion-contenido {
-    padding: 20% 3% 20% 3%;
+    padding: 10% 3% 10% 3%;
   }
   .seccion-contenido p {
     margin: 0;
@@ -1046,6 +1041,7 @@ body.loaded .load-animation {
   }
   .cronograma-contenido {
     margin: 0;
+    margin-bottom: 2em;
   }
   .cronograma > .seccion-derecha::before {
     display: none;
@@ -1079,6 +1075,7 @@ body.loaded .load-animation {
     font-weight: bold;
     text-align: start;
     margin-right: 33%;
+    font-size: 1em;
   }
   .trabajo .cronograma-ubicacion {
     margin-left: auto;
@@ -1140,6 +1137,7 @@ body.loaded .load-animation {
   .cronograma-contenido > .texto > p {
     margin-top: 15px;
     margin-left: 0;
+    margin-right: 0;
   }
 
   .habilidades .seccion-contenido {
