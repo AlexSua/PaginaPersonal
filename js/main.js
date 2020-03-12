@@ -5,12 +5,18 @@ function initializeJS() {
   animacionTrabajo();
   aparicionTitulos();
 }
-window.onload = function() {
+window.onload = function () {
   navegacion();
   initializeTitles();
   initializeVariables();
   initializeJS();
-  document.body.classList.add("loaded");
+  if (videoIntro.readyState === 4) {
+    document.body.classList.add("loaded");
+  } else {
+    video.addEventListener("playing", function () {
+      document.body.classList.add("loaded");
+    });
+  }
 };
 
 window.onresize = () => {
@@ -92,7 +98,7 @@ function animacionAparicionTextosTrabajo(cronograma_contenido) {
   let height = 0;
   cronograma_contenido
     .querySelectorAll(".texto")
-    .forEach(function(elemento_texto) {
+    .forEach(function (elemento_texto) {
       time += 300;
       height += elemento_texto.offsetHeight;
       setTimeout(() => elemento_texto.classList.add("open"), time);
@@ -105,7 +111,7 @@ function eliminarAparicionTextosTrabajo(cronograma_contenido) {
   cronograma_contenido.style.minHeight = "";
   cronograma_contenido
     .querySelectorAll(".texto")
-    .forEach(function(elemento_texto) {
+    .forEach(function (elemento_texto) {
       elemento_texto.classList.remove("open");
     });
 }
@@ -133,7 +139,7 @@ function createNextButton(elemento) {
     next = document.createElement("div");
     next.className = "siguiente";
     elemento.children[1].appendChild(next);
-    next.onclick = function(event) {
+    next.onclick = function (event) {
       event.stopPropagation();
       elemento.nextElementSibling.onclick();
     };
@@ -187,8 +193,8 @@ function animacionTrabajo() {
     let width_titulo_seccion_trabajo_abierta = "30%";
 
     if (window.innerWidth > 1024) {
-      elemento.onclick = () => {};
-      elemento.onclick = function() {
+      elemento.onclick = () => { };
+      elemento.onclick = function () {
         if (getObjectTranslation(cronograma_fecha)[1] != margin_fecha_open) {
           // document.body.style.overflow = "hidden";
           let cancel_button = createCancelButton(elemento);
@@ -242,8 +248,8 @@ function animacionTrabajo() {
         }
       };
     } else {
-      elemento.onclick = () => {};
-      elemento.onclick = function() {
+      elemento.onclick = () => { };
+      elemento.onclick = function () {
         if (!cronograma_title.classList.contains("open")) {
           elemento.scrollIntoView({
             behavior: "smooth"
