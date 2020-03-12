@@ -13,7 +13,7 @@ window.onload = function () {
   if (videoIntro.readyState === 4) {
     document.body.classList.add("loaded");
   } else {
-    video.addEventListener("playing", function () {
+    videoIntro.addEventListener("playing", function () {
       document.body.classList.add("loaded");
     });
   }
