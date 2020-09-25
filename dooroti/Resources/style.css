@@ -16,7 +16,7 @@ body, html {
 
 .Page {
     position: absolute;
-    left: 230px;
+    left: 0px;
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -39,6 +39,7 @@ body, html {
 
 .Page .ImageContainer {
     position: relative;
+    width: 100%;
 }
 .Page .ImageContainer > .Links > a {
     position: absolute;
@@ -50,6 +51,11 @@ body.Active .Page .ImageContainer > .Links > a {
 }
 .Page .ImageContainer > .Links > a:hover {
     background-color: #FFFFFF55 !important;
+}
+
+img{
+    /* width:100%!important;
+    height:unset!important; */
 }
 
 .TOC {
@@ -65,10 +71,14 @@ body.Active .Page .ImageContainer > .Links > a {
     overflow-x: visible;
     z-index: 2;
     background: #444;
+    display: none;
+
 }
 .TOC > div {
     display: flex;
     flex-direction: column;
+    display: none;
+
     align-items: center;
     padding: 1em;
     background: transparent;
