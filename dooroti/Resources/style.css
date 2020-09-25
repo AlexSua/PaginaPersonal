@@ -38,11 +38,11 @@ body, html {
 }
 
 .Page .ImageContainer {
-    position: relative;
+    /* position: relative;
     width: 100%;
     height:100%;
     display: flex;
-    justify-content: center;
+    justify-content: center; */
 }
 .Page .ImageContainer > .Links > a {
     position: absolute;
