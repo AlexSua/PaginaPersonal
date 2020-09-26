@@ -20,10 +20,10 @@ body, html {
     top: 0px;
     right: 0px;
     bottom: 0px;
-    justify-content: center;
-    display: flex;
-
-    background: #00000077;
+    left:50%;
+    transform: translate(-50%, 0%);
+    width: 400px;
+    margin-left: 35px;
 
 }
 .Page:not(:target) {
@@ -34,7 +34,7 @@ body, html {
     display: none;
 }
 .Page .ImageContainer {
-    box-shadow: 0px 0px 1em #00000077;
+    /* box-shadow: 0px 0px 1em #00000077; */
 }
 
 .Page .ImageContainer {
