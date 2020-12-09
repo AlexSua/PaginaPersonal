@@ -372,7 +372,7 @@ function fijarElementos() {
         if (videoIntro.paused) videoIntro.play();
         videoIntro.style.display = "";
       }
-      if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+      if (window.scrollY+2 + window.innerHeight >= document.body.offsetHeight) {
         translateObject(0, "0", arriba);
       } else {
         arriba.style.transform = "";
