@@ -906,7 +906,7 @@ nav.idioma li.selected {
   position: absolute;
   z-index: 2;
   bottom: 0;
-  height: 3.125rem;
+  height: 3rem;
   width: 4.375rem;
   background-image: url(../img/ArrowDown.svg);
   transform: translate3d(-50%, 3.125rem, 0);
